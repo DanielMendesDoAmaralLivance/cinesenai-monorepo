@@ -42,9 +42,6 @@ model FilmeGenero {
 model Filme {
   id               Int                               @id @default(autoincrement())
 
-  tipoIdiomaId     Int                               @map("tipo_idioma_id")
-  tipoIdioma       TipoIdioma                        @relation(fields: [tipoIdiomaId], references: [id])
-
   classificacaoIndicativaId  Int                     @map("classificacao_indicativa_id")
   classificacaoIndicativa    ClassificacaoIndicativa @relation(fields: [classificacaoIndicativaId], references: [id])
 
@@ -103,6 +100,11 @@ model Integrante {
   @@map("integrante")
 }
 
+enum TipoIntegranteEnum {
+  Diretor
+  Ator
+}
+
 model TipoIntegrante {
   id           Int      @id @default(autoincrement())
 
@@ -117,18 +119,13 @@ model TipoIntegrante {
   @@map("tipo_integrante")
 }
 
-model TipoIdioma {
-  id           Int      @id @default(autoincrement())
-
-  nome         String   @unique
-
-  ativo        Boolean  @default(true)
-  criadoEm     DateTime @default(now()) @map("criado_em")
-  atualizadoEm DateTime @updatedAt @map("atualizado_em")
-
-  filmes       Filme[]
-
-  @@map("tipo_idioma")
+enum ClassificacaoIndicativaEnum {
+  Livre
+  A10
+  A12
+  A14
+  A16
+  A18
 }
 
 model ClassificacaoIndicativa {
@@ -143,6 +140,32 @@ model ClassificacaoIndicativa {
   filmes       Filme[]
 
   @@map("classificacao_indicativa")
+}
+
+enum TipoIdiomaEnum {
+  Dublado
+  Legendado
+  Original
+}
+
+model TipoIdioma {
+  id           Int      @id @default(autoincrement())
+
+  nome         String   @unique
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  sessoes      Sessao[]
+
+  @@map("tipo_idioma")
+}
+
+enum TipoSessaoEnum {
+  TresD   @map("3D")
+  Normal
+  Autismo
 }
 
 model TipoSessao {
@@ -171,6 +194,9 @@ model Sessao {
   tipoSessaoId    Int        @map("tipo_sessao_id")
   tipoSessao      TipoSessao @relation(fields: [tipoSessaoId], references: [id])
 
+  tipoIdiomaId    Int        @map("tipo_idioma_id")
+  tipoIdioma      TipoIdioma @relation(fields: [tipoIdiomaId], references: [id])
+
   inicio          DateTime
   fim             DateTime
 
@@ -181,6 +207,12 @@ model Sessao {
   sessoesAssentos SessaoAssento[]
 
   @@map("sessao")
+}
+
+enum TipoSalaEnum {
+  SalaNormal
+  SalaVip
+  Sala4D
 }
 
 model TipoSala {
@@ -213,6 +245,14 @@ model Sala {
   assentos     Assento[]
 
   @@map("sala")
+}
+
+enum TipoAssentoEnum {
+  Normal
+  Preferencial
+  Acompanhante
+  NamoradeiraEsquerda
+  NamoradeiraDireita
 }
 
 model TipoAssento {
@@ -248,6 +288,11 @@ model Assento {
   sessoesAssentos SessaoAssento[]
 
   @@map("assento")
+}
+
+enum SessaoAssentoStatusEnum {
+  Reservado
+  Confirmado
 }
 
 model SessaoAssentoStatus {
@@ -290,6 +335,12 @@ model SessaoAssento {
   @@map("sessao_assento")
 }
 
+enum TipoEntradaEnum {
+  Inteira
+  MeiaEstudante
+  MeiaBradesco
+}
+
 model TipoEntrada {
   id              Int      @id @default(autoincrement())
 
@@ -317,6 +368,12 @@ model Ingresso {
   pagamento            Pagamento?
 
   @@map("ingresso")
+}
+
+enum FormaPagamentoEnum {
+  CartaoCredito
+  CartaoDebito
+  Pix
 }
 
 model FormaPagamento {
