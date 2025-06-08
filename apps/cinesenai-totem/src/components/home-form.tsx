@@ -8,53 +8,142 @@ import {
 import clsx from "clsx";
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import {
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialog,
+  AlertDialogContent,
+} from "@/components/ui/alert-dialog";
+import {
+  InputOTP,
+  InputOTPDotSeparator,
+  InputOTPGroup,
+  InputOTPSeparator,
+  InputOTPSlot,
+} from "@/components/ui/input-otp";
+import { useState } from "react";
+import { useAtom } from "jotai";
+import { appAtom, type AppAtomProps } from "@/atoms/app-atom";
 
 export const HomeForm = () => {
-  return (
-    <div className="flex flex-col items-center justify-end h-screen gap-4">
-      <div className="group bg-accent flex flex-col gap-3 rounded-lg p-12 w-[400px] mb-40">
-        <div className="relative">
-          <Button
-            size="lg"
-            className="w-full bg-gradient-to-r from-yellow-300 via-orange-300 to-orange-400 shadow-[0_0_20px_5px_rgba(255,186,0,0.5)] hover:shadow-[0_0_20px_5px_rgba(255,186,0,0.7)] active:shadow-[0_0_20px_5px_rgba(255,186,0,2)] text-lg"
-          >
-            Comprar ingresso
-          </Button>
-          <motion.div
-            className="absolute"
-            style={{
-              bottom: 0,
-              left: -20,
-            }}
-            animate={{
-              rotate: [0, 20, -10, 20, 0],
-              translateX: [0, 5, -20, 5, 0],
-            }}
-            transition={{
-              duration: 1.5,
-              repeat: Infinity,
-              repeatType: "loop",
-              ease: "easeInOut",
-            }}
-          >
-            <img
-              src="https://framerusercontent.com/images/gKHGJy8cUfCDFgFPOpBjYP4Ab8.png"
-              className="w-10 h-10 "
-              alt="Mãozinha decorativa"
-            />
-          </motion.div>
-        </div>
+  const [cpfDialogIsOpen, setCpfDialogIsOpen] = useState(false);
+  const [, setCpf] = useAtom<AppAtomProps>(appAtom);
 
-        <Button size="lg" className="w-full text-lg">
-          Pedir ajuda
-        </Button>
+  return (
+    <>
+      <div className="flex flex-col items-center justify-end h-screen gap-4">
+        <div className="group bg-accent flex flex-col gap-3 rounded-lg p-12 w-[400px] mb-40">
+          <div className="relative">
+            <Button
+              size="lg"
+              className="w-full bg-gradient-to-r from-yellow-300 via-orange-300 to-orange-400 shadow-[0_0_20px_5px_rgba(255,186,0,0.5)] hover:shadow-[0_0_20px_5px_rgba(255,186,0,0.7)] active:shadow-[0_0_20px_5px_rgba(255,186,0,2)] text-lg"
+              onClick={() => setCpfDialogIsOpen(true)}
+            >
+              Comprar ingresso
+            </Button>
+            <motion.div
+              className="absolute"
+              style={{
+                bottom: 0,
+                left: -20,
+              }}
+              animate={{
+                rotate: [0, 20, -10, 20, 0],
+                translateX: [0, 5, -20, 5, 0],
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                repeatType: "loop",
+                ease: "easeInOut",
+              }}
+            >
+              <img
+                src="https://framerusercontent.com/images/gKHGJy8cUfCDFgFPOpBjYP4Ab8.png"
+                className="w-10 h-10 "
+                alt="Mãozinha decorativa"
+              />
+            </motion.div>
+          </div>
+
+          <Button size="lg" className="w-full text-lg">
+            Pedir ajuda
+          </Button>
+        </div>
+        <div className="flex gap-10 mb-7.5">
+          <BannerPropaganda tipo="bomboniere" />
+          <BannerPropaganda tipo="site" />
+          <BannerPropaganda tipo="redesSociais" />
+        </div>
       </div>
-      <div className="flex gap-10 mb-7.5">
-        <BannerPropaganda tipo="bomboniere" />
-        <BannerPropaganda tipo="site" />
-        <BannerPropaganda tipo="redesSociais" />
-      </div>
-    </div>
+      <CpfDialog
+        isOpen={cpfDialogIsOpen}
+        setIsOpen={setCpfDialogIsOpen}
+        setCpf={setCpf}
+      />
+    </>
+  );
+};
+
+interface CpfDialogProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+
+  setCpf: (cpf: AppAtomProps) => void;
+}
+
+const CpfDialog = ({ isOpen, setIsOpen, setCpf }: CpfDialogProps) => {
+  return (
+    <AlertDialog open={isOpen}>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Insira o seu CPF para continuar</AlertDialogTitle>
+          <AlertDialogDescription>
+            <div className="py-15">
+              <InputOTP
+                maxLength={11}
+                onChange={(v) =>
+                  setCpf({
+                    cpf: v,
+                  })
+                }
+              >
+                <InputOTPGroup>
+                  <InputOTPSlot index={0} />
+                  <InputOTPSlot index={1} />
+                  <InputOTPSlot index={2} />
+                </InputOTPGroup>
+                <InputOTPDotSeparator />
+                <InputOTPGroup>
+                  <InputOTPSlot index={3} />
+                  <InputOTPSlot index={4} />
+                  <InputOTPSlot index={5} />
+                </InputOTPGroup>
+                <InputOTPDotSeparator />
+                <InputOTPGroup>
+                  <InputOTPSlot index={6} />
+                  <InputOTPSlot index={7} />
+                  <InputOTPSlot index={8} />
+                </InputOTPGroup>
+                <InputOTPSeparator />
+                <InputOTPGroup>
+                  <InputOTPSlot index={9} />
+                  <InputOTPSlot index={10} />
+                </InputOTPGroup>
+              </InputOTP>
+            </div>
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <Button variant="outline" onClick={() => setIsOpen(false)}>
+            Cancelar
+          </Button>
+          <Button>Continuar</Button>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 };
 
