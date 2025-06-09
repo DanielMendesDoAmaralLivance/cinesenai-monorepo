@@ -1,20 +1,48 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import "./index.css";
-import { Button } from "@/components/ui/button";
 import { ThemeProvider } from "@/components/theme-provider";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCheck,
-  faQuestion,
-  faHashtag,
-} from "@fortawesome/free-solid-svg-icons";
-import { HomeForm } from "./components/home-form";
+  Outlet,
+  Router,
+  RouterProvider,
+  createRootRoute,
+  createRoute,
+} from "@tanstack/react-router";
+import { HomePage } from "@/components/home-page";
+
+const rootRoute = createRootRoute({
+  component: () => <Outlet />,
+});
+
+const homeRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/",
+  component: HomePage,
+});
+
+const filmesRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/filmes",
+  component: function Filmes() {
+    return <div className="p-2">Filmes</div>;
+  },
+});
+
+const routeTree = rootRoute.addChildren([homeRoute, filmesRoute]);
+
+const router = new Router({ routeTree });
+
+declare module "@tanstack/react-router" {
+  interface Register {
+    router: typeof router;
+  }
+}
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <ThemeProvider defaultTheme="dark" storageKey="vite-ui-theme">
-      <HomeForm />
+      <RouterProvider router={router} />
     </ThemeProvider>
   </StrictMode>
 );

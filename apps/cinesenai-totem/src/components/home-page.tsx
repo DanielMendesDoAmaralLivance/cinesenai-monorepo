@@ -26,8 +26,10 @@ import {
 import { useState } from "react";
 import { useAtom } from "jotai";
 import { appAtom, type AppAtomProps } from "@/atoms/app-atom";
+import { useRouter } from "@tanstack/react-router";
+import { Loader2Icon } from "lucide-react";
 
-export const HomeForm = () => {
+export const HomePage = () => {
   const [cpfDialogIsOpen, setCpfDialogIsOpen] = useState(false);
   const [, setCpf] = useAtom<AppAtomProps>(appAtom);
 
@@ -95,6 +97,20 @@ interface CpfDialogProps {
 }
 
 const CpfDialog = ({ isOpen, setIsOpen, setCpf }: CpfDialogProps) => {
+  const router = useRouter();
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const irParaFilmes = () => {
+    setIsLoading(true);
+
+    setTimeout(async () => {
+      setIsLoading(false);
+      setIsOpen(false);
+      router.navigate({ to: "/filmes" });
+    }, 2500);
+  };
+
   return (
     <AlertDialog open={isOpen}>
       <AlertDialogContent>
@@ -140,7 +156,10 @@ const CpfDialog = ({ isOpen, setIsOpen, setCpf }: CpfDialogProps) => {
           <Button variant="outline" onClick={() => setIsOpen(false)}>
             Cancelar
           </Button>
-          <Button>Continuar</Button>
+          <Button onClick={irParaFilmes} disabled={isLoading}>
+            {isLoading ? <Loader2Icon className="animate-spin" /> : null}
+            Continuar
+          </Button>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
