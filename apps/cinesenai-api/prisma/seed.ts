@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unsafe-argument */
-
 import {
   PrismaClient,
   TipoIntegranteEnum,
@@ -11,7 +9,7 @@ import {
   SessaoAssentoStatusEnum,
   TipoEntradaEnum,
   FormaPagamentoEnum,
-} from 'generated/prisma';
+} from '@cinesenai-monorepo/types';
 
 const prisma = new PrismaClient();
 

@@ -13,7 +13,7 @@ export const FilmesPage = () => {
         <Filme />
         <Filme />
       </div>
-      <h1 className="pt-7 text-2xl font-bold mb-4">PRÉ LANÇAMENTO</h1>
+      <h1 className="pt-7 text-2xl font-bold mb-4">EM BREVE</h1>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 mb-5">
         <Filme />
         <Filme />
