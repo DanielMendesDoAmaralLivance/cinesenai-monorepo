@@ -198,7 +198,7 @@ const BannerPropaganda = ({ tipo }: BannerPropagandaProps) => {
   return (
     <div
       className={clsx(
-        "rounded-lg p-4 flex w-[400px] h-[100px] relative items-center justify-center text-center text-white font-bold gap-4 overflow-hidden",
+        "rounded-lg p-4 flex w-[400px] h-[100px] relative items-center justify-center text-center text-white font-bold gap-4 overflow-hidden cursor-pointer",
         banner.bgColor,
         banner.shadow
       )}

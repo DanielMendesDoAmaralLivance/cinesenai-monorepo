@@ -1,0 +1,6 @@
+{
+  "name": "@cinesenai-monorepo/types",
+  "version": "1.0.0",
+  "types": "prisma/index.d.ts",
+  "main": "prisma/index.js"
+}

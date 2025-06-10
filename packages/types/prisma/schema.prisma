@@ -1,0 +1,409 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../../../packages/types/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Genero {
+  id Int @id @default(autoincrement())
+
+  nome String @unique
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  filmes FilmeGenero[]
+
+  @@map("genero")
+}
+
+model FilmeGenero {
+  id Int @id @default(autoincrement())
+
+  filmeId Int   @map("filme_id")
+  filme   Filme @relation(fields: [filmeId], references: [id])
+
+  generoId Int    @map("genero_id")
+  genero   Genero @relation(fields: [generoId], references: [id])
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  @@unique([generoId, filmeId])
+  @@map("filme_genero")
+}
+
+model Filme {
+  id Int @id @default(autoincrement())
+
+  classificacaoIndicativaId Int                     @map("classificacao_indicativa_id")
+  classificacaoIndicativa   ClassificacaoIndicativa @relation(fields: [classificacaoIndicativaId], references: [id])
+
+  titulo           String   @unique
+  descricao        String
+  duracaoEmMinutos Int      @map("duracao_em_minutos")
+  trailerUrl       String   @map("trailer_url")
+  capaUrl          String   @map("capa_url")
+  dataLancamento   DateTime @map("data_lancamento")
+  dataInicioCartaz DateTime @map("data_inicio_cartaz")
+  dataFimCartaz    DateTime @map("data_fim_cartaz")
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  generos     FilmeGenero[]
+  integrantes FilmeIntegrante[]
+  sessoes     Sessao[]
+
+  @@map("filme")
+}
+
+model FilmeIntegrante {
+  id Int @id @default(autoincrement())
+
+  filmeId Int   @map("filme_id")
+  filme   Filme @relation(fields: [filmeId], references: [id])
+
+  integranteId Int        @map("integrante_id")
+  integrante   Integrante @relation(fields: [integranteId], references: [id])
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  @@unique([integranteId, filmeId])
+  @@map("filme_integrante")
+}
+
+model Integrante {
+  id Int @id @default(autoincrement())
+
+  tipoIntegranteId Int            @map("tipo_integrante_id")
+  tipoIntegrante   TipoIntegrante @relation(fields: [tipoIntegranteId], references: [id])
+
+  nome      String
+  sobrenome String
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  filmes FilmeIntegrante[]
+
+  @@map("integrante")
+}
+
+enum TipoIntegranteEnum {
+  Diretor
+  Ator
+}
+
+model TipoIntegrante {
+  id Int @id @default(autoincrement())
+
+  nome String @unique
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  integrantes Integrante[]
+
+  @@map("tipo_integrante")
+}
+
+enum ClassificacaoIndicativaEnum {
+  Livre
+  A10
+  A12
+  A14
+  A16
+  A18
+}
+
+model ClassificacaoIndicativa {
+  id Int @id @default(autoincrement())
+
+  nome String @unique
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  filmes Filme[]
+
+  @@map("classificacao_indicativa")
+}
+
+enum TipoIdiomaEnum {
+  Dublado
+  Legendado
+  Original
+}
+
+model TipoIdioma {
+  id Int @id @default(autoincrement())
+
+  nome String @unique
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  sessoes Sessao[]
+
+  @@map("tipo_idioma")
+}
+
+enum TipoSessaoEnum {
+  TresD   @map("3D")
+  Normal
+  Autismo
+}
+
+model TipoSessao {
+  id Int @id @default(autoincrement())
+
+  nome String @unique
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  sessoes Sessao[]
+
+  @@map("tipo_sessao")
+}
+
+model Sessao {
+  id Int @id @default(autoincrement())
+
+  filmeId Int   @map("filme_id")
+  filme   Filme @relation(fields: [filmeId], references: [id])
+
+  salaId Int  @map("sala_id")
+  sala   Sala @relation(fields: [salaId], references: [id])
+
+  tipoSessaoId Int        @map("tipo_sessao_id")
+  tipoSessao   TipoSessao @relation(fields: [tipoSessaoId], references: [id])
+
+  tipoIdiomaId Int        @map("tipo_idioma_id")
+  tipoIdioma   TipoIdioma @relation(fields: [tipoIdiomaId], references: [id])
+
+  inicio DateTime
+  fim    DateTime
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  sessoesAssentos SessaoAssento[]
+
+  @@map("sessao")
+}
+
+enum TipoSalaEnum {
+  SalaNormal
+  SalaVip
+  Sala4D
+}
+
+model TipoSala {
+  id Int @id @default(autoincrement())
+
+  nome String @unique
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  salas Sala[]
+
+  @@map("tipo_sala")
+}
+
+model Sala {
+  id Int @id @default(autoincrement())
+
+  tipoSalaId Int      @map("tipo_sala_id")
+  tipoSala   TipoSala @relation(fields: [tipoSalaId], references: [id])
+
+  nome String @unique
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  sessoes  Sessao[]
+  assentos Assento[]
+
+  @@map("sala")
+}
+
+enum TipoAssentoEnum {
+  Normal
+  Preferencial
+  Acompanhante
+  NamoradeiraEsquerda
+  NamoradeiraDireita
+}
+
+model TipoAssento {
+  id Int @id @default(autoincrement())
+
+  nome String @unique
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  assentos Assento[]
+
+  @@map("tipo_assento")
+}
+
+model Assento {
+  id Int @id @default(autoincrement())
+
+  salaId Int  @map("sala_id")
+  sala   Sala @relation(fields: [salaId], references: [id])
+
+  tipoAssentoId Int         @map("tipo_assento_id")
+  tipoAssento   TipoAssento @relation(fields: [tipoAssentoId], references: [id])
+
+  fileira String
+  coluna  Int
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  sessoesAssentos SessaoAssento[]
+
+  @@map("assento")
+}
+
+enum SessaoAssentoStatusEnum {
+  Reservado
+  Confirmado
+}
+
+model SessaoAssentoStatus {
+  id Int @id @default(autoincrement())
+
+  nome String @unique
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  sessoesAssentos SessaoAssento[]
+
+  @@map("sessao_assento_status")
+}
+
+model SessaoAssento {
+  id Int @id @default(autoincrement())
+
+  sessaoId Int    @map("sessao_id")
+  sessao   Sessao @relation(fields: [sessaoId], references: [id])
+
+  assentoId Int     @map("assento_id")
+  assento   Assento @relation(fields: [assentoId], references: [id])
+
+  ingressoId Int      @map("ingresso_id")
+  ingresso   Ingresso @relation(fields: [ingressoId], references: [id])
+
+  sessaoAssentoStatusId Int                 @map("sessao_assento_status_id")
+  sessaoAssentoStatus   SessaoAssentoStatus @relation(fields: [sessaoAssentoStatusId], references: [id])
+
+  tipoEntradaId Int         @map("tipo_entrada_id")
+  tipoEntrada   TipoEntrada @relation(fields: [tipoEntradaId], references: [id])
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  @@unique([sessaoId, assentoId])
+  @@map("sessao_assento")
+}
+
+enum TipoEntradaEnum {
+  Inteira
+  MeiaEstudante
+  MeiaBradesco
+}
+
+model TipoEntrada {
+  id Int @id @default(autoincrement())
+
+  nome String @unique
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  sessoesAssentos SessaoAssento[]
+
+  @@map("tipo_entrada")
+}
+
+model Ingresso {
+  id Int @id @default(autoincrement())
+
+  documentoResponsavel Int @map("documento_responsavel")
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  sessoesAssentos SessaoAssento[]
+  pagamento       Pagamento?
+
+  @@map("ingresso")
+}
+
+enum FormaPagamentoEnum {
+  CartaoCredito
+  CartaoDebito
+  Pix
+}
+
+model FormaPagamento {
+  id Int @id @default(autoincrement())
+
+  nome String @unique
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  pagamentos Pagamento[]
+
+  @@map("forma_pagamento")
+}
+
+model Pagamento {
+  id Int @id @default(autoincrement())
+
+  ingressoId Int      @unique @map("ingresso_id")
+  ingresso   Ingresso @relation(fields: [ingressoId], references: [id])
+
+  formaPagamentoId Int            @map("forma_pagamento_id")
+  formaPagamento   FormaPagamento @relation(fields: [formaPagamentoId], references: [id])
+
+  valorTotal Float @map("valor_total")
+
+  ativo        Boolean  @default(true)
+  criadoEm     DateTime @default(now()) @map("criado_em")
+  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+
+  @@map("pagamento")
+}

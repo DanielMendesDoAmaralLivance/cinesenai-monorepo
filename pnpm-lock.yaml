@@ -120,6 +120,9 @@ importers:
 
   apps/cinesenai-totem:
     dependencies:
+      '@cinesenai-monorepo/types':
+        specifier: workspace:*
+        version: link:../../packages/types
       '@radix-ui/react-alert-dialog':
         specifier: ^1.1.14
         version: 1.1.14(@types/react-dom@19.1.6(@types/react@19.1.6))(@types/react@19.1.6)(react-dom@19.1.0(react@19.1.0))(react@19.1.0)
@@ -247,6 +250,8 @@ importers:
       typescript-eslint:
         specifier: ^8.33.0
         version: 8.33.1(eslint@9.28.0(jiti@2.4.2))(typescript@5.8.2)
+
+  packages/types: {}
 
   packages/typescript-config: {}
 
