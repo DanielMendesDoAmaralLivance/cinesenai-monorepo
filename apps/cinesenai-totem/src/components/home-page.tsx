@@ -108,7 +108,7 @@ const CpfDialog = ({ isOpen, setIsOpen, setCpf }: CpfDialogProps) => {
       setIsLoading(false);
       setIsOpen(false);
       router.navigate({ to: "/filmes" });
-    }, 2500);
+    }, 1500);
   };
 
   return (

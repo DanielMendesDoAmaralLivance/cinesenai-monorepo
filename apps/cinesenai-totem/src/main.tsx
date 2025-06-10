@@ -10,6 +10,7 @@ import {
   createRoute,
 } from "@tanstack/react-router";
 import { HomePage } from "@/components/home-page";
+import { FilmesPage } from "@/components/filmes-page";
 
 const rootRoute = createRootRoute({
   component: () => <Outlet />,
@@ -24,9 +25,7 @@ const homeRoute = createRoute({
 const filmesRoute = createRoute({
   getParentRoute: () => rootRoute,
   path: "/filmes",
-  component: function Filmes() {
-    return <div className="p-2">Filmes</div>;
-  },
+  component: FilmesPage,
 });
 
 const routeTree = rootRoute.addChildren([homeRoute, filmesRoute]);
