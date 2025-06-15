@@ -33,7 +33,7 @@ async function seedGenero() {
     'Comédia',
     'Drama',
     'Fantasia',
-    'Ficção científica',
+    'Ficção',
     'Terror',
     'Animação',
     'Documentário',

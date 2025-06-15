@@ -8,7 +8,7 @@ INSERT INTO filme (
     "data_lancamento", 
     "data_inicio_cartaz", 
     "data_fim_cartaz", 
-    "data_atualizacao"
+    "atualizado_em"
 )
 VALUES (
     2, 
@@ -98,4 +98,43 @@ VALUES (
     '2025-07-13T00:00:00',
     '2025-08-13T00:00:00',
     now()
+)
+
+INSERT INTO filme_genero (
+	"filme_id",
+	"genero_id",
+	"atualizado_em"
+)
+VALUES (
+	(SELECT (id) FROM filme WHERE titulo = 'Como treinar o seu dragão'),
+	8,
+	now()
+), (
+	(SELECT (id) FROM filme WHERE titulo = 'Lilo e Stitch (2025)'),
+	8,
+	now()
+), (
+	(SELECT (id) FROM filme WHERE titulo = 'Missão Impossível: O Acerto Final'),
+	1,
+	now()
+), (
+	(SELECT (id) FROM filme WHERE titulo = 'Premonição 6: Laços de Sangue'),
+	7,
+	now()
+), (
+	(SELECT (id) FROM filme WHERE titulo = 'Superman (2025)'),
+	6,
+	now()
+), (
+	(SELECT (id) FROM filme WHERE titulo = 'Elio'),
+	8,
+	now()
+), (
+	(SELECT (id) FROM filme WHERE titulo = 'F1 - O Filme'),
+	4,
+	now()
+), (
+	(SELECT (id) FROM filme WHERE titulo = 'Smurfs'),
+	8,
+	now()
 )
