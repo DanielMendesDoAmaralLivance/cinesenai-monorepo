@@ -28,6 +28,7 @@ import { useAtom } from "jotai";
 import { appAtom, type AppAtomProps } from "@/atoms/app-atom";
 import { useRouter } from "@tanstack/react-router";
 import { Loader2Icon } from "lucide-react";
+import { TEMPO_LOADING } from "@/lib/utils";
 
 export const HomePage = () => {
   const [cpfDialogIsOpen, setCpfDialogIsOpen] = useState(false);
@@ -108,7 +109,7 @@ const CpfDialog = ({ isOpen, setIsOpen, setCpf }: CpfDialogProps) => {
       setIsLoading(false);
       setIsOpen(false);
       router.navigate({ to: "/filmes" });
-    }, 1500);
+    }, TEMPO_LOADING);
   };
 
   return (

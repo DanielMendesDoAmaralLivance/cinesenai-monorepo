@@ -1,8 +1,8 @@
 import { NestFactory } from '@nestjs/core';
-import { FilmeModule } from './filme/filme.module';
+import { AppModule } from 'src/app.module';
 
 async function bootstrap() {
-  const app = await NestFactory.create(FilmeModule);
+  const app = await NestFactory.create(AppModule);
 
   app.setGlobalPrefix('api');
 
