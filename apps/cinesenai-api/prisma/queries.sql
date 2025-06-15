@@ -44,7 +44,7 @@ VALUES (
     '2025-07-13T00:00:00',
     now()
 ), (
-    5,
+    6,
     'Premonição 6: Laços de Sangue',
     'Atormentada por um pesadelo violento e recorrente, uma estudante universitária volta para casa em busca da única pessoa que pode ser capaz de quebrar o ciclo de morte e salvar sua família do terrível destino que inevitavelmente os aguarda. Classificação indicativa 18 Anos. Contém drogas lícitas, linguagem imprópria, violência extrema.',
     110,

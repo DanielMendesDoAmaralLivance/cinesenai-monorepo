@@ -1,11 +1,19 @@
 import { motion } from "framer-motion";
-import { Card, CardContent } from "./card";
+import { Card, CardContent } from "./ui/card";
 import { Link } from "@tanstack/react-router";
 import type { FilmeComGeneros } from "@cinesenai-monorepo/types-custom";
+import { ClassificacaoIndicativa } from "./classificacao-inditicativa";
 
-export const FilmeCard = ({ titulo, capaUrl, generos }: FilmeComGeneros) => {
+export const FilmeCard = ({
+  id,
+  titulo,
+  capaUrl,
+  generos,
+  classificacaoIndicativaId,
+  duracaoEmMinutos,
+}: FilmeComGeneros) => {
   return (
-    <Link>
+    <Link to="/filme/:id" params={{ id }}>
       <motion.div
         whileHover={{ scale: 1.05 }}
         transition={{ type: "spring", stiffness: 300, damping: 15 }}
@@ -20,22 +28,24 @@ export const FilmeCard = ({ titulo, capaUrl, generos }: FilmeComGeneros) => {
             />
           </div>
         </Card>
-        <Card className="rounded-lg">
-          <CardContent className="px-4">
-            <h2 className="text-lg font-bold leading-tight uppercase">
-              {titulo}
-            </h2>
+        <Card className="rounded-lg min-h-[125px]">
+          <CardContent className="px-4 flex flex-col justify-between">
+            <div className="min-h-[50px]">
+              <h2 className="text-lg font-bold leading-tight uppercase">
+                {titulo}
+              </h2>
+            </div>
 
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2 text-gray-300">
-                <span>{generos[0]?.genero.nome}</span>
+                <span>{generos[0]?.genero?.nome ?? "Indefinido"}</span>
                 <span className="text-xs">•</span>
-                <span>125m</span>
+                <span>{duracaoEmMinutos}m</span>
               </div>
 
-              <div className="bg-blue-600 w-7 h-7 rounded-full flex items-center justify-center text-sm font-medium">
-                10
-              </div>
+              <ClassificacaoIndicativa
+                classificacaoIndicativaId={classificacaoIndicativaId}
+              />
             </div>
           </CardContent>
         </Card>

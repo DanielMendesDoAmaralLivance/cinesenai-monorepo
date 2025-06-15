@@ -9,8 +9,8 @@ import {
   createRootRoute,
   createRoute,
 } from "@tanstack/react-router";
-import { HomePage } from "@/components/home-page";
-import { FilmesPage } from "@/components/filmes-page";
+import { HomePage } from "@/pages/home-page";
+import { FilmesPage } from "@/pages/filmes-page";
 
 const rootRoute = createRootRoute({
   component: () => <Outlet />,

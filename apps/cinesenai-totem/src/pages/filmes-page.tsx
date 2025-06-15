@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import { Button } from "./ui/button";
+import { Button } from "../components/ui/button";
 import { VITE_API_BASE_URL } from "@/lib/utils";
 import type { FilmeComGeneros } from "@cinesenai-monorepo/types-custom";
-import { FilmeCard } from "./ui/filme-card";
+import { FilmeCard } from "../components/filme-card";
 
 export const FilmesPage = () => {
   const [filmesEmCartaz, setFilmesEmCartaz] = useState<FilmeComGeneros[]>([]);
