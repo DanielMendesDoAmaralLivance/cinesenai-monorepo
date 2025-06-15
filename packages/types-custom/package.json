@@ -1,0 +1,12 @@
+{
+  "name": "@cinesenai-monorepo/types-custom",
+  "version": "1.0.0",
+  "types": "dist/index.d.ts",
+  "main": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@cinesenai-monorepo/types": "workspace:*"
+  }
+}

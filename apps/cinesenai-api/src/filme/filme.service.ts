@@ -1,4 +1,4 @@
-import { Filme } from '@cinesenai-monorepo/types';
+import type { FilmeComGeneros } from '@cinesenai-monorepo/types-custom';
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from 'src/prisma.service';
 
@@ -6,10 +6,10 @@ import { PrismaService } from 'src/prisma.service';
 export class FilmeService {
   constructor(private readonly prismaService: PrismaService) {}
 
-  async listarTodosEmCartazAsync(): Promise<Filme[]> {
+  async listarTodosEmCartazAsync(): Promise<FilmeComGeneros[]> {
     const hoje = new Date();
 
-    return this.prismaService.filme.findMany({
+    return await this.prismaService.filme.findMany({
       where: {
         dataInicioCartaz: {
           lte: hoje,
@@ -21,10 +21,17 @@ export class FilmeService {
       orderBy: {
         titulo: 'asc',
       },
+      include: {
+        generos: {
+          include: {
+            genero: true,
+          },
+        },
+      },
     });
   }
 
-  async listarTodosEmBreveAsync(): Promise<Filme[]> {
+  async listarTodosEmBreveAsync(): Promise<FilmeComGeneros[]> {
     const hoje = new Date();
 
     return this.prismaService.filme.findMany({
@@ -35,6 +42,13 @@ export class FilmeService {
       },
       orderBy: {
         titulo: 'asc',
+      },
+      include: {
+        generos: {
+          include: {
+            genero: true,
+          },
+        },
       },
     });
   }

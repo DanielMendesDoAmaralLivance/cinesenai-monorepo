@@ -1,0 +1,9 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@cinesenai-monorepo/types": ["packages/types"],
+      "@cinesenai-monorepo/types-custom": ["packages/types-custom"]
+    }
+  }
+}
