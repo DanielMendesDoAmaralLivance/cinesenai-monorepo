@@ -7,4 +7,4 @@ export function cn(...inputs: ClassValue[]) {
 
 export const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
-export const TEMPO_LOADING = 1500;
+export const TEMPO_LOADING = 500;
