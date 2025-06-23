@@ -52,4 +52,44 @@ export class FilmeService {
       },
     });
   }
+
+  async buscarPorIdAsync(id: number) {
+    return this.prismaService.filme.findUnique({
+      where: {
+        id: id,
+      },
+      include: {
+        generos: {
+          include: {
+            genero: true,
+          },
+        },
+        integrantes: {
+          include: {
+            integrante: {
+              include: {
+                tipoIntegrante: true,
+              },
+            },
+          },
+        },
+        sessoes: {
+          where: {
+            inicio: {
+              gte: new Date(),
+            },
+          },
+          include: {
+            tipoSessao: true,
+            sala: {
+              include: {
+                tipoSala: true,
+              },
+            },
+            tipoIdioma: true,
+          },
+        },
+      },
+    });
+  }
 }

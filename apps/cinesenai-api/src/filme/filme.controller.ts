@@ -1,4 +1,4 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 import { FilmeService } from './filme.service';
 import type { FilmeComGeneros } from '@cinesenai-monorepo/types-custom';
 
@@ -14,5 +14,10 @@ export class FilmeController {
   @Get('em-breve')
   async listarTodosEmBreveAsync(): Promise<FilmeComGeneros[]> {
     return await this.filmeService.listarTodosEmBreveAsync();
+  }
+
+  @Get(':id')
+  async buscarPorIdAsync(@Param() params: { id: string }) {
+    return await this.filmeService.buscarPorIdAsync(Number(params.id));
   }
 }
