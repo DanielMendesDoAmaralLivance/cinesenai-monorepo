@@ -71,10 +71,10 @@ export const FilmesPage = () => {
           <Loader2Icon className="animate-spin" size={50} />
         </div>
       ) : (
-        <div className="max-w-5xl mx-auto flex flex-col gap-5">
+        <div className="max-w-5xl mx-auto flex flex-col gap-5 text-neutral-300">
           <div>
             <p className="pt-7 mb-4">Filtrar por gênero:</p>
-            <div className="flex items-center gap-4 p-4 border rounded-xl shadow ">
+            <div className="flex items-center gap-4 p-4 border rounded-xl shadow">
               <div className="flex gap-2 flex-wrap">
                 {generos.map((g) => (
                   <Button
