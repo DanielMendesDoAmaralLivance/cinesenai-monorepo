@@ -1,5 +1,6 @@
 import { ClassificacaoIndicativa } from "@/components/classificacao-inditicativa";
 import { SessaoCard } from "@/components/sessao-card";
+import { Badge } from "@/components/ui/badge";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 
@@ -105,8 +106,102 @@ export const FilmeDetalhesPage = () => {
               <SessaoCard />
             </div>
 
-            <div className="mt-10">
+            <div className="mt-10 mb-6">
               <h2 className="text-2xl font-bold">LEGENDA</h2>
+            </div>
+            <div className="flex gap-6">
+              <div className="flex flex-col gap-2">
+                <div className="flex items-center">
+                  <p className="font-bold">Salas</p>
+                </div>
+                <div className="flex">
+                  <div className="min-w-[65px] mr-2">
+                    <Badge className="w-full">Padrão</Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground font-semibold">
+                    Assentos confortáveis e sistema sonoro de qualidade.
+                  </p>
+                </div>
+                <div className="flex">
+                  <div className="min-w-[65px] mr-2">
+                    <Badge className="w-full bg-amber-300">VIP</Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground font-semibold">
+                    Atendimento exclusivo e ambiente diferenciado.
+                  </p>
+                </div>
+                <div className="flex">
+                  <div className="min-w-[65px] mr-2">
+                    <Badge className="w-full bg-purple-500">4D</Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground font-semibold">
+                    Som 7x mais potente e tela 40% maior, com tecnologia 4k.
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2 ">
+                <div className="flex items-center">
+                  <p className="font-bold">Sessões</p>
+                </div>
+                <div className="flex">
+                  <div className="min-w-[65px] mr-2">
+                    <Badge className="w-full">Padrão</Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground font-semibold">
+                    Sessão com características padrão.
+                  </p>
+                </div>
+                <div className="flex">
+                  <div className="min-w-[65px] mr-2">
+                    <Badge className="w-full bg-gradient-to-br from-blue-500 via-purple-500 to-pink-500 text-accent-foreground">
+                      3D
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground font-semibold">
+                    Experiência de visualização tridimensional.
+                  </p>
+                </div>
+                <div className="flex">
+                  <div className="min-w-[65px] mr-2">
+                    <Badge className="w-full bg-blue-400 text-accent-foreground">
+                      CineAzul
+                    </Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground font-semibold">
+                    Sessão para pessoas com distúrbios sensoriais e suas
+                    famílias.
+                  </p>
+                </div>
+              </div>
+              <div className="flex flex-col gap-2 ">
+                <div className="flex items-center">
+                  <p className="font-bold">Idiomas</p>
+                </div>
+                <div className="flex items-center">
+                  <div className="min-w-[45px] mr-2">
+                    <Badge className="w-full bg-destructive">DUB</Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground font-semibold">
+                    Dublado.
+                  </p>
+                </div>
+                <div className="flex items-center">
+                  <div className="min-w-[45px] mr-2">
+                    <Badge className="w-full bg-destructive">LEG</Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground font-semibold">
+                    Legendado.
+                  </p>
+                </div>
+                <div className="flex items-center">
+                  <div className="min-w-[45px] mr-2">
+                    <Badge className="w-full bg-destructive">ORIG</Badge>
+                  </div>
+                  <p className="text-sm text-muted-foreground font-semibold">
+                    Original.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>

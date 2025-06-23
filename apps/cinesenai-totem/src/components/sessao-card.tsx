@@ -17,9 +17,9 @@ export const SessaoCard = () => {
             </div>
 
             <div className="flex items-center flex-wrap">
-              <Badge className="mr-1 mb-1">Sala 1 (VIP)</Badge>
-              <Badge className="mr-1 mb-1">LEG</Badge>
+              <Badge className="mr-1 mb-1">Sala 1 (Padrão)</Badge>
               <Badge className="mr-1 mb-1">Autismo</Badge>
+              <Badge className="mr-1 mb-1">ORIG</Badge>
             </div>
           </CardContent>
         </Card>
