@@ -50,6 +50,7 @@ model Filme {
   duracaoEmMinutos Int      @map("duracao_em_minutos")
   trailerUrl       String   @map("trailer_url")
   capaUrl          String   @map("capa_url")
+  bannerUrl        String   @default("") @map("banner_url")
   dataLancamento   DateTime @map("data_lancamento")
   dataInicioCartaz DateTime @map("data_inicio_cartaz")
   dataFimCartaz    DateTime @map("data_fim_cartaz")
@@ -235,7 +236,9 @@ model Sala {
   tipoSalaId Int      @map("tipo_sala_id")
   tipoSala   TipoSala @relation(fields: [tipoSalaId], references: [id])
 
-  nome String @unique
+  numero                       String @unique @default("1")
+  quantidadeFileiras           Int    @default(0) @map("quantidade_fileiras")
+  quantidadeAssentosPorFileira Int    @default(0) @map("quantidade_assentos_por_fileira")
 
   ativo        Boolean  @default(true)
   criadoEm     DateTime @default(now()) @map("criado_em")

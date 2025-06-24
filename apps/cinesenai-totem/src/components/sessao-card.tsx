@@ -20,7 +20,7 @@ export const SessaoCard = (sessao: FilmeDetalhes["sessoes"][0]) => {
 
             <div className="flex items-center flex-wrap">
               <BadgeSala
-                nome={sessao.sala.nome}
+                numero={sessao.sala.numero}
                 tipoSalaId={sessao.sala.tipoSalaId}
               />
               <BadgeTipoSessao tipoSessaoId={sessao.tipoSessaoId} />
@@ -34,11 +34,11 @@ export const SessaoCard = (sessao: FilmeDetalhes["sessoes"][0]) => {
 };
 
 type BadgeSalaProps = {
-  nome: string;
+  numero: string;
   tipoSalaId: number;
 };
 
-const BadgeSala = ({ nome, tipoSalaId }: BadgeSalaProps) => {
+const BadgeSala = ({ numero, tipoSalaId }: BadgeSalaProps) => {
   const tipoSalaAtributos = {
     1: { texto: "Padrão" },
     2: { cor: "bg-amber-300", texto: "VIP" },
@@ -48,7 +48,7 @@ const BadgeSala = ({ nome, tipoSalaId }: BadgeSalaProps) => {
   return (
     <Badge
       className={clsx("mr-1 mb-1", tipoSalaAtributos?.cor)}
-    >{`${nome} (${tipoSalaAtributos?.texto})`}</Badge>
+    >{`Sala ${numero} (${tipoSalaAtributos?.texto})`}</Badge>
   );
 };
 

@@ -5502,6 +5502,7 @@ export namespace Prisma {
     duracaoEmMinutos: number | null
     trailerUrl: string | null
     capaUrl: string | null
+    bannerUrl: string | null
     dataLancamento: Date | null
     dataInicioCartaz: Date | null
     dataFimCartaz: Date | null
@@ -5518,6 +5519,7 @@ export namespace Prisma {
     duracaoEmMinutos: number | null
     trailerUrl: string | null
     capaUrl: string | null
+    bannerUrl: string | null
     dataLancamento: Date | null
     dataInicioCartaz: Date | null
     dataFimCartaz: Date | null
@@ -5534,6 +5536,7 @@ export namespace Prisma {
     duracaoEmMinutos: number
     trailerUrl: number
     capaUrl: number
+    bannerUrl: number
     dataLancamento: number
     dataInicioCartaz: number
     dataFimCartaz: number
@@ -5564,6 +5567,7 @@ export namespace Prisma {
     duracaoEmMinutos?: true
     trailerUrl?: true
     capaUrl?: true
+    bannerUrl?: true
     dataLancamento?: true
     dataInicioCartaz?: true
     dataFimCartaz?: true
@@ -5580,6 +5584,7 @@ export namespace Prisma {
     duracaoEmMinutos?: true
     trailerUrl?: true
     capaUrl?: true
+    bannerUrl?: true
     dataLancamento?: true
     dataInicioCartaz?: true
     dataFimCartaz?: true
@@ -5596,6 +5601,7 @@ export namespace Prisma {
     duracaoEmMinutos?: true
     trailerUrl?: true
     capaUrl?: true
+    bannerUrl?: true
     dataLancamento?: true
     dataInicioCartaz?: true
     dataFimCartaz?: true
@@ -5699,6 +5705,7 @@ export namespace Prisma {
     duracaoEmMinutos: number
     trailerUrl: string
     capaUrl: string
+    bannerUrl: string
     dataLancamento: Date
     dataInicioCartaz: Date
     dataFimCartaz: Date
@@ -5734,6 +5741,7 @@ export namespace Prisma {
     duracaoEmMinutos?: boolean
     trailerUrl?: boolean
     capaUrl?: boolean
+    bannerUrl?: boolean
     dataLancamento?: boolean
     dataInicioCartaz?: boolean
     dataFimCartaz?: boolean
@@ -5755,6 +5763,7 @@ export namespace Prisma {
     duracaoEmMinutos?: boolean
     trailerUrl?: boolean
     capaUrl?: boolean
+    bannerUrl?: boolean
     dataLancamento?: boolean
     dataInicioCartaz?: boolean
     dataFimCartaz?: boolean
@@ -5772,6 +5781,7 @@ export namespace Prisma {
     duracaoEmMinutos?: boolean
     trailerUrl?: boolean
     capaUrl?: boolean
+    bannerUrl?: boolean
     dataLancamento?: boolean
     dataInicioCartaz?: boolean
     dataFimCartaz?: boolean
@@ -5789,6 +5799,7 @@ export namespace Prisma {
     duracaoEmMinutos?: boolean
     trailerUrl?: boolean
     capaUrl?: boolean
+    bannerUrl?: boolean
     dataLancamento?: boolean
     dataInicioCartaz?: boolean
     dataFimCartaz?: boolean
@@ -5797,7 +5808,7 @@ export namespace Prisma {
     atualizadoEm?: boolean
   }
 
-  export type FilmeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "classificacaoIndicativaId" | "titulo" | "descricao" | "duracaoEmMinutos" | "trailerUrl" | "capaUrl" | "dataLancamento" | "dataInicioCartaz" | "dataFimCartaz" | "ativo" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["filme"]>
+  export type FilmeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "classificacaoIndicativaId" | "titulo" | "descricao" | "duracaoEmMinutos" | "trailerUrl" | "capaUrl" | "bannerUrl" | "dataLancamento" | "dataInicioCartaz" | "dataFimCartaz" | "ativo" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["filme"]>
   export type FilmeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     classificacaoIndicativa?: boolean | ClassificacaoIndicativaDefaultArgs<ExtArgs>
     generos?: boolean | Filme$generosArgs<ExtArgs>
@@ -5828,6 +5839,7 @@ export namespace Prisma {
       duracaoEmMinutos: number
       trailerUrl: string
       capaUrl: string
+      bannerUrl: string
       dataLancamento: Date
       dataInicioCartaz: Date
       dataFimCartaz: Date
@@ -6268,6 +6280,7 @@ export namespace Prisma {
     readonly duracaoEmMinutos: FieldRef<"Filme", 'Int'>
     readonly trailerUrl: FieldRef<"Filme", 'String'>
     readonly capaUrl: FieldRef<"Filme", 'String'>
+    readonly bannerUrl: FieldRef<"Filme", 'String'>
     readonly dataLancamento: FieldRef<"Filme", 'DateTime'>
     readonly dataInicioCartaz: FieldRef<"Filme", 'DateTime'>
     readonly dataFimCartaz: FieldRef<"Filme", 'DateTime'>
@@ -15795,17 +15808,23 @@ export namespace Prisma {
   export type SalaAvgAggregateOutputType = {
     id: number | null
     tipoSalaId: number | null
+    quantidadeFileiras: number | null
+    quantidadeAssentosPorFileira: number | null
   }
 
   export type SalaSumAggregateOutputType = {
     id: number | null
     tipoSalaId: number | null
+    quantidadeFileiras: number | null
+    quantidadeAssentosPorFileira: number | null
   }
 
   export type SalaMinAggregateOutputType = {
     id: number | null
     tipoSalaId: number | null
-    nome: string | null
+    numero: string | null
+    quantidadeFileiras: number | null
+    quantidadeAssentosPorFileira: number | null
     ativo: boolean | null
     criadoEm: Date | null
     atualizadoEm: Date | null
@@ -15814,7 +15833,9 @@ export namespace Prisma {
   export type SalaMaxAggregateOutputType = {
     id: number | null
     tipoSalaId: number | null
-    nome: string | null
+    numero: string | null
+    quantidadeFileiras: number | null
+    quantidadeAssentosPorFileira: number | null
     ativo: boolean | null
     criadoEm: Date | null
     atualizadoEm: Date | null
@@ -15823,7 +15844,9 @@ export namespace Prisma {
   export type SalaCountAggregateOutputType = {
     id: number
     tipoSalaId: number
-    nome: number
+    numero: number
+    quantidadeFileiras: number
+    quantidadeAssentosPorFileira: number
     ativo: number
     criadoEm: number
     atualizadoEm: number
@@ -15834,17 +15857,23 @@ export namespace Prisma {
   export type SalaAvgAggregateInputType = {
     id?: true
     tipoSalaId?: true
+    quantidadeFileiras?: true
+    quantidadeAssentosPorFileira?: true
   }
 
   export type SalaSumAggregateInputType = {
     id?: true
     tipoSalaId?: true
+    quantidadeFileiras?: true
+    quantidadeAssentosPorFileira?: true
   }
 
   export type SalaMinAggregateInputType = {
     id?: true
     tipoSalaId?: true
-    nome?: true
+    numero?: true
+    quantidadeFileiras?: true
+    quantidadeAssentosPorFileira?: true
     ativo?: true
     criadoEm?: true
     atualizadoEm?: true
@@ -15853,7 +15882,9 @@ export namespace Prisma {
   export type SalaMaxAggregateInputType = {
     id?: true
     tipoSalaId?: true
-    nome?: true
+    numero?: true
+    quantidadeFileiras?: true
+    quantidadeAssentosPorFileira?: true
     ativo?: true
     criadoEm?: true
     atualizadoEm?: true
@@ -15862,7 +15893,9 @@ export namespace Prisma {
   export type SalaCountAggregateInputType = {
     id?: true
     tipoSalaId?: true
-    nome?: true
+    numero?: true
+    quantidadeFileiras?: true
+    quantidadeAssentosPorFileira?: true
     ativo?: true
     criadoEm?: true
     atualizadoEm?: true
@@ -15958,7 +15991,9 @@ export namespace Prisma {
   export type SalaGroupByOutputType = {
     id: number
     tipoSalaId: number
-    nome: string
+    numero: string
+    quantidadeFileiras: number
+    quantidadeAssentosPorFileira: number
     ativo: boolean
     criadoEm: Date
     atualizadoEm: Date
@@ -15986,7 +16021,9 @@ export namespace Prisma {
   export type SalaSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     tipoSalaId?: boolean
-    nome?: boolean
+    numero?: boolean
+    quantidadeFileiras?: boolean
+    quantidadeAssentosPorFileira?: boolean
     ativo?: boolean
     criadoEm?: boolean
     atualizadoEm?: boolean
@@ -15999,7 +16036,9 @@ export namespace Prisma {
   export type SalaSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     tipoSalaId?: boolean
-    nome?: boolean
+    numero?: boolean
+    quantidadeFileiras?: boolean
+    quantidadeAssentosPorFileira?: boolean
     ativo?: boolean
     criadoEm?: boolean
     atualizadoEm?: boolean
@@ -16009,7 +16048,9 @@ export namespace Prisma {
   export type SalaSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     tipoSalaId?: boolean
-    nome?: boolean
+    numero?: boolean
+    quantidadeFileiras?: boolean
+    quantidadeAssentosPorFileira?: boolean
     ativo?: boolean
     criadoEm?: boolean
     atualizadoEm?: boolean
@@ -16019,13 +16060,15 @@ export namespace Prisma {
   export type SalaSelectScalar = {
     id?: boolean
     tipoSalaId?: boolean
-    nome?: boolean
+    numero?: boolean
+    quantidadeFileiras?: boolean
+    quantidadeAssentosPorFileira?: boolean
     ativo?: boolean
     criadoEm?: boolean
     atualizadoEm?: boolean
   }
 
-  export type SalaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tipoSalaId" | "nome" | "ativo" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["sala"]>
+  export type SalaOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tipoSalaId" | "numero" | "quantidadeFileiras" | "quantidadeAssentosPorFileira" | "ativo" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["sala"]>
   export type SalaInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tipoSala?: boolean | TipoSalaDefaultArgs<ExtArgs>
     sessoes?: boolean | Sala$sessoesArgs<ExtArgs>
@@ -16049,7 +16092,9 @@ export namespace Prisma {
     scalars: $Extensions.GetPayloadResult<{
       id: number
       tipoSalaId: number
-      nome: string
+      numero: string
+      quantidadeFileiras: number
+      quantidadeAssentosPorFileira: number
       ativo: boolean
       criadoEm: Date
       atualizadoEm: Date
@@ -16481,7 +16526,9 @@ export namespace Prisma {
   interface SalaFieldRefs {
     readonly id: FieldRef<"Sala", 'Int'>
     readonly tipoSalaId: FieldRef<"Sala", 'Int'>
-    readonly nome: FieldRef<"Sala", 'String'>
+    readonly numero: FieldRef<"Sala", 'String'>
+    readonly quantidadeFileiras: FieldRef<"Sala", 'Int'>
+    readonly quantidadeAssentosPorFileira: FieldRef<"Sala", 'Int'>
     readonly ativo: FieldRef<"Sala", 'Boolean'>
     readonly criadoEm: FieldRef<"Sala", 'DateTime'>
     readonly atualizadoEm: FieldRef<"Sala", 'DateTime'>
@@ -26054,6 +26101,7 @@ export namespace Prisma {
     duracaoEmMinutos: 'duracaoEmMinutos',
     trailerUrl: 'trailerUrl',
     capaUrl: 'capaUrl',
+    bannerUrl: 'bannerUrl',
     dataLancamento: 'dataLancamento',
     dataInicioCartaz: 'dataInicioCartaz',
     dataFimCartaz: 'dataFimCartaz',
@@ -26164,7 +26212,9 @@ export namespace Prisma {
   export const SalaScalarFieldEnum: {
     id: 'id',
     tipoSalaId: 'tipoSalaId',
-    nome: 'nome',
+    numero: 'numero',
+    quantidadeFileiras: 'quantidadeFileiras',
+    quantidadeAssentosPorFileira: 'quantidadeAssentosPorFileira',
     ativo: 'ativo',
     criadoEm: 'criadoEm',
     atualizadoEm: 'atualizadoEm'
@@ -26491,6 +26541,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFilter<"Filme"> | number
     trailerUrl?: StringFilter<"Filme"> | string
     capaUrl?: StringFilter<"Filme"> | string
+    bannerUrl?: StringFilter<"Filme"> | string
     dataLancamento?: DateTimeFilter<"Filme"> | Date | string
     dataInicioCartaz?: DateTimeFilter<"Filme"> | Date | string
     dataFimCartaz?: DateTimeFilter<"Filme"> | Date | string
@@ -26511,6 +26562,7 @@ export namespace Prisma {
     duracaoEmMinutos?: SortOrder
     trailerUrl?: SortOrder
     capaUrl?: SortOrder
+    bannerUrl?: SortOrder
     dataLancamento?: SortOrder
     dataInicioCartaz?: SortOrder
     dataFimCartaz?: SortOrder
@@ -26534,6 +26586,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFilter<"Filme"> | number
     trailerUrl?: StringFilter<"Filme"> | string
     capaUrl?: StringFilter<"Filme"> | string
+    bannerUrl?: StringFilter<"Filme"> | string
     dataLancamento?: DateTimeFilter<"Filme"> | Date | string
     dataInicioCartaz?: DateTimeFilter<"Filme"> | Date | string
     dataFimCartaz?: DateTimeFilter<"Filme"> | Date | string
@@ -26554,6 +26607,7 @@ export namespace Prisma {
     duracaoEmMinutos?: SortOrder
     trailerUrl?: SortOrder
     capaUrl?: SortOrder
+    bannerUrl?: SortOrder
     dataLancamento?: SortOrder
     dataInicioCartaz?: SortOrder
     dataFimCartaz?: SortOrder
@@ -26578,6 +26632,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntWithAggregatesFilter<"Filme"> | number
     trailerUrl?: StringWithAggregatesFilter<"Filme"> | string
     capaUrl?: StringWithAggregatesFilter<"Filme"> | string
+    bannerUrl?: StringWithAggregatesFilter<"Filme"> | string
     dataLancamento?: DateTimeWithAggregatesFilter<"Filme"> | Date | string
     dataInicioCartaz?: DateTimeWithAggregatesFilter<"Filme"> | Date | string
     dataFimCartaz?: DateTimeWithAggregatesFilter<"Filme"> | Date | string
@@ -27107,7 +27162,9 @@ export namespace Prisma {
     NOT?: SalaWhereInput | SalaWhereInput[]
     id?: IntFilter<"Sala"> | number
     tipoSalaId?: IntFilter<"Sala"> | number
-    nome?: StringFilter<"Sala"> | string
+    numero?: StringFilter<"Sala"> | string
+    quantidadeFileiras?: IntFilter<"Sala"> | number
+    quantidadeAssentosPorFileira?: IntFilter<"Sala"> | number
     ativo?: BoolFilter<"Sala"> | boolean
     criadoEm?: DateTimeFilter<"Sala"> | Date | string
     atualizadoEm?: DateTimeFilter<"Sala"> | Date | string
@@ -27119,7 +27176,9 @@ export namespace Prisma {
   export type SalaOrderByWithRelationInput = {
     id?: SortOrder
     tipoSalaId?: SortOrder
-    nome?: SortOrder
+    numero?: SortOrder
+    quantidadeFileiras?: SortOrder
+    quantidadeAssentosPorFileira?: SortOrder
     ativo?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
@@ -27130,23 +27189,27 @@ export namespace Prisma {
 
   export type SalaWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    nome?: string
+    numero?: string
     AND?: SalaWhereInput | SalaWhereInput[]
     OR?: SalaWhereInput[]
     NOT?: SalaWhereInput | SalaWhereInput[]
     tipoSalaId?: IntFilter<"Sala"> | number
+    quantidadeFileiras?: IntFilter<"Sala"> | number
+    quantidadeAssentosPorFileira?: IntFilter<"Sala"> | number
     ativo?: BoolFilter<"Sala"> | boolean
     criadoEm?: DateTimeFilter<"Sala"> | Date | string
     atualizadoEm?: DateTimeFilter<"Sala"> | Date | string
     tipoSala?: XOR<TipoSalaScalarRelationFilter, TipoSalaWhereInput>
     sessoes?: SessaoListRelationFilter
     assentos?: AssentoListRelationFilter
-  }, "id" | "nome">
+  }, "id" | "numero">
 
   export type SalaOrderByWithAggregationInput = {
     id?: SortOrder
     tipoSalaId?: SortOrder
-    nome?: SortOrder
+    numero?: SortOrder
+    quantidadeFileiras?: SortOrder
+    quantidadeAssentosPorFileira?: SortOrder
     ativo?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
@@ -27163,7 +27226,9 @@ export namespace Prisma {
     NOT?: SalaScalarWhereWithAggregatesInput | SalaScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Sala"> | number
     tipoSalaId?: IntWithAggregatesFilter<"Sala"> | number
-    nome?: StringWithAggregatesFilter<"Sala"> | string
+    numero?: StringWithAggregatesFilter<"Sala"> | string
+    quantidadeFileiras?: IntWithAggregatesFilter<"Sala"> | number
+    quantidadeAssentosPorFileira?: IntWithAggregatesFilter<"Sala"> | number
     ativo?: BoolWithAggregatesFilter<"Sala"> | boolean
     criadoEm?: DateTimeWithAggregatesFilter<"Sala"> | Date | string
     atualizadoEm?: DateTimeWithAggregatesFilter<"Sala"> | Date | string
@@ -27816,6 +27881,7 @@ export namespace Prisma {
     duracaoEmMinutos: number
     trailerUrl: string
     capaUrl: string
+    bannerUrl?: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -27836,6 +27902,7 @@ export namespace Prisma {
     duracaoEmMinutos: number
     trailerUrl: string
     capaUrl: string
+    bannerUrl?: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -27853,6 +27920,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
+    bannerUrl?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27873,6 +27941,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
+    bannerUrl?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27892,6 +27961,7 @@ export namespace Prisma {
     duracaoEmMinutos: number
     trailerUrl: string
     capaUrl: string
+    bannerUrl?: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -27906,6 +27976,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
+    bannerUrl?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27922,6 +27993,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
+    bannerUrl?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28432,7 +28504,9 @@ export namespace Prisma {
   }
 
   export type SalaCreateInput = {
-    nome: string
+    numero?: string
+    quantidadeFileiras?: number
+    quantidadeAssentosPorFileira?: number
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -28444,7 +28518,9 @@ export namespace Prisma {
   export type SalaUncheckedCreateInput = {
     id?: number
     tipoSalaId: number
-    nome: string
+    numero?: string
+    quantidadeFileiras?: number
+    quantidadeAssentosPorFileira?: number
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -28453,7 +28529,9 @@ export namespace Prisma {
   }
 
   export type SalaUpdateInput = {
-    nome?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    quantidadeFileiras?: IntFieldUpdateOperationsInput | number
+    quantidadeAssentosPorFileira?: IntFieldUpdateOperationsInput | number
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28465,7 +28543,9 @@ export namespace Prisma {
   export type SalaUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     tipoSalaId?: IntFieldUpdateOperationsInput | number
-    nome?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    quantidadeFileiras?: IntFieldUpdateOperationsInput | number
+    quantidadeAssentosPorFileira?: IntFieldUpdateOperationsInput | number
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28476,14 +28556,18 @@ export namespace Prisma {
   export type SalaCreateManyInput = {
     id?: number
     tipoSalaId: number
-    nome: string
+    numero?: string
+    quantidadeFileiras?: number
+    quantidadeAssentosPorFileira?: number
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
   }
 
   export type SalaUpdateManyMutationInput = {
-    nome?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    quantidadeFileiras?: IntFieldUpdateOperationsInput | number
+    quantidadeAssentosPorFileira?: IntFieldUpdateOperationsInput | number
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28492,7 +28576,9 @@ export namespace Prisma {
   export type SalaUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     tipoSalaId?: IntFieldUpdateOperationsInput | number
-    nome?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    quantidadeFileiras?: IntFieldUpdateOperationsInput | number
+    quantidadeAssentosPorFileira?: IntFieldUpdateOperationsInput | number
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29231,6 +29317,7 @@ export namespace Prisma {
     duracaoEmMinutos?: SortOrder
     trailerUrl?: SortOrder
     capaUrl?: SortOrder
+    bannerUrl?: SortOrder
     dataLancamento?: SortOrder
     dataInicioCartaz?: SortOrder
     dataFimCartaz?: SortOrder
@@ -29253,6 +29340,7 @@ export namespace Prisma {
     duracaoEmMinutos?: SortOrder
     trailerUrl?: SortOrder
     capaUrl?: SortOrder
+    bannerUrl?: SortOrder
     dataLancamento?: SortOrder
     dataInicioCartaz?: SortOrder
     dataFimCartaz?: SortOrder
@@ -29269,6 +29357,7 @@ export namespace Prisma {
     duracaoEmMinutos?: SortOrder
     trailerUrl?: SortOrder
     capaUrl?: SortOrder
+    bannerUrl?: SortOrder
     dataLancamento?: SortOrder
     dataInicioCartaz?: SortOrder
     dataFimCartaz?: SortOrder
@@ -29665,7 +29754,9 @@ export namespace Prisma {
   export type SalaCountOrderByAggregateInput = {
     id?: SortOrder
     tipoSalaId?: SortOrder
-    nome?: SortOrder
+    numero?: SortOrder
+    quantidadeFileiras?: SortOrder
+    quantidadeAssentosPorFileira?: SortOrder
     ativo?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
@@ -29674,12 +29765,16 @@ export namespace Prisma {
   export type SalaAvgOrderByAggregateInput = {
     id?: SortOrder
     tipoSalaId?: SortOrder
+    quantidadeFileiras?: SortOrder
+    quantidadeAssentosPorFileira?: SortOrder
   }
 
   export type SalaMaxOrderByAggregateInput = {
     id?: SortOrder
     tipoSalaId?: SortOrder
-    nome?: SortOrder
+    numero?: SortOrder
+    quantidadeFileiras?: SortOrder
+    quantidadeAssentosPorFileira?: SortOrder
     ativo?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
@@ -29688,7 +29783,9 @@ export namespace Prisma {
   export type SalaMinOrderByAggregateInput = {
     id?: SortOrder
     tipoSalaId?: SortOrder
-    nome?: SortOrder
+    numero?: SortOrder
+    quantidadeFileiras?: SortOrder
+    quantidadeAssentosPorFileira?: SortOrder
     ativo?: SortOrder
     criadoEm?: SortOrder
     atualizadoEm?: SortOrder
@@ -29697,6 +29794,8 @@ export namespace Prisma {
   export type SalaSumOrderByAggregateInput = {
     id?: SortOrder
     tipoSalaId?: SortOrder
+    quantidadeFileiras?: SortOrder
+    quantidadeAssentosPorFileira?: SortOrder
   }
 
   export type TipoAssentoCountOrderByAggregateInput = {
@@ -31408,6 +31507,7 @@ export namespace Prisma {
     duracaoEmMinutos: number
     trailerUrl: string
     capaUrl: string
+    bannerUrl?: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -31427,6 +31527,7 @@ export namespace Prisma {
     duracaoEmMinutos: number
     trailerUrl: string
     capaUrl: string
+    bannerUrl?: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -31479,6 +31580,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
+    bannerUrl?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31498,6 +31600,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
+    bannerUrl?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31747,6 +31850,7 @@ export namespace Prisma {
     duracaoEmMinutos: number
     trailerUrl: string
     capaUrl: string
+    bannerUrl?: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -31766,6 +31870,7 @@ export namespace Prisma {
     duracaoEmMinutos: number
     trailerUrl: string
     capaUrl: string
+    bannerUrl?: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -31822,6 +31927,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
+    bannerUrl?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31841,6 +31947,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
+    bannerUrl?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32032,6 +32139,7 @@ export namespace Prisma {
     duracaoEmMinutos: number
     trailerUrl: string
     capaUrl: string
+    bannerUrl?: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -32050,6 +32158,7 @@ export namespace Prisma {
     duracaoEmMinutos: number
     trailerUrl: string
     capaUrl: string
+    bannerUrl?: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -32098,6 +32207,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFilter<"Filme"> | number
     trailerUrl?: StringFilter<"Filme"> | string
     capaUrl?: StringFilter<"Filme"> | string
+    bannerUrl?: StringFilter<"Filme"> | string
     dataLancamento?: DateTimeFilter<"Filme"> | Date | string
     dataInicioCartaz?: DateTimeFilter<"Filme"> | Date | string
     dataFimCartaz?: DateTimeFilter<"Filme"> | Date | string
@@ -32214,6 +32324,7 @@ export namespace Prisma {
     duracaoEmMinutos: number
     trailerUrl: string
     capaUrl: string
+    bannerUrl?: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -32233,6 +32344,7 @@ export namespace Prisma {
     duracaoEmMinutos: number
     trailerUrl: string
     capaUrl: string
+    bannerUrl?: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -32249,7 +32361,9 @@ export namespace Prisma {
   }
 
   export type SalaCreateWithoutSessoesInput = {
-    nome: string
+    numero?: string
+    quantidadeFileiras?: number
+    quantidadeAssentosPorFileira?: number
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -32260,7 +32374,9 @@ export namespace Prisma {
   export type SalaUncheckedCreateWithoutSessoesInput = {
     id?: number
     tipoSalaId: number
-    nome: string
+    numero?: string
+    quantidadeFileiras?: number
+    quantidadeAssentosPorFileira?: number
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -32360,6 +32476,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
+    bannerUrl?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32379,6 +32496,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
+    bannerUrl?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32401,7 +32519,9 @@ export namespace Prisma {
   }
 
   export type SalaUpdateWithoutSessoesInput = {
-    nome?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    quantidadeFileiras?: IntFieldUpdateOperationsInput | number
+    quantidadeAssentosPorFileira?: IntFieldUpdateOperationsInput | number
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32412,7 +32532,9 @@ export namespace Prisma {
   export type SalaUncheckedUpdateWithoutSessoesInput = {
     id?: IntFieldUpdateOperationsInput | number
     tipoSalaId?: IntFieldUpdateOperationsInput | number
-    nome?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    quantidadeFileiras?: IntFieldUpdateOperationsInput | number
+    quantidadeAssentosPorFileira?: IntFieldUpdateOperationsInput | number
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32503,7 +32625,9 @@ export namespace Prisma {
   }
 
   export type SalaCreateWithoutTipoSalaInput = {
-    nome: string
+    numero?: string
+    quantidadeFileiras?: number
+    quantidadeAssentosPorFileira?: number
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -32513,7 +32637,9 @@ export namespace Prisma {
 
   export type SalaUncheckedCreateWithoutTipoSalaInput = {
     id?: number
-    nome: string
+    numero?: string
+    quantidadeFileiras?: number
+    quantidadeAssentosPorFileira?: number
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -32553,7 +32679,9 @@ export namespace Prisma {
     NOT?: SalaScalarWhereInput | SalaScalarWhereInput[]
     id?: IntFilter<"Sala"> | number
     tipoSalaId?: IntFilter<"Sala"> | number
-    nome?: StringFilter<"Sala"> | string
+    numero?: StringFilter<"Sala"> | string
+    quantidadeFileiras?: IntFilter<"Sala"> | number
+    quantidadeAssentosPorFileira?: IntFilter<"Sala"> | number
     ativo?: BoolFilter<"Sala"> | boolean
     criadoEm?: DateTimeFilter<"Sala"> | Date | string
     atualizadoEm?: DateTimeFilter<"Sala"> | Date | string
@@ -32765,7 +32893,9 @@ export namespace Prisma {
   }
 
   export type SalaCreateWithoutAssentosInput = {
-    nome: string
+    numero?: string
+    quantidadeFileiras?: number
+    quantidadeAssentosPorFileira?: number
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -32776,7 +32906,9 @@ export namespace Prisma {
   export type SalaUncheckedCreateWithoutAssentosInput = {
     id?: number
     tipoSalaId: number
-    nome: string
+    numero?: string
+    quantidadeFileiras?: number
+    quantidadeAssentosPorFileira?: number
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -32851,7 +32983,9 @@ export namespace Prisma {
   }
 
   export type SalaUpdateWithoutAssentosInput = {
-    nome?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    quantidadeFileiras?: IntFieldUpdateOperationsInput | number
+    quantidadeAssentosPorFileira?: IntFieldUpdateOperationsInput | number
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32862,7 +32996,9 @@ export namespace Prisma {
   export type SalaUncheckedUpdateWithoutAssentosInput = {
     id?: IntFieldUpdateOperationsInput | number
     tipoSalaId?: IntFieldUpdateOperationsInput | number
-    nome?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    quantidadeFileiras?: IntFieldUpdateOperationsInput | number
+    quantidadeAssentosPorFileira?: IntFieldUpdateOperationsInput | number
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33737,6 +33873,7 @@ export namespace Prisma {
     duracaoEmMinutos: number
     trailerUrl: string
     capaUrl: string
+    bannerUrl?: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -33751,6 +33888,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
+    bannerUrl?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33769,6 +33907,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
+    bannerUrl?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33787,6 +33926,7 @@ export namespace Prisma {
     duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
+    bannerUrl?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33938,14 +34078,18 @@ export namespace Prisma {
 
   export type SalaCreateManyTipoSalaInput = {
     id?: number
-    nome: string
+    numero?: string
+    quantidadeFileiras?: number
+    quantidadeAssentosPorFileira?: number
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
   }
 
   export type SalaUpdateWithoutTipoSalaInput = {
-    nome?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    quantidadeFileiras?: IntFieldUpdateOperationsInput | number
+    quantidadeAssentosPorFileira?: IntFieldUpdateOperationsInput | number
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33955,7 +34099,9 @@ export namespace Prisma {
 
   export type SalaUncheckedUpdateWithoutTipoSalaInput = {
     id?: IntFieldUpdateOperationsInput | number
-    nome?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    quantidadeFileiras?: IntFieldUpdateOperationsInput | number
+    quantidadeAssentosPorFileira?: IntFieldUpdateOperationsInput | number
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33965,7 +34111,9 @@ export namespace Prisma {
 
   export type SalaUncheckedUpdateManyWithoutTipoSalaInput = {
     id?: IntFieldUpdateOperationsInput | number
-    nome?: StringFieldUpdateOperationsInput | string
+    numero?: StringFieldUpdateOperationsInput | string
+    quantidadeFileiras?: IntFieldUpdateOperationsInput | number
+    quantidadeAssentosPorFileira?: IntFieldUpdateOperationsInput | number
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string

@@ -145,6 +145,7 @@ exports.Prisma.FilmeScalarFieldEnum = {
   duracaoEmMinutos: 'duracaoEmMinutos',
   trailerUrl: 'trailerUrl',
   capaUrl: 'capaUrl',
+  bannerUrl: 'bannerUrl',
   dataLancamento: 'dataLancamento',
   dataInicioCartaz: 'dataInicioCartaz',
   dataFimCartaz: 'dataFimCartaz',
@@ -228,7 +229,9 @@ exports.Prisma.TipoSalaScalarFieldEnum = {
 exports.Prisma.SalaScalarFieldEnum = {
   id: 'id',
   tipoSalaId: 'tipoSalaId',
-  nome: 'nome',
+  numero: 'numero',
+  quantidadeFileiras: 'quantidadeFileiras',
+  quantidadeAssentosPorFileira: 'quantidadeAssentosPorFileira',
   ativo: 'ativo',
   criadoEm: 'criadoEm',
   atualizadoEm: 'atualizadoEm'

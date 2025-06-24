@@ -9,7 +9,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
-import { VITE_API_BASE_URL } from "@/lib/utils";
+import { TEMPO_LOADING, VITE_API_BASE_URL } from "@/lib/utils";
 import type { FilmeDetalhes } from "@cinesenai-monorepo/types-custom";
 import { useParams } from "@tanstack/react-router";
 import { Loader2Icon, PlayIcon } from "lucide-react";
@@ -27,7 +27,10 @@ export const FilmeDetalhesPage = () => {
     const data = await fetch(`${VITE_API_BASE_URL}/api/filme/${id}`);
     const response = await data.json();
     setFilme(response);
-    setIsLoading(false);
+
+    setTimeout(() => {
+      setIsLoading(false);
+    }, TEMPO_LOADING);
   };
 
   useEffect(() => {
@@ -77,7 +80,7 @@ export const FilmeDetalhesPage = () => {
                 </div>
               </div>
               <img
-                src="https://www.cinemark.com.br/_next/image?url=https%3A%2F%2Fcdnim.prd.cineticket.com.br%2Fimages%2Fcms%2FbannerHero%2FBannerHero-c4d842ec-777e-4e4e-8b6e-c9c7c04d2db1.png&w=1920&q=75"
+                src={filme?.bannerUrl}
                 alt="Detalhes do Filme"
                 className="w-full h-full object-cover rounded-lg opacity-60"
                 loading="lazy"
@@ -89,7 +92,7 @@ export const FilmeDetalhesPage = () => {
                   <Card className="overflow-hidden rounded-lg p-0 mb-1 w-[230px] h-[320px]">
                     <div className="h-full w-full relative">
                       <img
-                        src="https://www.cinemark.com.br/_next/image?url=https%3A%2F%2Fcdnim.prd.cineticket.com.br%2Fimages%2Fcms%2FmoviePoster%2FMoviePoster-85f6e75d-c26c-44a0-9a70-d47f5999fa54.png&w=1920&q=100"
+                        src={filme?.capaUrl}
                         alt="Capa do Filme"
                         className="w-full h-full object-cover opacity-60"
                         loading="lazy"
@@ -193,7 +196,9 @@ export const FilmeDetalhesPage = () => {
                       </div>
                       <div className="flex">
                         <div className="min-w-[65px] mr-2">
-                          <Badge className="w-full bg-purple-500 text-accent-foreground">4D</Badge>
+                          <Badge className="w-full bg-purple-500 text-accent-foreground">
+                            4D
+                          </Badge>
                         </div>
                         <p className="text-sm text-muted-foreground font-semibold">
                           Som 7x mais potente e tela 40% maior, com tecnologia
