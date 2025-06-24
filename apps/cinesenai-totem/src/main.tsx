@@ -12,6 +12,7 @@ import {
 import { HomePage } from "@/pages/home-page";
 import { FilmesPage } from "@/pages/filmes-page";
 import { FilmeDetalhesPage } from "@/pages/filme-detalhes-page";
+import { SessaoDetalhesPage } from "@/pages/sessao-detalhes-page";
 
 const rootRoute = createRootRoute({
   component: () => <Outlet />,
@@ -31,14 +32,21 @@ const filmesRoute = createRoute({
 
 const filmeDetalhesRoute = createRoute({
   getParentRoute: () => rootRoute,
-  path: "/filmes/$id",
+  path: "/filmes/$filmeId",
   component: FilmeDetalhesPage,
+});
+
+const sessaoDetalhesRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/filmes/$filmeId/sessoes/$sessaoId",
+  component: SessaoDetalhesPage,
 });
 
 const routeTree = rootRoute.addChildren([
   homeRoute,
   filmesRoute,
   filmeDetalhesRoute,
+  sessaoDetalhesRoute,
 ]);
 
 const router = new Router({ routeTree });

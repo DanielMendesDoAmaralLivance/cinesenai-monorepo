@@ -7,7 +7,10 @@ import clsx from "clsx";
 
 export const SessaoCard = (sessao: FilmeDetalhes["sessoes"][0]) => {
   return (
-    <Link>
+    <Link
+      to="/filmes/$filmeId/sessoes/$sessaoId"
+      params={{ filmeId: String(sessao.filmeId), sessaoId: String(sessao.id) }}
+    >
       <motion.div
         whileHover={{ scale: 1.05 }}
         transition={{ type: "spring", stiffness: 300, damping: 15 }}

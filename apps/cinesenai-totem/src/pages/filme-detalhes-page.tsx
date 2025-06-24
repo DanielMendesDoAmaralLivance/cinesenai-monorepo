@@ -20,11 +20,11 @@ export const FilmeDetalhesPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [filme, setFilme] = useState<FilmeDetalhes>();
 
-  const { id } = useParams({ strict: false });
+  const { filmeId } = useParams({ strict: false });
 
   const buscarFilme = async () => {
     setIsLoading(true);
-    const data = await fetch(`${VITE_API_BASE_URL}/api/filme/${id}`);
+    const data = await fetch(`${VITE_API_BASE_URL}/api/filme/${filmeId}`);
     const response = await data.json();
     setFilme(response);
 
