@@ -10,6 +10,7 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { VITE_API_BASE_URL } from "@/lib/utils";
+import type { FilmeDetalhes } from "@cinesenai-monorepo/types-custom";
 import { useParams } from "@tanstack/react-router";
 import { Loader2Icon, PlayIcon } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -17,7 +18,7 @@ import { useEffect, useState } from "react";
 export const FilmeDetalhesPage = () => {
   const [isTrailerDialogOpen, setIsTrailerDialogOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [filme, setFilme] = useState(null);
+  const [filme, setFilme] = useState<FilmeDetalhes>();
 
   const { id } = useParams({ strict: false });
 
@@ -34,14 +35,14 @@ export const FilmeDetalhesPage = () => {
   }, []);
 
   const getNomeDiretor = () => {
-    const diretor = filme.integrantes.find(
+    const diretor = filme?.integrantes?.find(
       (x) => x.integrante.tipoIntegranteId === 1
-    ).integrante;
-    return `${diretor.nome} ${diretor.sobrenome}`;
+    )?.integrante;
+    return `${diretor?.nome} ${diretor?.sobrenome}`;
   };
 
   const getNomesElenco = () => {
-    return filme.integrantes
+    return filme?.integrantes
       .filter((x) => x.integrante.tipoIntegranteId === 2)
       .map((x) => `${x.integrante.nome} ${x.integrante.sobrenome}`);
   };
@@ -61,7 +62,7 @@ export const FilmeDetalhesPage = () => {
                 <h1 className="text-4xl uppercase font-bold">
                   {filme?.titulo}
                 </h1>
-                <p>Duração do filme: {filme.duracaoEmMinutos}</p>
+                <p>Duração do filme: {filme?.duracaoEmMinutos}</p>
               </div>
               <div className="z-10 absolute left-[calc(50%-37px)]">
                 <div
@@ -97,16 +98,16 @@ export const FilmeDetalhesPage = () => {
                   </Card>
                   <span className="border rounded-lg p-2 flex items-center w-fit">
                     <ClassificacaoIndicativa
-                      classificacaoIndicativaId={
+                      classificacaoIndicativaId={Number(
                         filme?.classificacaoIndicativaId
-                      }
+                      )}
                     />
                     <p className="ml-2 text-sm">
-                      {filme.generos[0].genero.nome}
+                      {filme?.generos[0].genero.nome}
                     </p>
                   </span>
                   <p className="text-muted-foreground text-balance sm:text-base">
-                    {filme.descricao}
+                    {filme?.descricao}
                   </p>
                 </div>
                 <div className="flex flex-col gap-8 mt-12">
@@ -116,14 +117,13 @@ export const FilmeDetalhesPage = () => {
                       Data de lançamento
                     </span>
                     <span className="text-sm font-bold text-muted-foreground">
-                      {new Date(filme.dataLancamento).toLocaleDateString(
-                        "pt-BR",
-                        {
-                          day: "2-digit",
-                          month: "2-digit",
-                          year: "numeric",
-                        }
-                      )}
+                      {new Date(
+                        String(filme?.dataLancamento)
+                      ).toLocaleDateString("pt-BR", {
+                        day: "2-digit",
+                        month: "2-digit",
+                        year: "numeric",
+                      })}
                     </span>
                   </div>
                   <Separator />
@@ -140,7 +140,7 @@ export const FilmeDetalhesPage = () => {
                   <div className="flex justify-between min-h-[50px] gap-8">
                     <span className="text-sm font-bold">Elenco</span>
                     <div className="flex flex-col gap-1">
-                      {getNomesElenco().map((x) => (
+                      {getNomesElenco()?.map((x) => (
                         <span className="text-sm font-bold text-muted-foreground text-end">
                           {x}
                         </span>
@@ -162,13 +162,9 @@ export const FilmeDetalhesPage = () => {
                   </div>
 
                   <div className="grid grid-cols-3 gap-4">
-                    <SessaoCard />
-                    <SessaoCard />
-                    <SessaoCard />
-                    <SessaoCard />
-                    <SessaoCard />
-                    <SessaoCard />
-                    <SessaoCard />
+                    {filme?.sessoes.map((sessao) => (
+                      <SessaoCard key={sessao.id} {...sessao} />
+                    ))}
                   </div>
 
                   <div className="mt-10 mb-6">
@@ -197,7 +193,7 @@ export const FilmeDetalhesPage = () => {
                       </div>
                       <div className="flex">
                         <div className="min-w-[65px] mr-2">
-                          <Badge className="w-full bg-purple-500">4D</Badge>
+                          <Badge className="w-full bg-purple-500 text-accent-foreground">4D</Badge>
                         </div>
                         <p className="text-sm text-muted-foreground font-semibold">
                           Som 7x mais potente e tela 40% maior, com tecnologia
@@ -277,7 +273,7 @@ export const FilmeDetalhesPage = () => {
           <FilmeTrailerDialog
             isOpen={isTrailerDialogOpen}
             setIsOpen={setIsTrailerDialogOpen}
-            trailerUrl="https://www.youtube.com/embed/4GvgFVUfRB4?si=JM7h6qvVGUdLcyRh"
+            trailerUrl={String(filme?.trailerUrl)}
           />
         </>
       )}
