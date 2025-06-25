@@ -333,7 +333,11 @@ export const SessaoDetalhesPage = () => {
         </div>
       )}
       {assentosEscolhidos.length > 0 ? (
-        <BotaoNavegacao direction="right" />
+        <BotaoNavegacao
+          to={`/filmes/$filmeId/sessoes/$sessaoId/checkout`}
+          toParams={{ filmeId: String(filmeId), sessaoId: String(sessaoId) }}
+          direction="right"
+        />
       ) : (
         <></>
       )}
