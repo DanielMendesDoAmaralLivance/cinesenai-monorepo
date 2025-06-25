@@ -104,7 +104,6 @@ function formatarDataExtenso(date: Date) {
       month: "long",
     })
     .replace(".", "");
-  // Capitaliza a primeira letra e a do mês
   return str.replace(
     /^([a-zá-úç]{3}), (\d{2}) de ([a-zá-úç]+)/i,
     (_, dia, num, mes) => {
