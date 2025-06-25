@@ -12,15 +12,30 @@ import { TipoIdiomaTexto } from "@/enums/tipo-idioma-enum";
 import { TipoSalaTexto } from "@/enums/tipo-sala-enum";
 import { TipoSessaoTexto } from "@/enums/tipo-sessao-enum";
 import { TEMPO_LOADING, VITE_API_BASE_URL } from "@/lib/utils";
+import type { Assento } from "@cinesenai-monorepo/types";
 import type { SessaoDetalhes } from "@cinesenai-monorepo/types-custom";
 import { useParams } from "@tanstack/react-router";
-import { ClapperboardIcon, DotIcon, Loader2Icon } from "lucide-react";
+import {
+  ArmchairIcon,
+  ClapperboardIcon,
+  DotIcon,
+  Loader2Icon,
+} from "lucide-react";
 import { useEffect, useState } from "react";
 
 export const SessaoDetalhesPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { filmeId, sessaoId } = useParams({ strict: false });
   const [sessao, setSessao] = useState<SessaoDetalhes>();
+  const [assentosEscolhidos, setAssentosEscolhidos] = useState<Assento[]>([]);
+
+  const handleAssentosEscolhidos: (assento: Assento) => void = (assentos) => {
+    if (assentosEscolhidos.some((x) => x.id === assentos.id)) {
+      setAssentosEscolhidos((prev) => prev.filter((x) => x.id !== assentos.id));
+      return;
+    }
+    setAssentosEscolhidos([...assentosEscolhidos, assentos]);
+  };
 
   const buscarSessao = async () => {
     setIsLoading(true);
@@ -98,6 +113,19 @@ export const SessaoDetalhesPage = () => {
                     }
                   </p>
                 </div>
+
+                <div className="flex items-center gap-4">
+                  <div className="w-[40px] h-[40px] rounded-md flex justify-center items-center bg-accent font-bold text-sm">
+                    <ArmchairIcon className="w-4 h-4" />
+                  </div>
+                  <p className="uppercase text-muted-foreground font-bold text-sm">
+                    {assentosEscolhidos.length
+                      ? assentosEscolhidos
+                          .map((x) => `${x.fileira}${x.coluna}`)
+                          .join(", ")
+                      : "Nenhum assento selecionado"}
+                  </p>
+                </div>
               </div>
             </div>
             <div className="col-span-1"></div>
@@ -137,20 +165,64 @@ export const SessaoDetalhesPage = () => {
                             if (assentoEstaIndisponivel)
                               return <AssentoIndisponivel />;
 
+                            const esseAssentoFoiEscolhidoPorMim =
+                              assentosEscolhidos.some(
+                                (x) => x.id === esteAssento.id
+                              );
+
+                            if (esseAssentoFoiEscolhidoPorMim)
+                              return (
+                                <AssentoEscolhido
+                                  onClick={() =>
+                                    handleAssentosEscolhidos(esteAssento)
+                                  }
+                                />
+                              );
+
                             if (esteAssento.tipoAssentoId === 1)
-                              return <AssentoNormal />;
+                              return (
+                                <AssentoNormal
+                                  onClick={() =>
+                                    handleAssentosEscolhidos(esteAssento)
+                                  }
+                                />
+                              );
 
                             if (esteAssento.tipoAssentoId === 2)
-                              return <AssentoDeficiente />;
+                              return (
+                                <AssentoDeficiente
+                                  onClick={() =>
+                                    handleAssentosEscolhidos(esteAssento)
+                                  }
+                                />
+                              );
 
                             if (esteAssento.tipoAssentoId === 3)
-                              return <AssentoAcompanhante />;
+                              return (
+                                <AssentoAcompanhante
+                                  onClick={() =>
+                                    handleAssentosEscolhidos(esteAssento)
+                                  }
+                                />
+                              );
 
                             if (esteAssento.tipoAssentoId === 4)
-                              return <AssentoNamoradeiraEsquerda />;
+                              return (
+                                <AssentoNamoradeiraEsquerda
+                                  onClick={() =>
+                                    handleAssentosEscolhidos(esteAssento)
+                                  }
+                                />
+                              );
 
                             if (esteAssento.tipoAssentoId === 5)
-                              return <AssentoNamoradeiraDireita />;
+                              return (
+                                <AssentoNamoradeiraDireita
+                                  onClick={() =>
+                                    handleAssentosEscolhidos(esteAssento)
+                                  }
+                                />
+                              );
                           })}
                         </div>
                       );
