@@ -39,3 +39,15 @@ export type FilmeDetalhes = Prisma.FilmeGetPayload<{
     };
   };
 }>;
+
+export type SessaoDetalhes = Prisma.SessaoGetPayload<{
+  include: {
+    sala: {
+      include: {
+        assentos: true;
+      };
+    };
+    filme: true;
+    sessoesAssentos: true;
+  };
+}>;
