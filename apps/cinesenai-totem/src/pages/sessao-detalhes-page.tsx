@@ -6,6 +6,7 @@ import {
   AssentoNamoradeiraDireita,
   AssentoNamoradeiraEsquerda,
   AssentoNormal,
+  NaoTemAssento,
 } from "@/components/assento";
 import { TipoIdiomaTexto } from "@/enums/tipo-idioma-enum";
 import { TipoSalaTexto } from "@/enums/tipo-sala-enum";
@@ -106,54 +107,55 @@ export const SessaoDetalhesPage = () => {
               </h1>
               <div className="w-[90%] mx-auto">
                 <div className="flex gap-2 mb-15 items-center flex-col-reverse">
-                  <div className="flex gap-2 items-center">
-                    <p className="text-muted-foreground text-xs font-semibold mr-5">
-                      A
-                    </p>
-                    <AssentoIndisponivel />
-                    <AssentoNormal />
-                    <AssentoNamoradeiraEsquerda />
-                    <AssentoNamoradeiraDireita />
-                    <AssentoDeficiente />
-                    <AssentoAcompanhante />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                  </div>
-                  <div className="flex gap-2 items-center">
-                    <p className="text-muted-foreground text-xs font-semibold mr-5">
-                      A
-                    </p>
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                  </div>
-                  <div className="flex gap-2 items-center">
-                    <p className="text-muted-foreground text-xs font-semibold mr-5">
-                      A
-                    </p>
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoNormal />
-                    <AssentoEscolhido />
-                  </div>
+                  {Array.from({ length: sessao.sala.quantidadeFileiras }).map(
+                    (_, indiceFileira) => {
+                      const fileiraLetra = String.fromCharCode(
+                        65 + indiceFileira
+                      );
+
+                      return (
+                        <div className="flex gap-2 items-center">
+                          <p className="text-muted-foreground text-xs font-semibold mr-5">
+                            {fileiraLetra}
+                          </p>
+                          {Array.from({
+                            length: sessao.sala.quantidadeAssentosPorFileira,
+                          }).map((_, indiceAssento) => {
+                            const esteAssento = sessao.sala.assentos.find(
+                              (x) =>
+                                x.coluna === indiceAssento + 1 &&
+                                x.fileira === fileiraLetra
+                            );
+
+                            if (!esteAssento) return <NaoTemAssento />;
+
+                            const assentoEstaIndisponivel =
+                              sessao.sessoesAssentos.some(
+                                (x) => x.assentoId === esteAssento.id
+                              );
+
+                            if (assentoEstaIndisponivel)
+                              return <AssentoIndisponivel />;
+
+                            if (esteAssento.tipoAssentoId === 1)
+                              return <AssentoNormal />;
+
+                            if (esteAssento.tipoAssentoId === 2)
+                              return <AssentoDeficiente />;
+
+                            if (esteAssento.tipoAssentoId === 3)
+                              return <AssentoAcompanhante />;
+
+                            if (esteAssento.tipoAssentoId === 4)
+                              return <AssentoNamoradeiraEsquerda />;
+
+                            if (esteAssento.tipoAssentoId === 5)
+                              return <AssentoNamoradeiraDireita />;
+                          })}
+                        </div>
+                      );
+                    }
+                  )}
                 </div>
                 <div>
                   <p className="text-muted-foreground text-xs text-center font-semibold">
