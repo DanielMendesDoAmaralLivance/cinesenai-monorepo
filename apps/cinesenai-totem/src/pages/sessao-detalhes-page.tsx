@@ -8,6 +8,7 @@ import {
   AssentoNormal,
   NaoTemAssento,
 } from "@/components/assento";
+import { BotaoNavegacao } from "@/components/botao-navegacao";
 import { TipoIdiomaTexto } from "@/enums/tipo-idioma-enum";
 import { TipoSalaTexto } from "@/enums/tipo-sala-enum";
 import { TipoSessaoTexto } from "@/enums/tipo-sessao-enum";
@@ -331,6 +332,7 @@ export const SessaoDetalhesPage = () => {
           </div>
         </div>
       )}
+      <BotaoNavegacao />
     </>
   );
 };
