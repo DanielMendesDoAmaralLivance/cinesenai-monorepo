@@ -132,7 +132,7 @@ export const SessaoDetalhesPage = () => {
             <div className="col-span-1"></div>
             <div className="col-span-7">
               <h1 className="text-2xl font-bold mb-10">
-                ESCOLHA SEUS ASSENTOS
+                ESCOLHA SEUS ASSENTOS PARA PROSSEGUIR
               </h1>
               <div className="w-[90%] mx-auto">
                 <div className="flex gap-2 mb-15 items-center flex-col-reverse">
@@ -332,7 +332,11 @@ export const SessaoDetalhesPage = () => {
           </div>
         </div>
       )}
-      <BotaoNavegacao />
+      {assentosEscolhidos.length > 0 ? (
+        <BotaoNavegacao direction="right" />
+      ) : (
+        <></>
+      )}
     </>
   );
 };
