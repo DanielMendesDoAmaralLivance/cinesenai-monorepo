@@ -14,6 +14,7 @@ import { FilmesPage } from "@/pages/filmes-page";
 import { FilmeDetalhesPage } from "@/pages/filme-detalhes-page";
 import { SessaoDetalhesPage } from "@/pages/sessao-detalhes-page";
 import { CheckoutPage } from "@/pages/checkout-page";
+import { IngressoPage } from "@/pages/ingresso-page";
 
 const rootRoute = createRootRoute({
   component: () => <Outlet />,
@@ -49,12 +50,19 @@ const checkoutRoute = createRoute({
   component: CheckoutPage,
 });
 
+const ingressoRoute = createRoute({
+  getParentRoute: () => rootRoute,
+  path: "/ingresso/$ingressoId",
+  component: IngressoPage,
+});
+
 const routeTree = rootRoute.addChildren([
   homeRoute,
   filmesRoute,
   filmeDetalhesRoute,
   sessaoDetalhesRoute,
   checkoutRoute,
+  ingressoRoute,
 ]);
 
 const router = new Router({ routeTree });

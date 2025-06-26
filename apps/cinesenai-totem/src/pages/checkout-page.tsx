@@ -7,6 +7,7 @@ import { TipoIdiomaTexto } from "@/enums/tipo-idioma-enum";
 import { TipoSalaTexto } from "@/enums/tipo-sala-enum";
 import { TipoSessaoTexto } from "@/enums/tipo-sessao-enum";
 import { formatarDataSessao } from "@/lib/extensions/date-extensions";
+import { useRouter } from "@tanstack/react-router";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   ArmchairIcon,
@@ -20,11 +21,19 @@ export const CheckoutPage = () => {
   const [isClicked, setIsClicked] = useState(false);
   const [showSuccessScreen, setShowSuccessScreen] = useState(false);
 
+  const router = useRouter();
+
   const handleClick = () => {
     setIsClicked(true);
     setTimeout(() => {
       setShowSuccessScreen(true);
     }, 1000);
+    setTimeout(() => {
+      router.navigate({
+        to: "/ingresso/$ingressoId",
+        params: { ingressoId: String(1) },
+      });
+    }, 4000);
   };
 
   return (
