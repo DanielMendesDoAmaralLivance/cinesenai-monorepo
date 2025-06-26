@@ -42,21 +42,25 @@ export const IngressoPage = () => {
           </div>
         </code>
 
-        <div className="w-full h-[1px] bg-amber-500"></div>
+        <div className="w-full h-[0.5px] bg-amber-500"></div>
 
-        <code className="text-sm flex flex-col p-5 gap-2">
+        <code className="text-sm flex flex-col p-5">
           <p className="font-bold text mb-2">ITENS</p>
-          01 - ASSENTO A1 (NAMORADEIRA ESQUERDA) - MEIA-ENTRADA
-          <br />
-          <div className="flex justify-between">
-            1x R$15,00
-            <p className="font-bold">R$15,00</p>
-          </div>
-          01 - ASSENTO A2 (DEFICIENTE FÍSICO) - INTEIRA
-          <br />
-          <div className="flex justify-between">
-            1x R$30,00
-            <p className="font-bold">R$30,00</p>
+          <div className="flex flex-col gap-2">
+            <div>
+              <p>01 - ASSENTO A1 (NAMORADEIRA ESQUERDA) - MEIA-ENTRADA</p>
+              <div className="flex justify-between">
+                <p>1x R$15,00</p>
+                <p className="font-bold">R$15,00</p>
+              </div>
+            </div>
+            <div>
+              <p>02 - ASSENTO A2 (DEFICIENTE FÍSICO) - INTEIRA</p>
+              <div className="flex justify-between">
+                <p>1x R$30,00</p>
+                <p className="font-bold">R$30,00</p>
+              </div>
+            </div>
           </div>
         </code>
 
@@ -87,7 +91,7 @@ export const IngressoPage = () => {
           <div>CPF: 123.456.789-00</div>
         </code>
 
-        <div className="w-full h-[1px] bg-amber-500"></div>
+        <div className="w-full h-[0.5px] bg-amber-500"></div>
 
         <code className="text-sm flex flex-col items-center text-center p-5">
           ***CUPOM FISCAL ELETRÔNICO***
