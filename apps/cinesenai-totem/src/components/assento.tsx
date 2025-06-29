@@ -17,7 +17,7 @@ const AssentoBase = ({
 }: AssentoBaseProps) => {
   return (
     <motion.div
-      whileHover={{ scale: 1.2 }}
+      whileHover={{ scale: selecionavel ? 1.2 : 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 15 }}
       className={clsx(
         "w-[25px] h-[25px] rounded-sm flex justify-center items-center",

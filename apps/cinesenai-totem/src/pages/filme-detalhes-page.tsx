@@ -65,7 +65,7 @@ export const FilmeDetalhesPage = () => {
                 <h1 className="text-4xl uppercase font-bold">
                   {filme?.titulo}
                 </h1>
-                <p>Duração do filme: {filme?.duracaoEmMinutos}</p>
+                <p>Duração do filme: {filme?.duracaoEmMinutos}m</p>
               </div>
               <div className="z-10 absolute left-[calc(50%-37px)]">
                 <div
