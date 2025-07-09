@@ -4,6 +4,7 @@ import { Link } from "@tanstack/react-router";
 import { motion } from "framer-motion";
 import type { FilmeDetalhes } from "@cinesenai-monorepo/types-custom";
 import clsx from "clsx";
+import { formatarDataSessao } from "@/lib/extensions/date-extensions";
 
 export const SessaoCard = (sessao: FilmeDetalhes["sessoes"][0]) => {
   return (
@@ -18,7 +19,7 @@ export const SessaoCard = (sessao: FilmeDetalhes["sessoes"][0]) => {
         <Card className="rounded-lg min-h-[125px] w-[190px] col-span-1">
           <CardContent className="px-4 flex flex-col justify-between">
             <div className="min-h-[35px] text-sm font-medium">
-              <h1>{formatarDataExtenso(new Date(sessao.inicio))}</h1>
+              <h1>{formatarDataSessao(new Date(sessao.inicio))}</h1>
             </div>
 
             <div className="flex items-center flex-wrap">
@@ -95,27 +96,3 @@ const BadgeTipoIdioma = ({ tipoIdiomaId }: BadgeTipoIdiomaProps) => {
     </Badge>
   );
 };
-
-function formatarDataExtenso(date: Date) {
-  const str = date
-    .toLocaleDateString("pt-BR", {
-      weekday: "short",
-      day: "2-digit",
-      month: "long",
-    })
-    .replace(".", "");
-  return str.replace(
-    /^([a-zá-úç]{3}), (\d{2}) de ([a-zá-úç]+)/i,
-    (_, dia, num, mes) => {
-      return (
-        dia.charAt(0).toUpperCase() +
-        dia.slice(1) +
-        ", " +
-        num +
-        " de " +
-        mes.charAt(0).toUpperCase() +
-        mes.slice(1)
-      );
-    }
-  );
-}

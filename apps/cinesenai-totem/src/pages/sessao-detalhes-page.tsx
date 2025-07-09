@@ -1,3 +1,4 @@
+import { appAtom, type AppAtomProps } from "@/atoms/app-atom";
 import {
   AssentoAcompanhante,
   AssentoDeficiente,
@@ -17,6 +18,7 @@ import { TEMPO_LOADING, VITE_API_BASE_URL } from "@/lib/utils";
 import type { Assento } from "@cinesenai-monorepo/types";
 import type { SessaoDetalhes } from "@cinesenai-monorepo/types-custom";
 import { useParams } from "@tanstack/react-router";
+import { useAtom } from "jotai";
 import {
   ArmchairIcon,
   ClapperboardIcon,
@@ -29,14 +31,30 @@ export const SessaoDetalhesPage = () => {
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const { filmeId, sessaoId } = useParams({ strict: false });
   const [sessao, setSessao] = useState<SessaoDetalhes>();
-  const [assentosEscolhidos, setAssentosEscolhidos] = useState<Assento[]>([]);
+  const [assentosEscolhidos, setAssentosEscolhidos] =
+    useAtom<AppAtomProps>(appAtom);
 
-  const handleAssentosEscolhidos: (assento: Assento) => void = (assentos) => {
-    if (assentosEscolhidos.some((x) => x.id === assentos.id)) {
-      setAssentosEscolhidos((prev) => prev.filter((x) => x.id !== assentos.id));
+  const handleAssentosEscolhidos: (assento: Assento) => void = (assento) => {
+    if (
+      assentosEscolhidos.sessoesAssentos?.some(
+        (x) => x.assentoId === assento.id
+      )
+    ) {
+      setAssentosEscolhidos((prev) => ({
+        ...prev,
+        sessoesAssentos: prev.sessoesAssentos?.filter(
+          (x) => x.assentoId !== assento.id
+        ),
+      }));
       return;
     }
-    setAssentosEscolhidos([...assentosEscolhidos, assentos]);
+    setAssentosEscolhidos((prev) => ({
+      ...prev,
+      sessoesAssentos: [
+        ...(prev.sessoesAssentos ?? []),
+        { assentoId: assento.id, assento },
+      ] as AppAtomProps["sessoesAssentos"],
+    }));
   };
 
   const buscarSessao = async () => {
@@ -95,7 +113,7 @@ export const SessaoDetalhesPage = () => {
                     <ClapperboardIcon className="w-4 h-4" />
                   </div>
                   <p className="uppercase text-muted-foreground font-bold text-sm ">
-                    Sala 1 (
+                    Sala {sessao.sala.numero} (
                     {
                       TipoSalaTexto[
                         sessao.sala.tipoSalaId as keyof typeof TipoSalaTexto
@@ -121,9 +139,16 @@ export const SessaoDetalhesPage = () => {
                     <ArmchairIcon className="w-4 h-4" />
                   </div>
                   <p className="uppercase text-muted-foreground font-bold text-sm">
-                    {assentosEscolhidos.length
-                      ? assentosEscolhidos
-                          .map((x) => `${x.fileira}${x.coluna}`)
+                    {assentosEscolhidos.sessoesAssentos.length
+                      ? assentosEscolhidos.sessoesAssentos
+                          .sort((x, y) =>
+                            (
+                              x.assento.fileira + x.assento.coluna
+                            ).localeCompare(
+                              y.assento.fileira + y.assento.coluna
+                            )
+                          )
+                          .map((x) => `${x.assento.fileira}${x.assento.coluna}`)
                           .join(", ")
                       : "Nenhum assento selecionado"}
                   </p>
@@ -149,7 +174,8 @@ export const SessaoDetalhesPage = () => {
                             {fileiraLetra}
                           </p>
                           {Array.from({
-                            length: sessao.sala.quantidadeAssentosPorFileira,
+                            length:
+                              sessao.sala.quantidadeAssentosPorFileira + 1,
                           }).map((_, indiceAssento) => {
                             const esteAssento = sessao.sala.assentos.find(
                               (x) =>
@@ -168,8 +194,8 @@ export const SessaoDetalhesPage = () => {
                               return <AssentoIndisponivel />;
 
                             const esseAssentoFoiEscolhidoPorMim =
-                              assentosEscolhidos.some(
-                                (x) => x.id === esteAssento.id
+                              assentosEscolhidos.sessoesAssentos.some(
+                                (x) => x.assentoId === esteAssento.id
                               );
 
                             if (esseAssentoFoiEscolhidoPorMim)
@@ -333,7 +359,7 @@ export const SessaoDetalhesPage = () => {
           </div>
         </div>
       )}
-      {assentosEscolhidos.length > 0 ? (
+      {assentosEscolhidos.sessoesAssentos.length > 0 ? (
         <BotaoNavegacao
           to={`/filmes/$filmeId/sessoes/$sessaoId/checkout`}
           toParams={{ filmeId: String(filmeId), sessaoId: String(sessaoId) }}

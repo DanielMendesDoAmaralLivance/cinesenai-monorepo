@@ -20,7 +20,7 @@ const AssentoBase = ({
       whileHover={{ scale: selecionavel ? 1.2 : 1 }}
       transition={{ type: "spring", stiffness: 300, damping: 15 }}
       className={clsx(
-        "w-[25px] h-[25px] rounded-sm flex justify-center items-center",
+        "w-[25px] h-[25px] rounded-sm flex justify-center items-center shrink-0",
         className,
         selecionavel ? "cursor-pointer" : ""
       )}

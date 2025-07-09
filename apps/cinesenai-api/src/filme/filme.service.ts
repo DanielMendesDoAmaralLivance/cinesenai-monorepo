@@ -88,6 +88,9 @@ export class FilmeService {
             },
             tipoIdioma: true,
           },
+          orderBy: {
+            inicio: 'asc',
+          },
         },
       },
     });

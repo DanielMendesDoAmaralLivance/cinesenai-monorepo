@@ -14,7 +14,15 @@ export class SessaoService {
             assentos: true,
           },
         },
-        filme: true,
+        filme: {
+          include: {
+            generos: {
+              include: {
+                genero: true,
+              },
+            },
+          },
+        },
         sessoesAssentos: true,
       },
     });

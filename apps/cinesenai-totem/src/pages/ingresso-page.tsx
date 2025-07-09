@@ -36,9 +36,9 @@ export const IngressoPage = () => {
             <p className="font-bold text mb-2">
               🎬 FILME: COMO TREINAR O SEU DRAGÃO
             </p>
-            Sala 1 (Padrão) | Dublado
+            Sala 1 (Padrão) | Legendado
             <br />
-            Sessão CineAzul | 01/01/2025 20:00 - 22:00
+            Sessão Padrão | Hoje 22h05 - 23h35
           </div>
         </code>
 
@@ -55,7 +55,21 @@ export const IngressoPage = () => {
               </div>
             </div>
             <div>
-              <p>02 - ASSENTO A2 (DEFICIENTE FÍSICO) - INTEIRA</p>
+              <p>02 - ASSENTO A2 (NAMORADEIRA DIREITA) - MEIA-ENTRADA</p>
+              <div className="flex justify-between">
+                <p>1x R$30,00</p>
+                <p className="font-bold">R$15,00</p>
+              </div>
+            </div>
+            <div>
+              <p>03 - ASSENTO G5 (PADRÃO) - INTEIRA</p>
+              <div className="flex justify-between">
+                <p>1x R$30,00</p>
+                <p className="font-bold">R$30,00</p>
+              </div>
+            </div>
+            <div>
+              <p>04 - ASSENTO G7 (PADRÃO) - INTEIRA</p>
               <div className="flex justify-between">
                 <p>1x R$30,00</p>
                 <p className="font-bold">R$30,00</p>
@@ -68,7 +82,7 @@ export const IngressoPage = () => {
 
         <code className="text-xl flex justify-between p-5 bg-amber-200 font-bold">
           <p>TOTAL</p>
-          <p>R$45,00</p>
+          <p>R$90,00</p>
         </code>
 
         <div className="w-full h-[1px] bg-amber-500"></div>
@@ -79,8 +93,8 @@ export const IngressoPage = () => {
             <p className="flex items-center gap-2">
               <CreditCardIcon size={16} /> CARTÃO DE CRÉDITO
             </p>
-            <p>VALOR PAGO: R$45,00</p>
-            <p>DATA DO PAGAMENTO: 01/01/2025 23:59:18</p>
+            <p>VALOR PAGO: R$90,00</p>
+            <p>DATA DO PAGAMENTO: 29/06/2025 21:58:18</p>
           </div>
         </code>
 
@@ -88,7 +102,7 @@ export const IngressoPage = () => {
 
         <code className="text-sm flex flex-col p-5">
           <p className="font-bold text mb-2">DADOS DO CLIENTE</p>
-          <div>CPF: 123.456.789-00</div>
+          <div>CPF: 536.675.898-08</div>
         </code>
 
         <div className="w-full h-[0.5px] bg-amber-500"></div>
