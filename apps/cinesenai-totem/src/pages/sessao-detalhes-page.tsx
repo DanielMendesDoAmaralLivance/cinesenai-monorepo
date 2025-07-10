@@ -369,11 +369,12 @@ export const SessaoDetalhesPage = () => {
           to={`/filmes/$filmeId/sessoes/$sessaoId/checkout`}
           toParams={{ filmeId: String(filmeId), sessaoId: String(sessaoId) }}
           direction="right"
-          nomePagina="Pagamento"
+          texto="Prosseguir para Pagamento"
         />
       ) : (
         <></>
       )}
+      <BotaoNavegacao direction="left" texto="Voltar para Sessões" to="" />
     </>
   );
 };

@@ -32,6 +32,7 @@ import { TEMPO_LOADING } from "@/lib/utils";
 
 export const HomePage = () => {
   const [cpfDialogIsOpen, setCpfDialogIsOpen] = useState(false);
+  const [pedirAjudaDialogIsOpen, setPedirAjudaDialogIsOpen] = useState(false);
   const [, setCpf] = useAtom<AppAtomProps>(appAtom);
 
   return (
@@ -71,7 +72,11 @@ export const HomePage = () => {
             </motion.div>
           </div>
 
-          <Button size="lg" className="w-full text-lg">
+          <Button
+            size="lg"
+            className="w-full text-lg"
+            onClick={() => setPedirAjudaDialogIsOpen(true)}
+          >
             Pedir ajuda
           </Button>
         </div>
@@ -85,6 +90,10 @@ export const HomePage = () => {
         isOpen={cpfDialogIsOpen}
         setIsOpen={setCpfDialogIsOpen}
         setCpf={setCpf}
+      />
+      <PedirAjudaDialog
+        isOpen={pedirAjudaDialogIsOpen}
+        setIsOpen={setPedirAjudaDialogIsOpen}
       />
     </>
   );
@@ -124,6 +133,7 @@ const CpfDialog = ({ isOpen, setIsOpen, setCpf }: CpfDialogProps) => {
                 onChange={(v) =>
                   setCpf({
                     cpf: v,
+                    sessoesAssentos: [],
                   })
                 }
               >
@@ -161,6 +171,31 @@ const CpfDialog = ({ isOpen, setIsOpen, setCpf }: CpfDialogProps) => {
             {isLoading ? <Loader2Icon className="animate-spin" /> : null}
             Continuar
           </Button>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
+  );
+};
+
+interface PedirAjudaDialogProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}
+
+const PedirAjudaDialog = ({ isOpen, setIsOpen }: PedirAjudaDialogProps) => {
+  return (
+    <AlertDialog open={isOpen}>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>
+            Ajuda solicitada para um atendente!
+          </AlertDialogTitle>
+          <AlertDialogDescription>
+            Um atendente irá te ajudar em breve. Por favor, aguarde.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <Button onClick={() => setIsOpen(false)}>Ok</Button>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>

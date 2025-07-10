@@ -1,4 +1,5 @@
 import { appAtom, type AppAtomProps } from "@/atoms/app-atom";
+import { BotaoNavegacao } from "@/components/botao-navegacao";
 import { ClassificacaoIndicativa } from "@/components/classificacao-inditicativa";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
@@ -55,14 +56,14 @@ export const CheckoutPage = () => {
 
   const handleClick = async () => {
     setIsClicked(true);
-    await criarIngresso();
+    const id = await criarIngresso();
     setTimeout(() => {
       setShowSuccessScreen(true);
     }, 1000);
     setTimeout(() => {
       router.navigate({
         to: "/ingresso/$ingressoId",
-        params: { ingressoId: String(1) },
+        params: { ingressoId: String(id) },
       });
     }, 4000);
   };
@@ -96,13 +97,16 @@ export const CheckoutPage = () => {
       },
     };
 
-    await fetch(`${VITE_API_BASE_URL}/api/ingresso`, {
+    const response = await fetch(`${VITE_API_BASE_URL}/api/ingresso`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(data),
     });
+    const responseData = await response.json();
+
+    return responseData.id;
   };
 
   return (
@@ -392,6 +396,7 @@ export const CheckoutPage = () => {
               </motion.div>
             )}
           </AnimatePresence>
+          <BotaoNavegacao direction="left" texto="Voltar para Assentos" to="" />
         </>
       )}
     </>

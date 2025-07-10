@@ -199,7 +199,12 @@ export const IngressoPage = () => {
           <div className="w-[500px] mx-auto flex">
             <Rebarba direcao="baixo" />
           </div>
-          <BotaoNavegacao direction="right" to="/" nomePagina="Início" />
+          <BotaoNavegacao
+            to={`/`}
+            toParams={{}}
+            direction="right"
+            texto="Prosseguir para Início"
+          />
         </div>
       )}
     </>

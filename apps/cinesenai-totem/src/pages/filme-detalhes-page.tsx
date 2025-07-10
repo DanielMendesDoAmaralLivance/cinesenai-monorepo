@@ -1,3 +1,4 @@
+import { BotaoNavegacao } from "@/components/botao-navegacao";
 import { ClassificacaoIndicativa } from "@/components/classificacao-inditicativa";
 import { SessaoCard } from "@/components/sessao-card";
 import {
@@ -274,6 +275,8 @@ export const FilmeDetalhesPage = () => {
               </div>
             </div>
           </div>
+
+          <BotaoNavegacao direction="left" texto="Voltar para Filmes" to="" />
 
           <FilmeTrailerDialog
             isOpen={isTrailerDialogOpen}

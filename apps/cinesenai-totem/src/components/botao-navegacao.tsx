@@ -1,4 +1,5 @@
-import { Link } from "@tanstack/react-router";
+import { useRouter } from "@tanstack/react-router";
+import clsx from "clsx";
 import { motion } from "framer-motion";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 
@@ -7,12 +8,12 @@ interface BotaoNavegacaoProps {
   direction?: "left" | "right";
   to: string;
   toParams?: Record<string, string>;
-  nomePagina: string;
+  texto: string;
 }
 
 export const BotaoNavegacao = ({
   to,
-  nomePagina,
+  texto,
   toParams = {},
   className = "",
   direction = "left",
@@ -24,26 +25,41 @@ export const BotaoNavegacao = ({
       <ChevronRightIcon className="w-[30px] h-[30px]" />
     );
 
+  const router = useRouter();
+
   return (
-    <div className="fixed top-[calc(50%-7.5px)] right-[20px] flex flex-col items-center justify-center gap-2 z-50 max-w-[100px]">
+    <div
+      className={clsx(
+        "fixed top-[calc(50%-7.5px)] flex flex-col items-center justify-center gap-2 max-w-[100px]",
+        direction === "right" ? " right-[20px]" : "left-[20px]"
+      )}
+    >
       <motion.div
         whileHover={{ scale: 1.1 }}
         transition={{ type: "spring", stiffness: 300, damping: 15 }}
       >
-        <Link
-          to={to}
-          params={toParams}
-          className="flex items-center justify-center"
+        <div
+          onClick={() => {
+            if (direction === "left") {
+              router.history.back();
+            } else {
+              router.navigate({
+                to,
+                params: toParams,
+              });
+            }
+          }}
+          className="flex items-center justify-center cursor-pointer"
         >
           <div
             className={`text-accent-foreground flex items-center justify-center w-15 h-15 bg-destructive rounded-full shadow-[0_0_20px_5px_rgba(255,100,103,0.5)] hover:shadow-[0_0_20px_5px_rgba(255,100,103,0.7)] active:shadow-[0_0_20px_5px_rgba(255,100,103,2)] ${className}`}
           >
             {icon}
           </div>
-        </Link>
+        </div>
 
         <p className="text-xs text-muted-foreground text-center cursor-default mt-2">
-          Prosseguir para {nomePagina}
+          {texto}
         </p>
       </motion.div>
       {direction === "right" ? (
