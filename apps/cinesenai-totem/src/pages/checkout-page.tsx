@@ -53,8 +53,9 @@ export const CheckoutPage = () => {
 
   const router = useRouter();
 
-  const handleClick = () => {
+  const handleClick = async () => {
     setIsClicked(true);
+    await criarIngresso();
     setTimeout(() => {
       setShowSuccessScreen(true);
     }, 1000);
@@ -62,9 +63,46 @@ export const CheckoutPage = () => {
       router.navigate({
         to: "/ingresso/$ingressoId",
         params: { ingressoId: String(1) },
-        
       });
     }, 4000);
+  };
+
+  const criarIngresso = async () => {
+    const data = {
+      data: {
+        documentoResponsavel: assentosEscolhidos.cpf,
+        pagamento: {
+          create: {
+            formaPagamentoId: formaDePagamentoId,
+            valorTotal: assentosEscolhidos.sessoesAssentos.reduce(
+              (total, sessaoAssento) =>
+                total + (sessaoAssento.tipoEntradaId === 2 ? 15 : 30),
+              0
+            ),
+          },
+        },
+        sessoesAssentos: {
+          createMany: {
+            data: assentosEscolhidos.sessoesAssentos.map((x) => {
+              return {
+                sessaoId: Number(sessaoId),
+                assentoId: x.assentoId,
+                tipoEntradaId: x.tipoEntradaId ?? 1,
+                sessaoAssentoStatusId: 2,
+              };
+            }),
+          },
+        },
+      },
+    };
+
+    await fetch(`${VITE_API_BASE_URL}/api/ingresso`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
   };
 
   return (
@@ -322,7 +360,7 @@ export const CheckoutPage = () => {
                         <motion.span
                           initial={{ width: 0 }}
                           animate={{ width: "100%" }}
-                          transition={{ duration: 1, ease: "easeInOut" }}
+                          transition={{ duration: 2, ease: "easeInOut" }}
                           className="absolute left-0 top-0 h-full bg-green-800 z-0"
                         />
                       )}

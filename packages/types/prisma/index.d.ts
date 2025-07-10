@@ -22697,17 +22697,15 @@ export namespace Prisma {
 
   export type IngressoAvgAggregateOutputType = {
     id: number | null
-    documentoResponsavel: number | null
   }
 
   export type IngressoSumAggregateOutputType = {
     id: number | null
-    documentoResponsavel: number | null
   }
 
   export type IngressoMinAggregateOutputType = {
     id: number | null
-    documentoResponsavel: number | null
+    documentoResponsavel: string | null
     ativo: boolean | null
     criadoEm: Date | null
     atualizadoEm: Date | null
@@ -22715,7 +22713,7 @@ export namespace Prisma {
 
   export type IngressoMaxAggregateOutputType = {
     id: number | null
-    documentoResponsavel: number | null
+    documentoResponsavel: string | null
     ativo: boolean | null
     criadoEm: Date | null
     atualizadoEm: Date | null
@@ -22733,12 +22731,10 @@ export namespace Prisma {
 
   export type IngressoAvgAggregateInputType = {
     id?: true
-    documentoResponsavel?: true
   }
 
   export type IngressoSumAggregateInputType = {
     id?: true
-    documentoResponsavel?: true
   }
 
   export type IngressoMinAggregateInputType = {
@@ -22854,7 +22850,7 @@ export namespace Prisma {
 
   export type IngressoGroupByOutputType = {
     id: number
-    documentoResponsavel: number
+    documentoResponsavel: string
     ativo: boolean
     criadoEm: Date
     atualizadoEm: Date
@@ -22931,7 +22927,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      documentoResponsavel: number
+      documentoResponsavel: string
       ativo: boolean
       criadoEm: Date
       atualizadoEm: Date
@@ -23361,7 +23357,7 @@ export namespace Prisma {
    */
   interface IngressoFieldRefs {
     readonly id: FieldRef<"Ingresso", 'Int'>
-    readonly documentoResponsavel: FieldRef<"Ingresso", 'Int'>
+    readonly documentoResponsavel: FieldRef<"Ingresso", 'String'>
     readonly ativo: FieldRef<"Ingresso", 'Boolean'>
     readonly criadoEm: FieldRef<"Ingresso", 'DateTime'>
     readonly atualizadoEm: FieldRef<"Ingresso", 'DateTime'>
@@ -27578,7 +27574,7 @@ export namespace Prisma {
     OR?: IngressoWhereInput[]
     NOT?: IngressoWhereInput | IngressoWhereInput[]
     id?: IntFilter<"Ingresso"> | number
-    documentoResponsavel?: IntFilter<"Ingresso"> | number
+    documentoResponsavel?: StringFilter<"Ingresso"> | string
     ativo?: BoolFilter<"Ingresso"> | boolean
     criadoEm?: DateTimeFilter<"Ingresso"> | Date | string
     atualizadoEm?: DateTimeFilter<"Ingresso"> | Date | string
@@ -27601,7 +27597,7 @@ export namespace Prisma {
     AND?: IngressoWhereInput | IngressoWhereInput[]
     OR?: IngressoWhereInput[]
     NOT?: IngressoWhereInput | IngressoWhereInput[]
-    documentoResponsavel?: IntFilter<"Ingresso"> | number
+    documentoResponsavel?: StringFilter<"Ingresso"> | string
     ativo?: BoolFilter<"Ingresso"> | boolean
     criadoEm?: DateTimeFilter<"Ingresso"> | Date | string
     atualizadoEm?: DateTimeFilter<"Ingresso"> | Date | string
@@ -27627,7 +27623,7 @@ export namespace Prisma {
     OR?: IngressoScalarWhereWithAggregatesInput[]
     NOT?: IngressoScalarWhereWithAggregatesInput | IngressoScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Ingresso"> | number
-    documentoResponsavel?: IntWithAggregatesFilter<"Ingresso"> | number
+    documentoResponsavel?: StringWithAggregatesFilter<"Ingresso"> | string
     ativo?: BoolWithAggregatesFilter<"Ingresso"> | boolean
     criadoEm?: DateTimeWithAggregatesFilter<"Ingresso"> | Date | string
     atualizadoEm?: DateTimeWithAggregatesFilter<"Ingresso"> | Date | string
@@ -28908,7 +28904,7 @@ export namespace Prisma {
   }
 
   export type IngressoCreateInput = {
-    documentoResponsavel: number
+    documentoResponsavel: string
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -28918,7 +28914,7 @@ export namespace Prisma {
 
   export type IngressoUncheckedCreateInput = {
     id?: number
-    documentoResponsavel: number
+    documentoResponsavel: string
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -28927,7 +28923,7 @@ export namespace Prisma {
   }
 
   export type IngressoUpdateInput = {
-    documentoResponsavel?: IntFieldUpdateOperationsInput | number
+    documentoResponsavel?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28937,7 +28933,7 @@ export namespace Prisma {
 
   export type IngressoUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    documentoResponsavel?: IntFieldUpdateOperationsInput | number
+    documentoResponsavel?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28947,14 +28943,14 @@ export namespace Prisma {
 
   export type IngressoCreateManyInput = {
     id?: number
-    documentoResponsavel: number
+    documentoResponsavel: string
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
   }
 
   export type IngressoUpdateManyMutationInput = {
-    documentoResponsavel?: IntFieldUpdateOperationsInput | number
+    documentoResponsavel?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -28962,7 +28958,7 @@ export namespace Prisma {
 
   export type IngressoUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    documentoResponsavel?: IntFieldUpdateOperationsInput | number
+    documentoResponsavel?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -30045,7 +30041,6 @@ export namespace Prisma {
 
   export type IngressoAvgOrderByAggregateInput = {
     id?: SortOrder
-    documentoResponsavel?: SortOrder
   }
 
   export type IngressoMaxOrderByAggregateInput = {
@@ -30066,7 +30061,6 @@ export namespace Prisma {
 
   export type IngressoSumOrderByAggregateInput = {
     id?: SortOrder
-    documentoResponsavel?: SortOrder
   }
 
   export type PagamentoListRelationFilter = {
@@ -33151,7 +33145,7 @@ export namespace Prisma {
   }
 
   export type IngressoCreateWithoutSessoesAssentosInput = {
-    documentoResponsavel: number
+    documentoResponsavel: string
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -33160,7 +33154,7 @@ export namespace Prisma {
 
   export type IngressoUncheckedCreateWithoutSessoesAssentosInput = {
     id?: number
-    documentoResponsavel: number
+    documentoResponsavel: string
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -33292,7 +33286,7 @@ export namespace Prisma {
   }
 
   export type IngressoUpdateWithoutSessoesAssentosInput = {
-    documentoResponsavel?: IntFieldUpdateOperationsInput | number
+    documentoResponsavel?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33301,7 +33295,7 @@ export namespace Prisma {
 
   export type IngressoUncheckedUpdateWithoutSessoesAssentosInput = {
     id?: IntFieldUpdateOperationsInput | number
-    documentoResponsavel?: IntFieldUpdateOperationsInput | number
+    documentoResponsavel?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33561,7 +33555,7 @@ export namespace Prisma {
   }
 
   export type IngressoCreateWithoutPagamentoInput = {
-    documentoResponsavel: number
+    documentoResponsavel: string
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -33570,7 +33564,7 @@ export namespace Prisma {
 
   export type IngressoUncheckedCreateWithoutPagamentoInput = {
     id?: number
-    documentoResponsavel: number
+    documentoResponsavel: string
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
@@ -33614,7 +33608,7 @@ export namespace Prisma {
   }
 
   export type IngressoUpdateWithoutPagamentoInput = {
-    documentoResponsavel?: IntFieldUpdateOperationsInput | number
+    documentoResponsavel?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33623,7 +33617,7 @@ export namespace Prisma {
 
   export type IngressoUncheckedUpdateWithoutPagamentoInput = {
     id?: IntFieldUpdateOperationsInput | number
-    documentoResponsavel?: IntFieldUpdateOperationsInput | number
+    documentoResponsavel?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string

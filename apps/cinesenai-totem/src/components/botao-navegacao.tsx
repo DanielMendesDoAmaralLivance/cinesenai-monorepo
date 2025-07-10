@@ -6,12 +6,14 @@ interface BotaoNavegacaoProps {
   className?: string;
   direction?: "left" | "right";
   to: string;
-  toParams: Record<string, string>;
+  toParams?: Record<string, string>;
+  nomePagina: string;
 }
 
 export const BotaoNavegacao = ({
   to,
-  toParams,
+  nomePagina,
+  toParams = {},
   className = "",
   direction = "left",
 }: BotaoNavegacaoProps) => {
@@ -41,7 +43,7 @@ export const BotaoNavegacao = ({
         </Link>
 
         <p className="text-xs text-muted-foreground text-center cursor-default mt-2">
-          Prosseguir para pagamento
+          Prosseguir para {nomePagina}
         </p>
       </motion.div>
       {direction === "right" ? (

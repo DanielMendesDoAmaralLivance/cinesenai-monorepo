@@ -52,7 +52,12 @@ export const SessaoDetalhesPage = () => {
       ...prev,
       sessoesAssentos: [
         ...(prev.sessoesAssentos ?? []),
-        { assentoId: assento.id, assento },
+        {
+          assentoId: assento.id,
+          assento,
+          sessaoAssentoStatusId: 2,
+          sessaoId: Number(sessaoId),
+        },
       ] as AppAtomProps["sessoesAssentos"],
     }));
   };
@@ -364,6 +369,7 @@ export const SessaoDetalhesPage = () => {
           to={`/filmes/$filmeId/sessoes/$sessaoId/checkout`}
           toParams={{ filmeId: String(filmeId), sessaoId: String(sessaoId) }}
           direction="right"
+          nomePagina="Pagamento"
         />
       ) : (
         <></>

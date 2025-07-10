@@ -51,3 +51,20 @@ export type SessaoDetalhes = Prisma.SessaoGetPayload<{
     sessoesAssentos: true;
   };
 }>;
+
+export type IngressoDetalhes = Prisma.IngressoGetPayload<{
+  include: {
+    sessoesAssentos: {
+      include: {
+        sessao: {
+          include: {
+            filme: true;
+            sala: true;
+          };
+        };
+        assento: true;
+      };
+    };
+    pagamento: true;
+  };
+}>;
