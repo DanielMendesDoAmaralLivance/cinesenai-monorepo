@@ -1,6 +1,15 @@
 import { appAtom, type AppAtomProps } from "@/atoms/app-atom";
 import { BotaoNavegacao } from "@/components/botao-navegacao";
 import { ClassificacaoIndicativa } from "@/components/classificacao-inditicativa";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "@/components/ui/alert-dialog";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Switch } from "@/components/ui/switch";
@@ -19,6 +28,7 @@ import {
   ArmchairIcon,
   CheckCircle,
   ClapperboardIcon,
+  HelpCircleIcon,
   Loader2Icon,
   PopcornIcon,
 } from "lucide-react";
@@ -31,6 +41,8 @@ export const CheckoutPage = () => {
   const [showSuccessScreen, setShowSuccessScreen] = useState(false);
 
   const [formaDePagamentoId, setFormaDePagamentoId] = useState<number>();
+
+  const [meiaEntradaDialogIsOpen, setMeiaEntradaDialogIsOpen] = useState(false);
 
   const [assentosEscolhidos, setAssentosEscolhidos] =
     useAtom<AppAtomProps>(appAtom);
@@ -106,7 +118,9 @@ export const CheckoutPage = () => {
     });
     const responseData = await response.json();
 
-    return responseData.id;
+    console.log({ responseData });
+
+    return responseData;
   };
 
   return (
@@ -203,8 +217,13 @@ export const CheckoutPage = () => {
                         </p>
                       </div>
                       <div className="flex items-center space-x-2">
-                        <p className="uppercase text-muted-foreground font-bold text-sm">
-                          Meia-entrada
+                        <p className="uppercase text-muted-foreground font-bold text-sm flex gap-2 items-center">
+                          Meia-entrada{" "}
+                          <HelpCircleIcon
+                            size={16}
+                            className="cursor-pointer"
+                            onClick={() => setMeiaEntradaDialogIsOpen(true)}
+                          />
                         </p>
                       </div>
                       <div className="flex items-center space-x-2">
@@ -397,8 +416,37 @@ export const CheckoutPage = () => {
             )}
           </AnimatePresence>
           <BotaoNavegacao direction="left" texto="Voltar para Assentos" to="" />
+          <MeiaEntradaDialog
+            isOpen={meiaEntradaDialogIsOpen}
+            setIsOpen={setMeiaEntradaDialogIsOpen}
+          />
         </>
       )}
     </>
+  );
+};
+
+interface MeiaEntradaDialogProps {
+  isOpen: boolean;
+  setIsOpen: (isOpen: boolean) => void;
+}
+
+const MeiaEntradaDialog = ({ isOpen, setIsOpen }: MeiaEntradaDialogProps) => {
+  return (
+    <AlertDialog open={isOpen}>
+      <AlertDialogContent>
+        <AlertDialogHeader>
+          <AlertDialogTitle>Meia-entrada</AlertDialogTitle>
+          <AlertDialogDescription>
+            A meia-entrada é um benefício concedido a estudantes, pessoas com
+            deficiência e idosos, permitindo que adquiram ingressos com
+            desconto. Documentos poderão ser solicitados na entrada da sala.
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter>
+          <Button onClick={() => setIsOpen(false)}>Ok</Button>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 };
