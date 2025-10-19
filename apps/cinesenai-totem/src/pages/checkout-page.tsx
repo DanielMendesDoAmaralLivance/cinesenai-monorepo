@@ -155,7 +155,13 @@ export const CheckoutPage = () => {
                       }
                     />
                     <p className="ml-2 text-sm">
-                      {sessao.filme.generos[0].genero.nome}
+                      {
+                        (
+                          sessao.filme as unknown as {
+                            generos: { genero: { nome: string } }[];
+                          }
+                        ).generos[0].genero.nome
+                      }
                     </p>
                   </span>
                 </div>
