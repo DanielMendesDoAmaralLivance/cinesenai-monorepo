@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "sessao" ADD COLUMN     "preco" DECIMAL(10,2) NOT NULL DEFAULT 30;

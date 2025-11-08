@@ -9745,6 +9745,7 @@ export namespace Prisma {
     salaId: number | null
     tipoSessaoId: number | null
     tipoIdiomaId: number | null
+    preco: Decimal | null
   }
 
   export type SessaoSumAggregateOutputType = {
@@ -9753,6 +9754,7 @@ export namespace Prisma {
     salaId: number | null
     tipoSessaoId: number | null
     tipoIdiomaId: number | null
+    preco: Decimal | null
   }
 
   export type SessaoMinAggregateOutputType = {
@@ -9761,6 +9763,7 @@ export namespace Prisma {
     salaId: number | null
     tipoSessaoId: number | null
     tipoIdiomaId: number | null
+    preco: Decimal | null
     inicio: Date | null
     fim: Date | null
     ativo: boolean | null
@@ -9774,6 +9777,7 @@ export namespace Prisma {
     salaId: number | null
     tipoSessaoId: number | null
     tipoIdiomaId: number | null
+    preco: Decimal | null
     inicio: Date | null
     fim: Date | null
     ativo: boolean | null
@@ -9787,6 +9791,7 @@ export namespace Prisma {
     salaId: number
     tipoSessaoId: number
     tipoIdiomaId: number
+    preco: number
     inicio: number
     fim: number
     ativo: number
@@ -9802,6 +9807,7 @@ export namespace Prisma {
     salaId?: true
     tipoSessaoId?: true
     tipoIdiomaId?: true
+    preco?: true
   }
 
   export type SessaoSumAggregateInputType = {
@@ -9810,6 +9816,7 @@ export namespace Prisma {
     salaId?: true
     tipoSessaoId?: true
     tipoIdiomaId?: true
+    preco?: true
   }
 
   export type SessaoMinAggregateInputType = {
@@ -9818,6 +9825,7 @@ export namespace Prisma {
     salaId?: true
     tipoSessaoId?: true
     tipoIdiomaId?: true
+    preco?: true
     inicio?: true
     fim?: true
     ativo?: true
@@ -9831,6 +9839,7 @@ export namespace Prisma {
     salaId?: true
     tipoSessaoId?: true
     tipoIdiomaId?: true
+    preco?: true
     inicio?: true
     fim?: true
     ativo?: true
@@ -9844,6 +9853,7 @@ export namespace Prisma {
     salaId?: true
     tipoSessaoId?: true
     tipoIdiomaId?: true
+    preco?: true
     inicio?: true
     fim?: true
     ativo?: true
@@ -9944,6 +9954,7 @@ export namespace Prisma {
     salaId: number
     tipoSessaoId: number
     tipoIdiomaId: number
+    preco: Decimal
     inicio: Date
     fim: Date
     ativo: boolean
@@ -9976,6 +9987,7 @@ export namespace Prisma {
     salaId?: boolean
     tipoSessaoId?: boolean
     tipoIdiomaId?: boolean
+    preco?: boolean
     inicio?: boolean
     fim?: boolean
     ativo?: boolean
@@ -9995,6 +10007,7 @@ export namespace Prisma {
     salaId?: boolean
     tipoSessaoId?: boolean
     tipoIdiomaId?: boolean
+    preco?: boolean
     inicio?: boolean
     fim?: boolean
     ativo?: boolean
@@ -10012,6 +10025,7 @@ export namespace Prisma {
     salaId?: boolean
     tipoSessaoId?: boolean
     tipoIdiomaId?: boolean
+    preco?: boolean
     inicio?: boolean
     fim?: boolean
     ativo?: boolean
@@ -10029,6 +10043,7 @@ export namespace Prisma {
     salaId?: boolean
     tipoSessaoId?: boolean
     tipoIdiomaId?: boolean
+    preco?: boolean
     inicio?: boolean
     fim?: boolean
     ativo?: boolean
@@ -10036,7 +10051,7 @@ export namespace Prisma {
     atualizadoEm?: boolean
   }
 
-  export type SessaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "filmeId" | "salaId" | "tipoSessaoId" | "tipoIdiomaId" | "inicio" | "fim" | "ativo" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["sessao"]>
+  export type SessaoOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "filmeId" | "salaId" | "tipoSessaoId" | "tipoIdiomaId" | "preco" | "inicio" | "fim" | "ativo" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["sessao"]>
   export type SessaoInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     filme?: boolean | FilmeDefaultArgs<ExtArgs>
     sala?: boolean | SalaDefaultArgs<ExtArgs>
@@ -10073,6 +10088,7 @@ export namespace Prisma {
       salaId: number
       tipoSessaoId: number
       tipoIdiomaId: number
+      preco: Prisma.Decimal
       inicio: Date
       fim: Date
       ativo: boolean
@@ -10511,6 +10527,7 @@ export namespace Prisma {
     readonly salaId: FieldRef<"Sessao", 'Int'>
     readonly tipoSessaoId: FieldRef<"Sessao", 'Int'>
     readonly tipoIdiomaId: FieldRef<"Sessao", 'Int'>
+    readonly preco: FieldRef<"Sessao", 'Decimal'>
     readonly inicio: FieldRef<"Sessao", 'DateTime'>
     readonly fim: FieldRef<"Sessao", 'DateTime'>
     readonly ativo: FieldRef<"Sessao", 'Boolean'>
@@ -22415,6 +22432,7 @@ export namespace Prisma {
     salaId: 'salaId',
     tipoSessaoId: 'tipoSessaoId',
     tipoIdiomaId: 'tipoIdiomaId',
+    preco: 'preco',
     inicio: 'inicio',
     fim: 'fim',
     ativo: 'ativo',
@@ -22614,6 +22632,20 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal[]'
+   */
+  export type ListDecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal[]'>
     
 
 
@@ -23055,6 +23087,7 @@ export namespace Prisma {
     salaId?: IntFilter<"Sessao"> | number
     tipoSessaoId?: IntFilter<"Sessao"> | number
     tipoIdiomaId?: IntFilter<"Sessao"> | number
+    preco?: DecimalFilter<"Sessao"> | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFilter<"Sessao"> | Date | string
     fim?: DateTimeFilter<"Sessao"> | Date | string
     ativo?: BoolFilter<"Sessao"> | boolean
@@ -23073,6 +23106,7 @@ export namespace Prisma {
     salaId?: SortOrder
     tipoSessaoId?: SortOrder
     tipoIdiomaId?: SortOrder
+    preco?: SortOrder
     inicio?: SortOrder
     fim?: SortOrder
     ativo?: SortOrder
@@ -23094,6 +23128,7 @@ export namespace Prisma {
     salaId?: IntFilter<"Sessao"> | number
     tipoSessaoId?: IntFilter<"Sessao"> | number
     tipoIdiomaId?: IntFilter<"Sessao"> | number
+    preco?: DecimalFilter<"Sessao"> | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFilter<"Sessao"> | Date | string
     fim?: DateTimeFilter<"Sessao"> | Date | string
     ativo?: BoolFilter<"Sessao"> | boolean
@@ -23112,6 +23147,7 @@ export namespace Prisma {
     salaId?: SortOrder
     tipoSessaoId?: SortOrder
     tipoIdiomaId?: SortOrder
+    preco?: SortOrder
     inicio?: SortOrder
     fim?: SortOrder
     ativo?: SortOrder
@@ -23133,6 +23169,7 @@ export namespace Prisma {
     salaId?: IntWithAggregatesFilter<"Sessao"> | number
     tipoSessaoId?: IntWithAggregatesFilter<"Sessao"> | number
     tipoIdiomaId?: IntWithAggregatesFilter<"Sessao"> | number
+    preco?: DecimalWithAggregatesFilter<"Sessao"> | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeWithAggregatesFilter<"Sessao"> | Date | string
     fim?: DateTimeWithAggregatesFilter<"Sessao"> | Date | string
     ativo?: BoolWithAggregatesFilter<"Sessao"> | boolean
@@ -24225,6 +24262,7 @@ export namespace Prisma {
   }
 
   export type SessaoCreateInput = {
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -24243,6 +24281,7 @@ export namespace Prisma {
     salaId: number
     tipoSessaoId: number
     tipoIdiomaId: number
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -24252,6 +24291,7 @@ export namespace Prisma {
   }
 
   export type SessaoUpdateInput = {
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -24270,6 +24310,7 @@ export namespace Prisma {
     salaId?: IntFieldUpdateOperationsInput | number
     tipoSessaoId?: IntFieldUpdateOperationsInput | number
     tipoIdiomaId?: IntFieldUpdateOperationsInput | number
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -24284,6 +24325,7 @@ export namespace Prisma {
     salaId: number
     tipoSessaoId: number
     tipoIdiomaId: number
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -24292,6 +24334,7 @@ export namespace Prisma {
   }
 
   export type SessaoUpdateManyMutationInput = {
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -24305,6 +24348,7 @@ export namespace Prisma {
     salaId?: IntFieldUpdateOperationsInput | number
     tipoSessaoId?: IntFieldUpdateOperationsInput | number
     tipoIdiomaId?: IntFieldUpdateOperationsInput | number
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -25340,6 +25384,17 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type DecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
   export type SalaScalarRelationFilter = {
     is?: SalaWhereInput
     isNot?: SalaWhereInput
@@ -25371,6 +25426,7 @@ export namespace Prisma {
     salaId?: SortOrder
     tipoSessaoId?: SortOrder
     tipoIdiomaId?: SortOrder
+    preco?: SortOrder
     inicio?: SortOrder
     fim?: SortOrder
     ativo?: SortOrder
@@ -25384,6 +25440,7 @@ export namespace Prisma {
     salaId?: SortOrder
     tipoSessaoId?: SortOrder
     tipoIdiomaId?: SortOrder
+    preco?: SortOrder
   }
 
   export type SessaoMaxOrderByAggregateInput = {
@@ -25392,6 +25449,7 @@ export namespace Prisma {
     salaId?: SortOrder
     tipoSessaoId?: SortOrder
     tipoIdiomaId?: SortOrder
+    preco?: SortOrder
     inicio?: SortOrder
     fim?: SortOrder
     ativo?: SortOrder
@@ -25405,6 +25463,7 @@ export namespace Prisma {
     salaId?: SortOrder
     tipoSessaoId?: SortOrder
     tipoIdiomaId?: SortOrder
+    preco?: SortOrder
     inicio?: SortOrder
     fim?: SortOrder
     ativo?: SortOrder
@@ -25418,6 +25477,23 @@ export namespace Prisma {
     salaId?: SortOrder
     tipoSessaoId?: SortOrder
     tipoIdiomaId?: SortOrder
+    preco?: SortOrder
+  }
+
+  export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
   }
 
   export type SalaListRelationFilter = {
@@ -26263,6 +26339,14 @@ export namespace Prisma {
     connect?: SessaoAssentoWhereUniqueInput | SessaoAssentoWhereUniqueInput[]
   }
 
+  export type DecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
+  }
+
   export type FilmeUpdateOneRequiredWithoutSessoesNestedInput = {
     create?: XOR<FilmeCreateWithoutSessoesInput, FilmeUncheckedCreateWithoutSessoesInput>
     connectOrCreate?: FilmeCreateOrConnectWithoutSessoesInput
@@ -26988,6 +27072,33 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedDecimalFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+  }
+
+  export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | ListDecimalFieldRefInput<$PrismaModel>
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedDecimalFilter<$PrismaModel>
+    _sum?: NestedDecimalFilter<$PrismaModel>
+    _min?: NestedDecimalFilter<$PrismaModel>
+    _max?: NestedDecimalFilter<$PrismaModel>
+  }
+
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -27243,6 +27354,7 @@ export namespace Prisma {
   }
 
   export type SessaoCreateWithoutFilmeInput = {
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -27259,6 +27371,7 @@ export namespace Prisma {
     salaId: number
     tipoSessaoId: number
     tipoIdiomaId: number
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -27344,6 +27457,7 @@ export namespace Prisma {
     salaId?: IntFilter<"Sessao"> | number
     tipoSessaoId?: IntFilter<"Sessao"> | number
     tipoIdiomaId?: IntFilter<"Sessao"> | number
+    preco?: DecimalFilter<"Sessao"> | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFilter<"Sessao"> | Date | string
     fim?: DateTimeFilter<"Sessao"> | Date | string
     ativo?: BoolFilter<"Sessao"> | boolean
@@ -27439,6 +27553,7 @@ export namespace Prisma {
   }
 
   export type SessaoCreateWithoutTipoIdiomaInput = {
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -27455,6 +27570,7 @@ export namespace Prisma {
     filmeId: number
     salaId: number
     tipoSessaoId: number
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -27490,6 +27606,7 @@ export namespace Prisma {
   }
 
   export type SessaoCreateWithoutTipoSessaoInput = {
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -27506,6 +27623,7 @@ export namespace Prisma {
     filmeId: number
     salaId: number
     tipoIdiomaId: number
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -27934,6 +28052,7 @@ export namespace Prisma {
   }
 
   export type SessaoCreateWithoutSalaInput = {
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -27950,6 +28069,7 @@ export namespace Prisma {
     filmeId: number
     tipoSessaoId: number
     tipoIdiomaId: number
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -28321,6 +28441,7 @@ export namespace Prisma {
   }
 
   export type SessaoCreateWithoutSessoesAssentosInput = {
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -28338,6 +28459,7 @@ export namespace Prisma {
     salaId: number
     tipoSessaoId: number
     tipoIdiomaId: number
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -28450,6 +28572,7 @@ export namespace Prisma {
   }
 
   export type SessaoUpdateWithoutSessoesAssentosInput = {
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -28467,6 +28590,7 @@ export namespace Prisma {
     salaId?: IntFieldUpdateOperationsInput | number
     tipoSessaoId?: IntFieldUpdateOperationsInput | number
     tipoIdiomaId?: IntFieldUpdateOperationsInput | number
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -28926,6 +29050,7 @@ export namespace Prisma {
     salaId: number
     tipoSessaoId: number
     tipoIdiomaId: number
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -28957,6 +29082,7 @@ export namespace Prisma {
   }
 
   export type SessaoUpdateWithoutFilmeInput = {
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -28973,6 +29099,7 @@ export namespace Prisma {
     salaId?: IntFieldUpdateOperationsInput | number
     tipoSessaoId?: IntFieldUpdateOperationsInput | number
     tipoIdiomaId?: IntFieldUpdateOperationsInput | number
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -28986,6 +29113,7 @@ export namespace Prisma {
     salaId?: IntFieldUpdateOperationsInput | number
     tipoSessaoId?: IntFieldUpdateOperationsInput | number
     tipoIdiomaId?: IntFieldUpdateOperationsInput | number
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -29073,6 +29201,7 @@ export namespace Prisma {
     filmeId: number
     salaId: number
     tipoSessaoId: number
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -29081,6 +29210,7 @@ export namespace Prisma {
   }
 
   export type SessaoUpdateWithoutTipoIdiomaInput = {
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -29097,6 +29227,7 @@ export namespace Prisma {
     filmeId?: IntFieldUpdateOperationsInput | number
     salaId?: IntFieldUpdateOperationsInput | number
     tipoSessaoId?: IntFieldUpdateOperationsInput | number
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -29110,6 +29241,7 @@ export namespace Prisma {
     filmeId?: IntFieldUpdateOperationsInput | number
     salaId?: IntFieldUpdateOperationsInput | number
     tipoSessaoId?: IntFieldUpdateOperationsInput | number
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -29122,6 +29254,7 @@ export namespace Prisma {
     filmeId: number
     salaId: number
     tipoIdiomaId: number
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -29130,6 +29263,7 @@ export namespace Prisma {
   }
 
   export type SessaoUpdateWithoutTipoSessaoInput = {
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -29146,6 +29280,7 @@ export namespace Prisma {
     filmeId?: IntFieldUpdateOperationsInput | number
     salaId?: IntFieldUpdateOperationsInput | number
     tipoIdiomaId?: IntFieldUpdateOperationsInput | number
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -29159,6 +29294,7 @@ export namespace Prisma {
     filmeId?: IntFieldUpdateOperationsInput | number
     salaId?: IntFieldUpdateOperationsInput | number
     tipoIdiomaId?: IntFieldUpdateOperationsInput | number
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -29257,6 +29393,7 @@ export namespace Prisma {
     filmeId: number
     tipoSessaoId: number
     tipoIdiomaId: number
+    preco?: Decimal | DecimalJsLike | number | string
     inicio: Date | string
     fim: Date | string
     ativo?: boolean
@@ -29275,6 +29412,7 @@ export namespace Prisma {
   }
 
   export type SessaoUpdateWithoutSalaInput = {
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -29291,6 +29429,7 @@ export namespace Prisma {
     filmeId?: IntFieldUpdateOperationsInput | number
     tipoSessaoId?: IntFieldUpdateOperationsInput | number
     tipoIdiomaId?: IntFieldUpdateOperationsInput | number
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
@@ -29304,6 +29443,7 @@ export namespace Prisma {
     filmeId?: IntFieldUpdateOperationsInput | number
     tipoSessaoId?: IntFieldUpdateOperationsInput | number
     tipoIdiomaId?: IntFieldUpdateOperationsInput | number
+    preco?: DecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string
     inicio?: DateTimeFieldUpdateOperationsInput | Date | string
     fim?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean

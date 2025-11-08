@@ -201,6 +201,8 @@ model Sessao {
   tipoIdiomaId Int        @map("tipo_idioma_id")
   tipoIdioma   TipoIdioma @relation(fields: [tipoIdiomaId], references: [id])
 
+  preco Decimal @default(30) @map("preco") @db.Decimal(10, 2)
+
   inicio DateTime
   fim    DateTime
 

@@ -186,6 +186,7 @@ exports.Prisma.SessaoScalarFieldEnum = {
   salaId: 'salaId',
   tipoSessaoId: 'tipoSessaoId',
   tipoIdiomaId: 'tipoIdiomaId',
+  preco: 'preco',
   inicio: 'inicio',
   fim: 'fim',
   ativo: 'ativo',
