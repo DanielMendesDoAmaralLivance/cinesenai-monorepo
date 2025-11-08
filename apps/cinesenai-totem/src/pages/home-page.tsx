@@ -30,20 +30,15 @@ import { useRouter } from "@tanstack/react-router";
 import { Loader2Icon } from "lucide-react";
 import { TEMPO_LOADING } from "@/lib/utils";
 
-// Função de validação de CPF
 const isValidCPF = (cpf: string): boolean => {
   if (typeof cpf !== "string") return false;
 
-  // Remove formatação
   cpf = cpf.replace(/[^\d]+/g, "");
 
-  // Valida se tem 11 dígitos ou se é uma sequência de dígitos repetidos
   if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
 
-  // Converte string em array de números
   const cpfDigits = cpf.split("").map((el) => +el);
 
-  // Calcula o dígito verificador
   const rest = (count: number): number => {
     return (
       ((cpfDigits
@@ -55,7 +50,6 @@ const isValidCPF = (cpf: string): boolean => {
     );
   };
 
-  // Valida os dois dígitos verificadores
   return rest(10) === cpfDigits[9] && rest(11) === cpfDigits[10];
 };
 
