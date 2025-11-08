@@ -38,17 +38,12 @@ export const FilmeDetalhesPage = () => {
     void buscarFilme();
   }, []);
 
-  const getNomeDiretor = () => {
-    const diretor = filme?.integrantes?.find(
-      (x) => x.integrante.tipoIntegranteId === 1
-    )?.integrante;
-    return `${diretor?.nome} ${diretor?.sobrenome}`;
+  const getNomesDirecao = () => {
+    return filme?.direcao?.split(",").map((x) => x.trim());
   };
 
   const getNomesElenco = () => {
-    return filme?.integrantes
-      .filter((x) => x.integrante.tipoIntegranteId === 2)
-      .map((x) => `${x.integrante.nome} ${x.integrante.sobrenome}`);
+    return filme?.elenco?.split(",").map((x) => x.trim());
   };
 
   return (
@@ -134,11 +129,15 @@ export const FilmeDetalhesPage = () => {
                   <h1 className="uppercase text-xl font-bold">
                     EQUIPE E ELENCO
                   </h1>
-                  <div className="flex items-center justify-between gap-8">
-                    <span className="text-sm font-bold">Diretor</span>
-                    <span className="text-sm font-bold text-muted-foreground">
-                      {getNomeDiretor()}
-                    </span>
+                  <div className="flex justify-between min-h-[50px] gap-8">
+                    <span className="text-sm font-bold">Direção</span>
+                    <div className="flex flex-col gap-1">
+                      {getNomesDirecao()?.map((x) => (
+                        <span className="text-sm font-bold text-muted-foreground text-end">
+                          {x}
+                        </span>
+                      ))}
+                    </div>
                   </div>
                   <Separator />
                   <div className="flex justify-between min-h-[50px] gap-8">

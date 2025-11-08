@@ -1,0 +1,68 @@
+{
+  "client": "Thunder Client",
+  "collectionName": "CineSenai API",
+  "dateExported": "2025-11-08",
+  "version": "1.1",
+  "folders": [],
+  "requests": [
+    {
+      "name": "Listar Filmes em Cartaz",
+      "method": "GET",
+      "url": "http://localhost:3001/api/filme/em-cartaz",
+      "headers": [],
+      "tests": []
+    },
+    {
+      "name": "Listar Filmes em Breve",
+      "method": "GET",
+      "url": "http://localhost:3001/api/filme/em-breve",
+      "headers": [],
+      "tests": []
+    },
+    {
+      "name": "Buscar Filme por ID",
+      "method": "GET",
+      "url": "http://localhost:3001/api/filme/1",
+      "headers": [],
+      "tests": []
+    },
+    {
+      "name": "Listar Gêneros",
+      "method": "GET",
+      "url": "http://localhost:3001/api/genero",
+      "headers": [],
+      "tests": []
+    },
+    {
+      "name": "Buscar Sessão por ID",
+      "method": "GET",
+      "url": "http://localhost:3001/api/sessao/1",
+      "headers": [],
+      "tests": []
+    },
+    {
+      "name": "Buscar Ingresso por ID",
+      "method": "GET",
+      "url": "http://localhost:3001/api/ingresso/1",
+      "headers": [],
+      "tests": []
+    },
+    {
+      "name": "Criar Ingresso",
+      "method": "POST",
+      "url": "http://localhost:3001/api/ingresso",
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json"
+        }
+      ],
+      "body": {
+        "type": "json",
+        "raw": "{\n  \"data\": {\n    \"sessoesAssentos\": {\n      \"create\": [\n        {\n          \"sessaoId\": 1,\n          \"assentoId\": 1\n        }\n      ]\n    },\n    \"pagamento\": {\n      \"create\": {\n        \"valor\": 25.00,\n        \"tipoPagamentoId\": 1\n      }\n    }\n  }\n}",
+        "form": []
+      },
+      "tests": []
+    }
+  ]
+}
