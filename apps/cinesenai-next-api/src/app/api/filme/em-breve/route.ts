@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/lib/prisma";
+import prisma from "../../../../lib/prisma";
 import type { FilmeComGeneros } from "@cinesenai-monorepo/types-custom";
 
 export async function GET(

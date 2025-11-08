@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import prisma from "@/lib/prisma";
+import prisma from "../../../lib/prisma";
 import { Prisma } from "@cinesenai-monorepo/types";
 
 export async function POST(request: NextRequest) {
