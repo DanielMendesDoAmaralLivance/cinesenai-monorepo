@@ -53,7 +53,7 @@ export async function GET(
 
     return NextResponse.json(filme);
   } catch (error) {
-    console.error("Erro ao buscar filme:", error);
+    console.error("Erro ao buscar filme", error);
     return NextResponse.json(
       { error: "Erro ao buscar filme" },
       { status: 500 }

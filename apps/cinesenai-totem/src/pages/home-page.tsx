@@ -30,6 +30,35 @@ import { useRouter } from "@tanstack/react-router";
 import { Loader2Icon } from "lucide-react";
 import { TEMPO_LOADING } from "@/lib/utils";
 
+// Função de validação de CPF
+const isValidCPF = (cpf: string): boolean => {
+  if (typeof cpf !== "string") return false;
+
+  // Remove formatação
+  cpf = cpf.replace(/[^\d]+/g, "");
+
+  // Valida se tem 11 dígitos ou se é uma sequência de dígitos repetidos
+  if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+
+  // Converte string em array de números
+  const cpfDigits = cpf.split("").map((el) => +el);
+
+  // Calcula o dígito verificador
+  const rest = (count: number): number => {
+    return (
+      ((cpfDigits
+        .slice(0, count - 1)
+        .reduce((soma, el, index) => soma + el * (count - index), 0) *
+        10) %
+        11) %
+      10
+    );
+  };
+
+  // Valida os dois dígitos verificadores
+  return rest(10) === cpfDigits[9] && rest(11) === cpfDigits[10];
+};
+
 export const HomePage = () => {
   const [cpfDialogIsOpen, setCpfDialogIsOpen] = useState(false);
   const [pedirAjudaDialogIsOpen, setPedirAjudaDialogIsOpen] = useState(false);
@@ -102,16 +131,23 @@ export const HomePage = () => {
 interface CpfDialogProps {
   isOpen: boolean;
   setIsOpen: (isOpen: boolean) => void;
-
   setCpf: (cpf: AppAtomProps) => void;
 }
 
 const CpfDialog = ({ isOpen, setIsOpen, setCpf }: CpfDialogProps) => {
   const router = useRouter();
-
   const [isLoading, setIsLoading] = useState(false);
+  const [cpfValue, setCpfValue] = useState("");
+  const [cpfError, setCpfError] = useState("");
 
   const irParaFilmes = () => {
+    // Valida o CPF antes de continuar
+    if (!isValidCPF(cpfValue)) {
+      setCpfError("CPF inválido. Por favor, verifique os dados digitados.");
+      return;
+    }
+
+    setCpfError("");
     setIsLoading(true);
 
     setTimeout(async () => {
@@ -121,6 +157,18 @@ const CpfDialog = ({ isOpen, setIsOpen, setCpf }: CpfDialogProps) => {
     }, TEMPO_LOADING);
   };
 
+  const handleCpfChange = (value: string) => {
+    setCpfValue(value);
+    setCpf({
+      cpf: value,
+      sessoesAssentos: [],
+    });
+    // Limpa o erro quando o usuário começar a digitar novamente
+    if (cpfError) {
+      setCpfError("");
+    }
+  };
+
   return (
     <AlertDialog open={isOpen}>
       <AlertDialogContent>
@@ -128,15 +176,7 @@ const CpfDialog = ({ isOpen, setIsOpen, setCpf }: CpfDialogProps) => {
           <AlertDialogTitle>Insira o seu CPF para continuar</AlertDialogTitle>
           <AlertDialogDescription>
             <div className="py-15">
-              <InputOTP
-                maxLength={11}
-                onChange={(v) =>
-                  setCpf({
-                    cpf: v,
-                    sessoesAssentos: [],
-                  })
-                }
-              >
+              <InputOTP maxLength={11} onChange={handleCpfChange}>
                 <InputOTPGroup>
                   <InputOTPSlot index={0} />
                   <InputOTPSlot index={1} />
@@ -160,6 +200,11 @@ const CpfDialog = ({ isOpen, setIsOpen, setCpf }: CpfDialogProps) => {
                   <InputOTPSlot index={10} />
                 </InputOTPGroup>
               </InputOTP>
+              {cpfError && (
+                <p className="text-red-500 text-sm mt-2 text-center">
+                  {cpfError}
+                </p>
+              )}
             </div>
           </AlertDialogDescription>
         </AlertDialogHeader>
@@ -167,7 +212,10 @@ const CpfDialog = ({ isOpen, setIsOpen, setCpf }: CpfDialogProps) => {
           <Button variant="outline" onClick={() => setIsOpen(false)}>
             Cancelar
           </Button>
-          <Button onClick={irParaFilmes} disabled={isLoading}>
+          <Button
+            onClick={irParaFilmes}
+            disabled={isLoading || cpfValue.length !== 11}
+          >
             {isLoading ? <Loader2Icon className="animate-spin" /> : null}
             Continuar
           </Button>
