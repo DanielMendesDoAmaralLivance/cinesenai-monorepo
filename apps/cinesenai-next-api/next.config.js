@@ -1,6 +1,8 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  // Para monorepo - transpila pacotes do workspace
+  transpilePackages: ['@cinesenai-monorepo/types', '@cinesenai-monorepo/types-custom'],
   // Desabilita geração de páginas estáticas por padrão
   output: "standalone",
   // Configura headers para CORS
