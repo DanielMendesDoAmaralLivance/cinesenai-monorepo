@@ -18,6 +18,7 @@ import { TipoIdiomaTexto } from "@/enums/tipo-idioma-enum";
 import { TipoSalaTexto } from "@/enums/tipo-sala-enum";
 import { TipoSessaoTexto } from "@/enums/tipo-sessao-enum";
 import { formatarDataSessao } from "@/lib/extensions/date-extensions";
+import { formatarComoMoedaBrasileira } from "@/lib/extensions/string-extensions";
 import { TEMPO_LOADING, VITE_API_BASE_URL } from "@/lib/utils";
 import type { SessaoDetalhes } from "@cinesenai-monorepo/types-custom";
 import { useParams, useRouter } from "@tanstack/react-router";
@@ -89,7 +90,10 @@ export const CheckoutPage = () => {
             formaPagamentoId: formaDePagamentoId,
             valorTotal: assentosEscolhidos.sessoesAssentos.reduce(
               (total, sessaoAssento) =>
-                total + (sessaoAssento.tipoEntradaId === 2 ? 15 : 30),
+                total +
+                (sessaoAssento.tipoEntradaId === 2
+                  ? Number(sessao!.preco) / 2
+                  : Number(sessao!.preco)),
               0
             ),
           },
@@ -287,12 +291,25 @@ export const CheckoutPage = () => {
                           {sessaoAssento.tipoEntradaId === 2 ? (
                             <div>
                               <p className="text-xs line-through text-center">
-                                R$30,00
+                                {formatarComoMoedaBrasileira(
+                                  Number(sessao.preco),
+                                  sessaoAssento.tipoEntradaId
+                                )}
                               </p>
-                              <p className="font-bold">R$15,00</p>
+                              <p className="font-bold">
+                                {formatarComoMoedaBrasileira(
+                                  Number(sessao.preco),
+                                  sessaoAssento.tipoEntradaId
+                                )}
+                              </p>
                             </div>
                           ) : (
-                            <p className="font-bold">R$30,00</p>
+                            <p className="font-bold">
+                              {formatarComoMoedaBrasileira(
+                                Number(sessao.preco),
+                                sessaoAssento.tipoEntradaId
+                              )}
+                            </p>
                           )}
                         </div>
                       ))}
@@ -310,25 +327,29 @@ export const CheckoutPage = () => {
                         (x) => x.tipoEntradaId === 2
                       ) ? (
                         <p className="text-sm line-through">
-                          R$
-                          {assentosEscolhidos.sessoesAssentos.reduce(
-                            (total) => total + 30,
-                            0
+                          {formatarComoMoedaBrasileira(
+                            assentosEscolhidos.sessoesAssentos.reduce(
+                              (total) => total + Number(sessao!.preco),
+                              0
+                            ),
+                            1
                           )}
-                          ,00
                         </p>
                       ) : (
                         <></>
                       )}
                       <p className="text-2xl font-bold">
-                        R$
-                        {assentosEscolhidos.sessoesAssentos.reduce(
-                          (total, sessaoAssento) =>
-                            total +
-                            (sessaoAssento.tipoEntradaId === 2 ? 15 : 30),
-                          0
+                        {formatarComoMoedaBrasileira(
+                          assentosEscolhidos.sessoesAssentos.reduce(
+                            (total, sessaoAssento) =>
+                              total +
+                              (sessaoAssento.tipoEntradaId === 2
+                                ? Number(sessao!.preco) / 2
+                                : Number(sessao!.preco)),
+                            0
+                          ),
+                          1
                         )}
-                        ,00
                       </p>
                     </div>
                   </div>

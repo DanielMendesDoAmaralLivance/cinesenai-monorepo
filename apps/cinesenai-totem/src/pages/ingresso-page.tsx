@@ -128,11 +128,16 @@ export const IngressoPage = () => {
                       <div className="flex justify-between">
                         <p>
                           1x R$
-                          {sessaoAssento.tipoEntradaId === 1 ? 30 : 15}
+                          {sessaoAssento.tipoEntradaId === 1
+                            ? Number(sessao!.preco).toFixed(2)
+                            : (Number(sessao!.preco) / 2).toFixed(2)}
                           ,00
                         </p>
                         <p className="font-bold">
-                          R${sessaoAssento.tipoEntradaId === 1 ? 30 : 15},00
+                          R$
+                          {sessaoAssento.tipoEntradaId === 1
+                            ? Number(sessao!.preco).toFixed(2)
+                            : (Number(sessao!.preco) / 2).toFixed(2)}
                         </p>
                       </div>
                     </div>
@@ -144,7 +149,7 @@ export const IngressoPage = () => {
 
             <code className="text-xl flex justify-between p-5 bg-amber-200 font-bold">
               <p>TOTAL</p>
-              <p>R${ingresso.pagamento?.valorTotal},00</p>
+              <p>R${ingresso.pagamento?.valorTotal.toFixed(2)}</p>
             </code>
 
             <div className="w-full h-[1px] bg-amber-500"></div>
@@ -160,7 +165,7 @@ export const IngressoPage = () => {
                       ? "CARTÃO DE DÉBITO"
                       : "PIX"}
                 </p>
-                <p>VALOR PAGO: R${ingresso.pagamento?.valorTotal},00</p>
+                <p>VALOR PAGO: R${ingresso.pagamento?.valorTotal.toFixed(2)}</p>
                 <p>
                   DATA DO PAGAMENTO:{" "}
                   {new Date(
