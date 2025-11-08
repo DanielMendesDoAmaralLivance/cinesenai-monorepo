@@ -146,36 +146,11 @@ exports.Prisma.FilmeScalarFieldEnum = {
   trailerUrl: 'trailerUrl',
   capaUrl: 'capaUrl',
   bannerUrl: 'bannerUrl',
+  direcao: 'direcao',
+  elenco: 'elenco',
   dataLancamento: 'dataLancamento',
   dataInicioCartaz: 'dataInicioCartaz',
   dataFimCartaz: 'dataFimCartaz',
-  ativo: 'ativo',
-  criadoEm: 'criadoEm',
-  atualizadoEm: 'atualizadoEm'
-};
-
-exports.Prisma.FilmeIntegranteScalarFieldEnum = {
-  id: 'id',
-  filmeId: 'filmeId',
-  integranteId: 'integranteId',
-  ativo: 'ativo',
-  criadoEm: 'criadoEm',
-  atualizadoEm: 'atualizadoEm'
-};
-
-exports.Prisma.IntegranteScalarFieldEnum = {
-  id: 'id',
-  tipoIntegranteId: 'tipoIntegranteId',
-  nome: 'nome',
-  sobrenome: 'sobrenome',
-  ativo: 'ativo',
-  criadoEm: 'criadoEm',
-  atualizadoEm: 'atualizadoEm'
-};
-
-exports.Prisma.TipoIntegranteScalarFieldEnum = {
-  id: 'id',
-  nome: 'nome',
   ativo: 'ativo',
   criadoEm: 'criadoEm',
   atualizadoEm: 'atualizadoEm'
@@ -325,9 +300,6 @@ exports.Prisma.ModelName = {
   Genero: 'Genero',
   FilmeGenero: 'FilmeGenero',
   Filme: 'Filme',
-  FilmeIntegrante: 'FilmeIntegrante',
-  Integrante: 'Integrante',
-  TipoIntegrante: 'TipoIntegrante',
   ClassificacaoIndicativa: 'ClassificacaoIndicativa',
   TipoIdioma: 'TipoIdioma',
   TipoSessao: 'TipoSessao',

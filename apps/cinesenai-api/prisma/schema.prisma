@@ -51,6 +51,8 @@ model Filme {
   trailerUrl       String                            @map("trailer_url")
   capaUrl          String                            @map("capa_url")
   bannerUrl        String                            @map("banner_url") @default("")
+  direcao          String                            
+  elenco           String
   dataLancamento   DateTime                          @map("data_lancamento")
   dataInicioCartaz DateTime                          @map("data_inicio_cartaz")
   dataFimCartaz    DateTime                          @map("data_fim_cartaz")
@@ -60,65 +62,64 @@ model Filme {
   atualizadoEm     DateTime                          @updatedAt @map("atualizado_em")
 
   generos          FilmeGenero[]
-  integrantes      FilmeIntegrante[]
   sessoes          Sessao[]
 
   @@map("filme")
 }
 
-model FilmeIntegrante {
-  id           Int        @id @default(autoincrement())
+// model FilmeIntegrante {
+//   id           Int        @id @default(autoincrement())
 
-  filmeId      Int        @map("filme_id")
-  filme        Filme      @relation(fields: [filmeId], references: [id])
+//   filmeId      Int        @map("filme_id")
+//   filme        Filme      @relation(fields: [filmeId], references: [id])
 
-  integranteId Int        @map("integrante_id")
-  integrante   Integrante @relation(fields: [integranteId], references: [id])
+//   integranteId Int        @map("integrante_id")
+//   integrante   Integrante @relation(fields: [integranteId], references: [id])
 
-  ativo        Boolean    @default(true)
-  criadoEm     DateTime   @default(now()) @map("criado_em")
-  atualizadoEm DateTime   @updatedAt @map("atualizado_em")
+//   ativo        Boolean    @default(true)
+//   criadoEm     DateTime   @default(now()) @map("criado_em")
+//   atualizadoEm DateTime   @updatedAt @map("atualizado_em")
 
-  @@unique([integranteId, filmeId])
-  @@map("filme_integrante")
-}
+//   @@unique([integranteId, filmeId])
+//   @@map("filme_integrante")
+// }
 
-model Integrante {
-  id               Int            @id @default(autoincrement())
+// model Integrante {
+//   id               Int            @id @default(autoincrement())
 
-  tipoIntegranteId Int            @map("tipo_integrante_id")
-  tipoIntegrante   TipoIntegrante @relation(fields: [tipoIntegranteId], references: [id])
+//   tipoIntegranteId Int            @map("tipo_integrante_id")
+//   tipoIntegrante   TipoIntegrante @relation(fields: [tipoIntegranteId], references: [id])
 
-  nome             String
-  sobrenome        String
+//   nome             String
+//   sobrenome        String
 
-  ativo            Boolean        @default(true)
-  criadoEm         DateTime       @default(now()) @map("criado_em")
-  atualizadoEm     DateTime       @updatedAt @map("atualizado_em")
+//   ativo            Boolean        @default(true)
+//   criadoEm         DateTime       @default(now()) @map("criado_em")
+//   atualizadoEm     DateTime       @updatedAt @map("atualizado_em")
 
-  filmes           FilmeIntegrante[]
+//   filmes           FilmeIntegrante[]
 
-  @@map("integrante")
-}
+//   @@map("integrante")
+// }
 
-enum TipoIntegranteEnum {
-  Diretor
-  Ator
-}
+// enum TipoIntegranteEnum {
+//   Diretor
+//   Ator
+// }
 
-model TipoIntegrante {
-  id           Int      @id @default(autoincrement())
+// model TipoIntegrante {
+//   id           Int      @id @default(autoincrement())
 
-  nome         String   @unique
+//   nome         String   @unique
 
-  ativo        Boolean  @default(true)
-  criadoEm     DateTime @default(now()) @map("criado_em")
-  atualizadoEm DateTime @updatedAt @map("atualizado_em")
+//   ativo        Boolean  @default(true)
+//   criadoEm     DateTime @default(now()) @map("criado_em")
+//   atualizadoEm DateTime @updatedAt @map("atualizado_em")
 
-  integrantes  Integrante[]
+//   integrantes  Integrante[]
 
-  @@map("tipo_integrante")
-}
+//   @@map("tipo_integrante")
+// }
 
 enum ClassificacaoIndicativaEnum {
   Livre

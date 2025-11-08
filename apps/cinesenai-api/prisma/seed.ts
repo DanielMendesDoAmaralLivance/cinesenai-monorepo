@@ -1,6 +1,5 @@
 import {
   PrismaClient,
-  TipoIntegranteEnum,
   ClassificacaoIndicativaEnum,
   TipoIdiomaEnum,
   TipoSessaoEnum,
@@ -15,7 +14,6 @@ const prisma = new PrismaClient();
 
 async function main() {
   await seedGenero();
-  await seedTipoIntegrante();
   await seedClassificacaoIndicativa();
   await seedTipoIdioma();
   await seedTipoSessao();
@@ -48,18 +46,6 @@ async function seedGenero() {
       where: { nome: genero },
       update: {},
       create: { nome: genero },
-    });
-  }
-}
-
-async function seedTipoIntegrante() {
-  const tiposIntegrantes = Object.values(TipoIntegranteEnum);
-
-  for (const tipo of tiposIntegrantes) {
-    await prisma.tipoIntegrante.upsert({
-      where: { nome: tipo },
-      update: {},
-      create: { nome: tipo },
     });
   }
 }

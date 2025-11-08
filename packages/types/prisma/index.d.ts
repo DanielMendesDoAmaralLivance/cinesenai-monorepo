@@ -29,21 +29,6 @@ export type FilmeGenero = $Result.DefaultSelection<Prisma.$FilmeGeneroPayload>
  */
 export type Filme = $Result.DefaultSelection<Prisma.$FilmePayload>
 /**
- * Model FilmeIntegrante
- * 
- */
-export type FilmeIntegrante = $Result.DefaultSelection<Prisma.$FilmeIntegrantePayload>
-/**
- * Model Integrante
- * 
- */
-export type Integrante = $Result.DefaultSelection<Prisma.$IntegrantePayload>
-/**
- * Model TipoIntegrante
- * 
- */
-export type TipoIntegrante = $Result.DefaultSelection<Prisma.$TipoIntegrantePayload>
-/**
  * Model ClassificacaoIndicativa
  * 
  */
@@ -118,15 +103,7 @@ export type Pagamento = $Result.DefaultSelection<Prisma.$PagamentoPayload>
  * Enums
  */
 export namespace $Enums {
-  export const TipoIntegranteEnum: {
-  Diretor: 'Diretor',
-  Ator: 'Ator'
-};
-
-export type TipoIntegranteEnum = (typeof TipoIntegranteEnum)[keyof typeof TipoIntegranteEnum]
-
-
-export const ClassificacaoIndicativaEnum: {
+  export const ClassificacaoIndicativaEnum: {
   Livre: 'Livre',
   A10: 'A10',
   A12: 'A12',
@@ -202,10 +179,6 @@ export const FormaPagamentoEnum: {
 export type FormaPagamentoEnum = (typeof FormaPagamentoEnum)[keyof typeof FormaPagamentoEnum]
 
 }
-
-export type TipoIntegranteEnum = $Enums.TipoIntegranteEnum
-
-export const TipoIntegranteEnum: typeof $Enums.TipoIntegranteEnum
 
 export type ClassificacaoIndicativaEnum = $Enums.ClassificacaoIndicativaEnum
 
@@ -393,36 +366,6 @@ export class PrismaClient<
     * ```
     */
   get filme(): Prisma.FilmeDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.filmeIntegrante`: Exposes CRUD operations for the **FilmeIntegrante** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more FilmeIntegrantes
-    * const filmeIntegrantes = await prisma.filmeIntegrante.findMany()
-    * ```
-    */
-  get filmeIntegrante(): Prisma.FilmeIntegranteDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.integrante`: Exposes CRUD operations for the **Integrante** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Integrantes
-    * const integrantes = await prisma.integrante.findMany()
-    * ```
-    */
-  get integrante(): Prisma.IntegranteDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.tipoIntegrante`: Exposes CRUD operations for the **TipoIntegrante** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more TipoIntegrantes
-    * const tipoIntegrantes = await prisma.tipoIntegrante.findMany()
-    * ```
-    */
-  get tipoIntegrante(): Prisma.TipoIntegranteDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.classificacaoIndicativa`: Exposes CRUD operations for the **ClassificacaoIndicativa** model.
@@ -1006,9 +949,6 @@ export namespace Prisma {
     Genero: 'Genero',
     FilmeGenero: 'FilmeGenero',
     Filme: 'Filme',
-    FilmeIntegrante: 'FilmeIntegrante',
-    Integrante: 'Integrante',
-    TipoIntegrante: 'TipoIntegrante',
     ClassificacaoIndicativa: 'ClassificacaoIndicativa',
     TipoIdioma: 'TipoIdioma',
     TipoSessao: 'TipoSessao',
@@ -1041,7 +981,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "genero" | "filmeGenero" | "filme" | "filmeIntegrante" | "integrante" | "tipoIntegrante" | "classificacaoIndicativa" | "tipoIdioma" | "tipoSessao" | "sessao" | "tipoSala" | "sala" | "tipoAssento" | "assento" | "sessaoAssentoStatus" | "sessaoAssento" | "tipoEntrada" | "ingresso" | "formaPagamento" | "pagamento"
+      modelProps: "genero" | "filmeGenero" | "filme" | "classificacaoIndicativa" | "tipoIdioma" | "tipoSessao" | "sessao" | "tipoSala" | "sala" | "tipoAssento" | "assento" | "sessaoAssentoStatus" | "sessaoAssento" | "tipoEntrada" | "ingresso" | "formaPagamento" | "pagamento"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1264,228 +1204,6 @@ export namespace Prisma {
           count: {
             args: Prisma.FilmeCountArgs<ExtArgs>
             result: $Utils.Optional<FilmeCountAggregateOutputType> | number
-          }
-        }
-      }
-      FilmeIntegrante: {
-        payload: Prisma.$FilmeIntegrantePayload<ExtArgs>
-        fields: Prisma.FilmeIntegranteFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.FilmeIntegranteFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilmeIntegrantePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.FilmeIntegranteFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilmeIntegrantePayload>
-          }
-          findFirst: {
-            args: Prisma.FilmeIntegranteFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilmeIntegrantePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.FilmeIntegranteFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilmeIntegrantePayload>
-          }
-          findMany: {
-            args: Prisma.FilmeIntegranteFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilmeIntegrantePayload>[]
-          }
-          create: {
-            args: Prisma.FilmeIntegranteCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilmeIntegrantePayload>
-          }
-          createMany: {
-            args: Prisma.FilmeIntegranteCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.FilmeIntegranteCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilmeIntegrantePayload>[]
-          }
-          delete: {
-            args: Prisma.FilmeIntegranteDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilmeIntegrantePayload>
-          }
-          update: {
-            args: Prisma.FilmeIntegranteUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilmeIntegrantePayload>
-          }
-          deleteMany: {
-            args: Prisma.FilmeIntegranteDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.FilmeIntegranteUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.FilmeIntegranteUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilmeIntegrantePayload>[]
-          }
-          upsert: {
-            args: Prisma.FilmeIntegranteUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$FilmeIntegrantePayload>
-          }
-          aggregate: {
-            args: Prisma.FilmeIntegranteAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateFilmeIntegrante>
-          }
-          groupBy: {
-            args: Prisma.FilmeIntegranteGroupByArgs<ExtArgs>
-            result: $Utils.Optional<FilmeIntegranteGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.FilmeIntegranteCountArgs<ExtArgs>
-            result: $Utils.Optional<FilmeIntegranteCountAggregateOutputType> | number
-          }
-        }
-      }
-      Integrante: {
-        payload: Prisma.$IntegrantePayload<ExtArgs>
-        fields: Prisma.IntegranteFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.IntegranteFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$IntegrantePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.IntegranteFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$IntegrantePayload>
-          }
-          findFirst: {
-            args: Prisma.IntegranteFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$IntegrantePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.IntegranteFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$IntegrantePayload>
-          }
-          findMany: {
-            args: Prisma.IntegranteFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$IntegrantePayload>[]
-          }
-          create: {
-            args: Prisma.IntegranteCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$IntegrantePayload>
-          }
-          createMany: {
-            args: Prisma.IntegranteCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.IntegranteCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$IntegrantePayload>[]
-          }
-          delete: {
-            args: Prisma.IntegranteDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$IntegrantePayload>
-          }
-          update: {
-            args: Prisma.IntegranteUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$IntegrantePayload>
-          }
-          deleteMany: {
-            args: Prisma.IntegranteDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.IntegranteUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.IntegranteUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$IntegrantePayload>[]
-          }
-          upsert: {
-            args: Prisma.IntegranteUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$IntegrantePayload>
-          }
-          aggregate: {
-            args: Prisma.IntegranteAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateIntegrante>
-          }
-          groupBy: {
-            args: Prisma.IntegranteGroupByArgs<ExtArgs>
-            result: $Utils.Optional<IntegranteGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.IntegranteCountArgs<ExtArgs>
-            result: $Utils.Optional<IntegranteCountAggregateOutputType> | number
-          }
-        }
-      }
-      TipoIntegrante: {
-        payload: Prisma.$TipoIntegrantePayload<ExtArgs>
-        fields: Prisma.TipoIntegranteFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.TipoIntegranteFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TipoIntegrantePayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.TipoIntegranteFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TipoIntegrantePayload>
-          }
-          findFirst: {
-            args: Prisma.TipoIntegranteFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TipoIntegrantePayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.TipoIntegranteFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TipoIntegrantePayload>
-          }
-          findMany: {
-            args: Prisma.TipoIntegranteFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TipoIntegrantePayload>[]
-          }
-          create: {
-            args: Prisma.TipoIntegranteCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TipoIntegrantePayload>
-          }
-          createMany: {
-            args: Prisma.TipoIntegranteCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.TipoIntegranteCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TipoIntegrantePayload>[]
-          }
-          delete: {
-            args: Prisma.TipoIntegranteDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TipoIntegrantePayload>
-          }
-          update: {
-            args: Prisma.TipoIntegranteUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TipoIntegrantePayload>
-          }
-          deleteMany: {
-            args: Prisma.TipoIntegranteDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.TipoIntegranteUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.TipoIntegranteUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TipoIntegrantePayload>[]
-          }
-          upsert: {
-            args: Prisma.TipoIntegranteUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TipoIntegrantePayload>
-          }
-          aggregate: {
-            args: Prisma.TipoIntegranteAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateTipoIntegrante>
-          }
-          groupBy: {
-            args: Prisma.TipoIntegranteGroupByArgs<ExtArgs>
-            result: $Utils.Optional<TipoIntegranteGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.TipoIntegranteCountArgs<ExtArgs>
-            result: $Utils.Optional<TipoIntegranteCountAggregateOutputType> | number
           }
         }
       }
@@ -2612,9 +2330,6 @@ export namespace Prisma {
     genero?: GeneroOmit
     filmeGenero?: FilmeGeneroOmit
     filme?: FilmeOmit
-    filmeIntegrante?: FilmeIntegranteOmit
-    integrante?: IntegranteOmit
-    tipoIntegrante?: TipoIntegranteOmit
     classificacaoIndicativa?: ClassificacaoIndicativaOmit
     tipoIdioma?: TipoIdiomaOmit
     tipoSessao?: TipoSessaoOmit
@@ -2755,13 +2470,11 @@ export namespace Prisma {
 
   export type FilmeCountOutputType = {
     generos: number
-    integrantes: number
     sessoes: number
   }
 
   export type FilmeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     generos?: boolean | FilmeCountOutputTypeCountGenerosArgs
-    integrantes?: boolean | FilmeCountOutputTypeCountIntegrantesArgs
     sessoes?: boolean | FilmeCountOutputTypeCountSessoesArgs
   }
 
@@ -2786,77 +2499,8 @@ export namespace Prisma {
   /**
    * FilmeCountOutputType without action
    */
-  export type FilmeCountOutputTypeCountIntegrantesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: FilmeIntegranteWhereInput
-  }
-
-  /**
-   * FilmeCountOutputType without action
-   */
   export type FilmeCountOutputTypeCountSessoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: SessaoWhereInput
-  }
-
-
-  /**
-   * Count Type IntegranteCountOutputType
-   */
-
-  export type IntegranteCountOutputType = {
-    filmes: number
-  }
-
-  export type IntegranteCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    filmes?: boolean | IntegranteCountOutputTypeCountFilmesArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * IntegranteCountOutputType without action
-   */
-  export type IntegranteCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the IntegranteCountOutputType
-     */
-    select?: IntegranteCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * IntegranteCountOutputType without action
-   */
-  export type IntegranteCountOutputTypeCountFilmesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: FilmeIntegranteWhereInput
-  }
-
-
-  /**
-   * Count Type TipoIntegranteCountOutputType
-   */
-
-  export type TipoIntegranteCountOutputType = {
-    integrantes: number
-  }
-
-  export type TipoIntegranteCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    integrantes?: boolean | TipoIntegranteCountOutputTypeCountIntegrantesArgs
-  }
-
-  // Custom InputTypes
-  /**
-   * TipoIntegranteCountOutputType without action
-   */
-  export type TipoIntegranteCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TipoIntegranteCountOutputType
-     */
-    select?: TipoIntegranteCountOutputTypeSelect<ExtArgs> | null
-  }
-
-  /**
-   * TipoIntegranteCountOutputType without action
-   */
-  export type TipoIntegranteCountOutputTypeCountIntegrantesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: IntegranteWhereInput
   }
 
 
@@ -5503,6 +5147,8 @@ export namespace Prisma {
     trailerUrl: string | null
     capaUrl: string | null
     bannerUrl: string | null
+    direcao: string | null
+    elenco: string | null
     dataLancamento: Date | null
     dataInicioCartaz: Date | null
     dataFimCartaz: Date | null
@@ -5520,6 +5166,8 @@ export namespace Prisma {
     trailerUrl: string | null
     capaUrl: string | null
     bannerUrl: string | null
+    direcao: string | null
+    elenco: string | null
     dataLancamento: Date | null
     dataInicioCartaz: Date | null
     dataFimCartaz: Date | null
@@ -5537,6 +5185,8 @@ export namespace Prisma {
     trailerUrl: number
     capaUrl: number
     bannerUrl: number
+    direcao: number
+    elenco: number
     dataLancamento: number
     dataInicioCartaz: number
     dataFimCartaz: number
@@ -5568,6 +5218,8 @@ export namespace Prisma {
     trailerUrl?: true
     capaUrl?: true
     bannerUrl?: true
+    direcao?: true
+    elenco?: true
     dataLancamento?: true
     dataInicioCartaz?: true
     dataFimCartaz?: true
@@ -5585,6 +5237,8 @@ export namespace Prisma {
     trailerUrl?: true
     capaUrl?: true
     bannerUrl?: true
+    direcao?: true
+    elenco?: true
     dataLancamento?: true
     dataInicioCartaz?: true
     dataFimCartaz?: true
@@ -5602,6 +5256,8 @@ export namespace Prisma {
     trailerUrl?: true
     capaUrl?: true
     bannerUrl?: true
+    direcao?: true
+    elenco?: true
     dataLancamento?: true
     dataInicioCartaz?: true
     dataFimCartaz?: true
@@ -5706,6 +5362,8 @@ export namespace Prisma {
     trailerUrl: string
     capaUrl: string
     bannerUrl: string
+    direcao: string
+    elenco: string
     dataLancamento: Date
     dataInicioCartaz: Date
     dataFimCartaz: Date
@@ -5742,6 +5400,8 @@ export namespace Prisma {
     trailerUrl?: boolean
     capaUrl?: boolean
     bannerUrl?: boolean
+    direcao?: boolean
+    elenco?: boolean
     dataLancamento?: boolean
     dataInicioCartaz?: boolean
     dataFimCartaz?: boolean
@@ -5750,7 +5410,6 @@ export namespace Prisma {
     atualizadoEm?: boolean
     classificacaoIndicativa?: boolean | ClassificacaoIndicativaDefaultArgs<ExtArgs>
     generos?: boolean | Filme$generosArgs<ExtArgs>
-    integrantes?: boolean | Filme$integrantesArgs<ExtArgs>
     sessoes?: boolean | Filme$sessoesArgs<ExtArgs>
     _count?: boolean | FilmeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["filme"]>
@@ -5764,6 +5423,8 @@ export namespace Prisma {
     trailerUrl?: boolean
     capaUrl?: boolean
     bannerUrl?: boolean
+    direcao?: boolean
+    elenco?: boolean
     dataLancamento?: boolean
     dataInicioCartaz?: boolean
     dataFimCartaz?: boolean
@@ -5782,6 +5443,8 @@ export namespace Prisma {
     trailerUrl?: boolean
     capaUrl?: boolean
     bannerUrl?: boolean
+    direcao?: boolean
+    elenco?: boolean
     dataLancamento?: boolean
     dataInicioCartaz?: boolean
     dataFimCartaz?: boolean
@@ -5800,6 +5463,8 @@ export namespace Prisma {
     trailerUrl?: boolean
     capaUrl?: boolean
     bannerUrl?: boolean
+    direcao?: boolean
+    elenco?: boolean
     dataLancamento?: boolean
     dataInicioCartaz?: boolean
     dataFimCartaz?: boolean
@@ -5808,11 +5473,10 @@ export namespace Prisma {
     atualizadoEm?: boolean
   }
 
-  export type FilmeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "classificacaoIndicativaId" | "titulo" | "descricao" | "duracaoEmMinutos" | "trailerUrl" | "capaUrl" | "bannerUrl" | "dataLancamento" | "dataInicioCartaz" | "dataFimCartaz" | "ativo" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["filme"]>
+  export type FilmeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "classificacaoIndicativaId" | "titulo" | "descricao" | "duracaoEmMinutos" | "trailerUrl" | "capaUrl" | "bannerUrl" | "direcao" | "elenco" | "dataLancamento" | "dataInicioCartaz" | "dataFimCartaz" | "ativo" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["filme"]>
   export type FilmeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     classificacaoIndicativa?: boolean | ClassificacaoIndicativaDefaultArgs<ExtArgs>
     generos?: boolean | Filme$generosArgs<ExtArgs>
-    integrantes?: boolean | Filme$integrantesArgs<ExtArgs>
     sessoes?: boolean | Filme$sessoesArgs<ExtArgs>
     _count?: boolean | FilmeCountOutputTypeDefaultArgs<ExtArgs>
   }
@@ -5828,7 +5492,6 @@ export namespace Prisma {
     objects: {
       classificacaoIndicativa: Prisma.$ClassificacaoIndicativaPayload<ExtArgs>
       generos: Prisma.$FilmeGeneroPayload<ExtArgs>[]
-      integrantes: Prisma.$FilmeIntegrantePayload<ExtArgs>[]
       sessoes: Prisma.$SessaoPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
@@ -5840,6 +5503,8 @@ export namespace Prisma {
       trailerUrl: string
       capaUrl: string
       bannerUrl: string
+      direcao: string
+      elenco: string
       dataLancamento: Date
       dataInicioCartaz: Date
       dataFimCartaz: Date
@@ -6242,7 +5907,6 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     classificacaoIndicativa<T extends ClassificacaoIndicativaDefaultArgs<ExtArgs> = {}>(args?: Subset<T, ClassificacaoIndicativaDefaultArgs<ExtArgs>>): Prisma__ClassificacaoIndicativaClient<$Result.GetResult<Prisma.$ClassificacaoIndicativaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     generos<T extends Filme$generosArgs<ExtArgs> = {}>(args?: Subset<T, Filme$generosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilmeGeneroPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    integrantes<T extends Filme$integrantesArgs<ExtArgs> = {}>(args?: Subset<T, Filme$integrantesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilmeIntegrantePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     sessoes<T extends Filme$sessoesArgs<ExtArgs> = {}>(args?: Subset<T, Filme$sessoesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SessaoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -6281,6 +5945,8 @@ export namespace Prisma {
     readonly trailerUrl: FieldRef<"Filme", 'String'>
     readonly capaUrl: FieldRef<"Filme", 'String'>
     readonly bannerUrl: FieldRef<"Filme", 'String'>
+    readonly direcao: FieldRef<"Filme", 'String'>
+    readonly elenco: FieldRef<"Filme", 'String'>
     readonly dataLancamento: FieldRef<"Filme", 'DateTime'>
     readonly dataInicioCartaz: FieldRef<"Filme", 'DateTime'>
     readonly dataFimCartaz: FieldRef<"Filme", 'DateTime'>
@@ -6707,30 +6373,6 @@ export namespace Prisma {
   }
 
   /**
-   * Filme.integrantes
-   */
-  export type Filme$integrantesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FilmeIntegrante
-     */
-    select?: FilmeIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FilmeIntegrante
-     */
-    omit?: FilmeIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FilmeIntegranteInclude<ExtArgs> | null
-    where?: FilmeIntegranteWhereInput
-    orderBy?: FilmeIntegranteOrderByWithRelationInput | FilmeIntegranteOrderByWithRelationInput[]
-    cursor?: FilmeIntegranteWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: FilmeIntegranteScalarFieldEnum | FilmeIntegranteScalarFieldEnum[]
-  }
-
-  /**
    * Filme.sessoes
    */
   export type Filme$sessoesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6770,3383 +6412,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: FilmeInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model FilmeIntegrante
-   */
-
-  export type AggregateFilmeIntegrante = {
-    _count: FilmeIntegranteCountAggregateOutputType | null
-    _avg: FilmeIntegranteAvgAggregateOutputType | null
-    _sum: FilmeIntegranteSumAggregateOutputType | null
-    _min: FilmeIntegranteMinAggregateOutputType | null
-    _max: FilmeIntegranteMaxAggregateOutputType | null
-  }
-
-  export type FilmeIntegranteAvgAggregateOutputType = {
-    id: number | null
-    filmeId: number | null
-    integranteId: number | null
-  }
-
-  export type FilmeIntegranteSumAggregateOutputType = {
-    id: number | null
-    filmeId: number | null
-    integranteId: number | null
-  }
-
-  export type FilmeIntegranteMinAggregateOutputType = {
-    id: number | null
-    filmeId: number | null
-    integranteId: number | null
-    ativo: boolean | null
-    criadoEm: Date | null
-    atualizadoEm: Date | null
-  }
-
-  export type FilmeIntegranteMaxAggregateOutputType = {
-    id: number | null
-    filmeId: number | null
-    integranteId: number | null
-    ativo: boolean | null
-    criadoEm: Date | null
-    atualizadoEm: Date | null
-  }
-
-  export type FilmeIntegranteCountAggregateOutputType = {
-    id: number
-    filmeId: number
-    integranteId: number
-    ativo: number
-    criadoEm: number
-    atualizadoEm: number
-    _all: number
-  }
-
-
-  export type FilmeIntegranteAvgAggregateInputType = {
-    id?: true
-    filmeId?: true
-    integranteId?: true
-  }
-
-  export type FilmeIntegranteSumAggregateInputType = {
-    id?: true
-    filmeId?: true
-    integranteId?: true
-  }
-
-  export type FilmeIntegranteMinAggregateInputType = {
-    id?: true
-    filmeId?: true
-    integranteId?: true
-    ativo?: true
-    criadoEm?: true
-    atualizadoEm?: true
-  }
-
-  export type FilmeIntegranteMaxAggregateInputType = {
-    id?: true
-    filmeId?: true
-    integranteId?: true
-    ativo?: true
-    criadoEm?: true
-    atualizadoEm?: true
-  }
-
-  export type FilmeIntegranteCountAggregateInputType = {
-    id?: true
-    filmeId?: true
-    integranteId?: true
-    ativo?: true
-    criadoEm?: true
-    atualizadoEm?: true
-    _all?: true
-  }
-
-  export type FilmeIntegranteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which FilmeIntegrante to aggregate.
-     */
-    where?: FilmeIntegranteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of FilmeIntegrantes to fetch.
-     */
-    orderBy?: FilmeIntegranteOrderByWithRelationInput | FilmeIntegranteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: FilmeIntegranteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` FilmeIntegrantes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` FilmeIntegrantes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned FilmeIntegrantes
-    **/
-    _count?: true | FilmeIntegranteCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: FilmeIntegranteAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: FilmeIntegranteSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: FilmeIntegranteMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: FilmeIntegranteMaxAggregateInputType
-  }
-
-  export type GetFilmeIntegranteAggregateType<T extends FilmeIntegranteAggregateArgs> = {
-        [P in keyof T & keyof AggregateFilmeIntegrante]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateFilmeIntegrante[P]>
-      : GetScalarType<T[P], AggregateFilmeIntegrante[P]>
-  }
-
-
-
-
-  export type FilmeIntegranteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: FilmeIntegranteWhereInput
-    orderBy?: FilmeIntegranteOrderByWithAggregationInput | FilmeIntegranteOrderByWithAggregationInput[]
-    by: FilmeIntegranteScalarFieldEnum[] | FilmeIntegranteScalarFieldEnum
-    having?: FilmeIntegranteScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: FilmeIntegranteCountAggregateInputType | true
-    _avg?: FilmeIntegranteAvgAggregateInputType
-    _sum?: FilmeIntegranteSumAggregateInputType
-    _min?: FilmeIntegranteMinAggregateInputType
-    _max?: FilmeIntegranteMaxAggregateInputType
-  }
-
-  export type FilmeIntegranteGroupByOutputType = {
-    id: number
-    filmeId: number
-    integranteId: number
-    ativo: boolean
-    criadoEm: Date
-    atualizadoEm: Date
-    _count: FilmeIntegranteCountAggregateOutputType | null
-    _avg: FilmeIntegranteAvgAggregateOutputType | null
-    _sum: FilmeIntegranteSumAggregateOutputType | null
-    _min: FilmeIntegranteMinAggregateOutputType | null
-    _max: FilmeIntegranteMaxAggregateOutputType | null
-  }
-
-  type GetFilmeIntegranteGroupByPayload<T extends FilmeIntegranteGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<FilmeIntegranteGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof FilmeIntegranteGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], FilmeIntegranteGroupByOutputType[P]>
-            : GetScalarType<T[P], FilmeIntegranteGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type FilmeIntegranteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    filmeId?: boolean
-    integranteId?: boolean
-    ativo?: boolean
-    criadoEm?: boolean
-    atualizadoEm?: boolean
-    filme?: boolean | FilmeDefaultArgs<ExtArgs>
-    integrante?: boolean | IntegranteDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["filmeIntegrante"]>
-
-  export type FilmeIntegranteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    filmeId?: boolean
-    integranteId?: boolean
-    ativo?: boolean
-    criadoEm?: boolean
-    atualizadoEm?: boolean
-    filme?: boolean | FilmeDefaultArgs<ExtArgs>
-    integrante?: boolean | IntegranteDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["filmeIntegrante"]>
-
-  export type FilmeIntegranteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    filmeId?: boolean
-    integranteId?: boolean
-    ativo?: boolean
-    criadoEm?: boolean
-    atualizadoEm?: boolean
-    filme?: boolean | FilmeDefaultArgs<ExtArgs>
-    integrante?: boolean | IntegranteDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["filmeIntegrante"]>
-
-  export type FilmeIntegranteSelectScalar = {
-    id?: boolean
-    filmeId?: boolean
-    integranteId?: boolean
-    ativo?: boolean
-    criadoEm?: boolean
-    atualizadoEm?: boolean
-  }
-
-  export type FilmeIntegranteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "filmeId" | "integranteId" | "ativo" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["filmeIntegrante"]>
-  export type FilmeIntegranteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    filme?: boolean | FilmeDefaultArgs<ExtArgs>
-    integrante?: boolean | IntegranteDefaultArgs<ExtArgs>
-  }
-  export type FilmeIntegranteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    filme?: boolean | FilmeDefaultArgs<ExtArgs>
-    integrante?: boolean | IntegranteDefaultArgs<ExtArgs>
-  }
-  export type FilmeIntegranteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    filme?: boolean | FilmeDefaultArgs<ExtArgs>
-    integrante?: boolean | IntegranteDefaultArgs<ExtArgs>
-  }
-
-  export type $FilmeIntegrantePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "FilmeIntegrante"
-    objects: {
-      filme: Prisma.$FilmePayload<ExtArgs>
-      integrante: Prisma.$IntegrantePayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      filmeId: number
-      integranteId: number
-      ativo: boolean
-      criadoEm: Date
-      atualizadoEm: Date
-    }, ExtArgs["result"]["filmeIntegrante"]>
-    composites: {}
-  }
-
-  type FilmeIntegranteGetPayload<S extends boolean | null | undefined | FilmeIntegranteDefaultArgs> = $Result.GetResult<Prisma.$FilmeIntegrantePayload, S>
-
-  type FilmeIntegranteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<FilmeIntegranteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: FilmeIntegranteCountAggregateInputType | true
-    }
-
-  export interface FilmeIntegranteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['FilmeIntegrante'], meta: { name: 'FilmeIntegrante' } }
-    /**
-     * Find zero or one FilmeIntegrante that matches the filter.
-     * @param {FilmeIntegranteFindUniqueArgs} args - Arguments to find a FilmeIntegrante
-     * @example
-     * // Get one FilmeIntegrante
-     * const filmeIntegrante = await prisma.filmeIntegrante.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends FilmeIntegranteFindUniqueArgs>(args: SelectSubset<T, FilmeIntegranteFindUniqueArgs<ExtArgs>>): Prisma__FilmeIntegranteClient<$Result.GetResult<Prisma.$FilmeIntegrantePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one FilmeIntegrante that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {FilmeIntegranteFindUniqueOrThrowArgs} args - Arguments to find a FilmeIntegrante
-     * @example
-     * // Get one FilmeIntegrante
-     * const filmeIntegrante = await prisma.filmeIntegrante.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends FilmeIntegranteFindUniqueOrThrowArgs>(args: SelectSubset<T, FilmeIntegranteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__FilmeIntegranteClient<$Result.GetResult<Prisma.$FilmeIntegrantePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first FilmeIntegrante that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {FilmeIntegranteFindFirstArgs} args - Arguments to find a FilmeIntegrante
-     * @example
-     * // Get one FilmeIntegrante
-     * const filmeIntegrante = await prisma.filmeIntegrante.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends FilmeIntegranteFindFirstArgs>(args?: SelectSubset<T, FilmeIntegranteFindFirstArgs<ExtArgs>>): Prisma__FilmeIntegranteClient<$Result.GetResult<Prisma.$FilmeIntegrantePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first FilmeIntegrante that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {FilmeIntegranteFindFirstOrThrowArgs} args - Arguments to find a FilmeIntegrante
-     * @example
-     * // Get one FilmeIntegrante
-     * const filmeIntegrante = await prisma.filmeIntegrante.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends FilmeIntegranteFindFirstOrThrowArgs>(args?: SelectSubset<T, FilmeIntegranteFindFirstOrThrowArgs<ExtArgs>>): Prisma__FilmeIntegranteClient<$Result.GetResult<Prisma.$FilmeIntegrantePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more FilmeIntegrantes that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {FilmeIntegranteFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all FilmeIntegrantes
-     * const filmeIntegrantes = await prisma.filmeIntegrante.findMany()
-     * 
-     * // Get first 10 FilmeIntegrantes
-     * const filmeIntegrantes = await prisma.filmeIntegrante.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const filmeIntegranteWithIdOnly = await prisma.filmeIntegrante.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends FilmeIntegranteFindManyArgs>(args?: SelectSubset<T, FilmeIntegranteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilmeIntegrantePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a FilmeIntegrante.
-     * @param {FilmeIntegranteCreateArgs} args - Arguments to create a FilmeIntegrante.
-     * @example
-     * // Create one FilmeIntegrante
-     * const FilmeIntegrante = await prisma.filmeIntegrante.create({
-     *   data: {
-     *     // ... data to create a FilmeIntegrante
-     *   }
-     * })
-     * 
-     */
-    create<T extends FilmeIntegranteCreateArgs>(args: SelectSubset<T, FilmeIntegranteCreateArgs<ExtArgs>>): Prisma__FilmeIntegranteClient<$Result.GetResult<Prisma.$FilmeIntegrantePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many FilmeIntegrantes.
-     * @param {FilmeIntegranteCreateManyArgs} args - Arguments to create many FilmeIntegrantes.
-     * @example
-     * // Create many FilmeIntegrantes
-     * const filmeIntegrante = await prisma.filmeIntegrante.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends FilmeIntegranteCreateManyArgs>(args?: SelectSubset<T, FilmeIntegranteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many FilmeIntegrantes and returns the data saved in the database.
-     * @param {FilmeIntegranteCreateManyAndReturnArgs} args - Arguments to create many FilmeIntegrantes.
-     * @example
-     * // Create many FilmeIntegrantes
-     * const filmeIntegrante = await prisma.filmeIntegrante.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many FilmeIntegrantes and only return the `id`
-     * const filmeIntegranteWithIdOnly = await prisma.filmeIntegrante.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends FilmeIntegranteCreateManyAndReturnArgs>(args?: SelectSubset<T, FilmeIntegranteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilmeIntegrantePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a FilmeIntegrante.
-     * @param {FilmeIntegranteDeleteArgs} args - Arguments to delete one FilmeIntegrante.
-     * @example
-     * // Delete one FilmeIntegrante
-     * const FilmeIntegrante = await prisma.filmeIntegrante.delete({
-     *   where: {
-     *     // ... filter to delete one FilmeIntegrante
-     *   }
-     * })
-     * 
-     */
-    delete<T extends FilmeIntegranteDeleteArgs>(args: SelectSubset<T, FilmeIntegranteDeleteArgs<ExtArgs>>): Prisma__FilmeIntegranteClient<$Result.GetResult<Prisma.$FilmeIntegrantePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one FilmeIntegrante.
-     * @param {FilmeIntegranteUpdateArgs} args - Arguments to update one FilmeIntegrante.
-     * @example
-     * // Update one FilmeIntegrante
-     * const filmeIntegrante = await prisma.filmeIntegrante.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends FilmeIntegranteUpdateArgs>(args: SelectSubset<T, FilmeIntegranteUpdateArgs<ExtArgs>>): Prisma__FilmeIntegranteClient<$Result.GetResult<Prisma.$FilmeIntegrantePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more FilmeIntegrantes.
-     * @param {FilmeIntegranteDeleteManyArgs} args - Arguments to filter FilmeIntegrantes to delete.
-     * @example
-     * // Delete a few FilmeIntegrantes
-     * const { count } = await prisma.filmeIntegrante.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends FilmeIntegranteDeleteManyArgs>(args?: SelectSubset<T, FilmeIntegranteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more FilmeIntegrantes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {FilmeIntegranteUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many FilmeIntegrantes
-     * const filmeIntegrante = await prisma.filmeIntegrante.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends FilmeIntegranteUpdateManyArgs>(args: SelectSubset<T, FilmeIntegranteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more FilmeIntegrantes and returns the data updated in the database.
-     * @param {FilmeIntegranteUpdateManyAndReturnArgs} args - Arguments to update many FilmeIntegrantes.
-     * @example
-     * // Update many FilmeIntegrantes
-     * const filmeIntegrante = await prisma.filmeIntegrante.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more FilmeIntegrantes and only return the `id`
-     * const filmeIntegranteWithIdOnly = await prisma.filmeIntegrante.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends FilmeIntegranteUpdateManyAndReturnArgs>(args: SelectSubset<T, FilmeIntegranteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilmeIntegrantePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one FilmeIntegrante.
-     * @param {FilmeIntegranteUpsertArgs} args - Arguments to update or create a FilmeIntegrante.
-     * @example
-     * // Update or create a FilmeIntegrante
-     * const filmeIntegrante = await prisma.filmeIntegrante.upsert({
-     *   create: {
-     *     // ... data to create a FilmeIntegrante
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the FilmeIntegrante we want to update
-     *   }
-     * })
-     */
-    upsert<T extends FilmeIntegranteUpsertArgs>(args: SelectSubset<T, FilmeIntegranteUpsertArgs<ExtArgs>>): Prisma__FilmeIntegranteClient<$Result.GetResult<Prisma.$FilmeIntegrantePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of FilmeIntegrantes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {FilmeIntegranteCountArgs} args - Arguments to filter FilmeIntegrantes to count.
-     * @example
-     * // Count the number of FilmeIntegrantes
-     * const count = await prisma.filmeIntegrante.count({
-     *   where: {
-     *     // ... the filter for the FilmeIntegrantes we want to count
-     *   }
-     * })
-    **/
-    count<T extends FilmeIntegranteCountArgs>(
-      args?: Subset<T, FilmeIntegranteCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], FilmeIntegranteCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a FilmeIntegrante.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {FilmeIntegranteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends FilmeIntegranteAggregateArgs>(args: Subset<T, FilmeIntegranteAggregateArgs>): Prisma.PrismaPromise<GetFilmeIntegranteAggregateType<T>>
-
-    /**
-     * Group by FilmeIntegrante.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {FilmeIntegranteGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends FilmeIntegranteGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: FilmeIntegranteGroupByArgs['orderBy'] }
-        : { orderBy?: FilmeIntegranteGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, FilmeIntegranteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetFilmeIntegranteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the FilmeIntegrante model
-   */
-  readonly fields: FilmeIntegranteFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for FilmeIntegrante.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__FilmeIntegranteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    filme<T extends FilmeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, FilmeDefaultArgs<ExtArgs>>): Prisma__FilmeClient<$Result.GetResult<Prisma.$FilmePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    integrante<T extends IntegranteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, IntegranteDefaultArgs<ExtArgs>>): Prisma__IntegranteClient<$Result.GetResult<Prisma.$IntegrantePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the FilmeIntegrante model
-   */
-  interface FilmeIntegranteFieldRefs {
-    readonly id: FieldRef<"FilmeIntegrante", 'Int'>
-    readonly filmeId: FieldRef<"FilmeIntegrante", 'Int'>
-    readonly integranteId: FieldRef<"FilmeIntegrante", 'Int'>
-    readonly ativo: FieldRef<"FilmeIntegrante", 'Boolean'>
-    readonly criadoEm: FieldRef<"FilmeIntegrante", 'DateTime'>
-    readonly atualizadoEm: FieldRef<"FilmeIntegrante", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * FilmeIntegrante findUnique
-   */
-  export type FilmeIntegranteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FilmeIntegrante
-     */
-    select?: FilmeIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FilmeIntegrante
-     */
-    omit?: FilmeIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FilmeIntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which FilmeIntegrante to fetch.
-     */
-    where: FilmeIntegranteWhereUniqueInput
-  }
-
-  /**
-   * FilmeIntegrante findUniqueOrThrow
-   */
-  export type FilmeIntegranteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FilmeIntegrante
-     */
-    select?: FilmeIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FilmeIntegrante
-     */
-    omit?: FilmeIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FilmeIntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which FilmeIntegrante to fetch.
-     */
-    where: FilmeIntegranteWhereUniqueInput
-  }
-
-  /**
-   * FilmeIntegrante findFirst
-   */
-  export type FilmeIntegranteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FilmeIntegrante
-     */
-    select?: FilmeIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FilmeIntegrante
-     */
-    omit?: FilmeIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FilmeIntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which FilmeIntegrante to fetch.
-     */
-    where?: FilmeIntegranteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of FilmeIntegrantes to fetch.
-     */
-    orderBy?: FilmeIntegranteOrderByWithRelationInput | FilmeIntegranteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for FilmeIntegrantes.
-     */
-    cursor?: FilmeIntegranteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` FilmeIntegrantes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` FilmeIntegrantes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of FilmeIntegrantes.
-     */
-    distinct?: FilmeIntegranteScalarFieldEnum | FilmeIntegranteScalarFieldEnum[]
-  }
-
-  /**
-   * FilmeIntegrante findFirstOrThrow
-   */
-  export type FilmeIntegranteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FilmeIntegrante
-     */
-    select?: FilmeIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FilmeIntegrante
-     */
-    omit?: FilmeIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FilmeIntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which FilmeIntegrante to fetch.
-     */
-    where?: FilmeIntegranteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of FilmeIntegrantes to fetch.
-     */
-    orderBy?: FilmeIntegranteOrderByWithRelationInput | FilmeIntegranteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for FilmeIntegrantes.
-     */
-    cursor?: FilmeIntegranteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` FilmeIntegrantes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` FilmeIntegrantes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of FilmeIntegrantes.
-     */
-    distinct?: FilmeIntegranteScalarFieldEnum | FilmeIntegranteScalarFieldEnum[]
-  }
-
-  /**
-   * FilmeIntegrante findMany
-   */
-  export type FilmeIntegranteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FilmeIntegrante
-     */
-    select?: FilmeIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FilmeIntegrante
-     */
-    omit?: FilmeIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FilmeIntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which FilmeIntegrantes to fetch.
-     */
-    where?: FilmeIntegranteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of FilmeIntegrantes to fetch.
-     */
-    orderBy?: FilmeIntegranteOrderByWithRelationInput | FilmeIntegranteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing FilmeIntegrantes.
-     */
-    cursor?: FilmeIntegranteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` FilmeIntegrantes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` FilmeIntegrantes.
-     */
-    skip?: number
-    distinct?: FilmeIntegranteScalarFieldEnum | FilmeIntegranteScalarFieldEnum[]
-  }
-
-  /**
-   * FilmeIntegrante create
-   */
-  export type FilmeIntegranteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FilmeIntegrante
-     */
-    select?: FilmeIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FilmeIntegrante
-     */
-    omit?: FilmeIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FilmeIntegranteInclude<ExtArgs> | null
-    /**
-     * The data needed to create a FilmeIntegrante.
-     */
-    data: XOR<FilmeIntegranteCreateInput, FilmeIntegranteUncheckedCreateInput>
-  }
-
-  /**
-   * FilmeIntegrante createMany
-   */
-  export type FilmeIntegranteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many FilmeIntegrantes.
-     */
-    data: FilmeIntegranteCreateManyInput | FilmeIntegranteCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * FilmeIntegrante createManyAndReturn
-   */
-  export type FilmeIntegranteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FilmeIntegrante
-     */
-    select?: FilmeIntegranteSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the FilmeIntegrante
-     */
-    omit?: FilmeIntegranteOmit<ExtArgs> | null
-    /**
-     * The data used to create many FilmeIntegrantes.
-     */
-    data: FilmeIntegranteCreateManyInput | FilmeIntegranteCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FilmeIntegranteIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * FilmeIntegrante update
-   */
-  export type FilmeIntegranteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FilmeIntegrante
-     */
-    select?: FilmeIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FilmeIntegrante
-     */
-    omit?: FilmeIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FilmeIntegranteInclude<ExtArgs> | null
-    /**
-     * The data needed to update a FilmeIntegrante.
-     */
-    data: XOR<FilmeIntegranteUpdateInput, FilmeIntegranteUncheckedUpdateInput>
-    /**
-     * Choose, which FilmeIntegrante to update.
-     */
-    where: FilmeIntegranteWhereUniqueInput
-  }
-
-  /**
-   * FilmeIntegrante updateMany
-   */
-  export type FilmeIntegranteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update FilmeIntegrantes.
-     */
-    data: XOR<FilmeIntegranteUpdateManyMutationInput, FilmeIntegranteUncheckedUpdateManyInput>
-    /**
-     * Filter which FilmeIntegrantes to update
-     */
-    where?: FilmeIntegranteWhereInput
-    /**
-     * Limit how many FilmeIntegrantes to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * FilmeIntegrante updateManyAndReturn
-   */
-  export type FilmeIntegranteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FilmeIntegrante
-     */
-    select?: FilmeIntegranteSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the FilmeIntegrante
-     */
-    omit?: FilmeIntegranteOmit<ExtArgs> | null
-    /**
-     * The data used to update FilmeIntegrantes.
-     */
-    data: XOR<FilmeIntegranteUpdateManyMutationInput, FilmeIntegranteUncheckedUpdateManyInput>
-    /**
-     * Filter which FilmeIntegrantes to update
-     */
-    where?: FilmeIntegranteWhereInput
-    /**
-     * Limit how many FilmeIntegrantes to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FilmeIntegranteIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * FilmeIntegrante upsert
-   */
-  export type FilmeIntegranteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FilmeIntegrante
-     */
-    select?: FilmeIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FilmeIntegrante
-     */
-    omit?: FilmeIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FilmeIntegranteInclude<ExtArgs> | null
-    /**
-     * The filter to search for the FilmeIntegrante to update in case it exists.
-     */
-    where: FilmeIntegranteWhereUniqueInput
-    /**
-     * In case the FilmeIntegrante found by the `where` argument doesn't exist, create a new FilmeIntegrante with this data.
-     */
-    create: XOR<FilmeIntegranteCreateInput, FilmeIntegranteUncheckedCreateInput>
-    /**
-     * In case the FilmeIntegrante was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<FilmeIntegranteUpdateInput, FilmeIntegranteUncheckedUpdateInput>
-  }
-
-  /**
-   * FilmeIntegrante delete
-   */
-  export type FilmeIntegranteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FilmeIntegrante
-     */
-    select?: FilmeIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FilmeIntegrante
-     */
-    omit?: FilmeIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FilmeIntegranteInclude<ExtArgs> | null
-    /**
-     * Filter which FilmeIntegrante to delete.
-     */
-    where: FilmeIntegranteWhereUniqueInput
-  }
-
-  /**
-   * FilmeIntegrante deleteMany
-   */
-  export type FilmeIntegranteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which FilmeIntegrantes to delete
-     */
-    where?: FilmeIntegranteWhereInput
-    /**
-     * Limit how many FilmeIntegrantes to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * FilmeIntegrante without action
-   */
-  export type FilmeIntegranteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FilmeIntegrante
-     */
-    select?: FilmeIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FilmeIntegrante
-     */
-    omit?: FilmeIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FilmeIntegranteInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model Integrante
-   */
-
-  export type AggregateIntegrante = {
-    _count: IntegranteCountAggregateOutputType | null
-    _avg: IntegranteAvgAggregateOutputType | null
-    _sum: IntegranteSumAggregateOutputType | null
-    _min: IntegranteMinAggregateOutputType | null
-    _max: IntegranteMaxAggregateOutputType | null
-  }
-
-  export type IntegranteAvgAggregateOutputType = {
-    id: number | null
-    tipoIntegranteId: number | null
-  }
-
-  export type IntegranteSumAggregateOutputType = {
-    id: number | null
-    tipoIntegranteId: number | null
-  }
-
-  export type IntegranteMinAggregateOutputType = {
-    id: number | null
-    tipoIntegranteId: number | null
-    nome: string | null
-    sobrenome: string | null
-    ativo: boolean | null
-    criadoEm: Date | null
-    atualizadoEm: Date | null
-  }
-
-  export type IntegranteMaxAggregateOutputType = {
-    id: number | null
-    tipoIntegranteId: number | null
-    nome: string | null
-    sobrenome: string | null
-    ativo: boolean | null
-    criadoEm: Date | null
-    atualizadoEm: Date | null
-  }
-
-  export type IntegranteCountAggregateOutputType = {
-    id: number
-    tipoIntegranteId: number
-    nome: number
-    sobrenome: number
-    ativo: number
-    criadoEm: number
-    atualizadoEm: number
-    _all: number
-  }
-
-
-  export type IntegranteAvgAggregateInputType = {
-    id?: true
-    tipoIntegranteId?: true
-  }
-
-  export type IntegranteSumAggregateInputType = {
-    id?: true
-    tipoIntegranteId?: true
-  }
-
-  export type IntegranteMinAggregateInputType = {
-    id?: true
-    tipoIntegranteId?: true
-    nome?: true
-    sobrenome?: true
-    ativo?: true
-    criadoEm?: true
-    atualizadoEm?: true
-  }
-
-  export type IntegranteMaxAggregateInputType = {
-    id?: true
-    tipoIntegranteId?: true
-    nome?: true
-    sobrenome?: true
-    ativo?: true
-    criadoEm?: true
-    atualizadoEm?: true
-  }
-
-  export type IntegranteCountAggregateInputType = {
-    id?: true
-    tipoIntegranteId?: true
-    nome?: true
-    sobrenome?: true
-    ativo?: true
-    criadoEm?: true
-    atualizadoEm?: true
-    _all?: true
-  }
-
-  export type IntegranteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Integrante to aggregate.
-     */
-    where?: IntegranteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Integrantes to fetch.
-     */
-    orderBy?: IntegranteOrderByWithRelationInput | IntegranteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: IntegranteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Integrantes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Integrantes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Integrantes
-    **/
-    _count?: true | IntegranteCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: IntegranteAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: IntegranteSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: IntegranteMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: IntegranteMaxAggregateInputType
-  }
-
-  export type GetIntegranteAggregateType<T extends IntegranteAggregateArgs> = {
-        [P in keyof T & keyof AggregateIntegrante]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateIntegrante[P]>
-      : GetScalarType<T[P], AggregateIntegrante[P]>
-  }
-
-
-
-
-  export type IntegranteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: IntegranteWhereInput
-    orderBy?: IntegranteOrderByWithAggregationInput | IntegranteOrderByWithAggregationInput[]
-    by: IntegranteScalarFieldEnum[] | IntegranteScalarFieldEnum
-    having?: IntegranteScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: IntegranteCountAggregateInputType | true
-    _avg?: IntegranteAvgAggregateInputType
-    _sum?: IntegranteSumAggregateInputType
-    _min?: IntegranteMinAggregateInputType
-    _max?: IntegranteMaxAggregateInputType
-  }
-
-  export type IntegranteGroupByOutputType = {
-    id: number
-    tipoIntegranteId: number
-    nome: string
-    sobrenome: string
-    ativo: boolean
-    criadoEm: Date
-    atualizadoEm: Date
-    _count: IntegranteCountAggregateOutputType | null
-    _avg: IntegranteAvgAggregateOutputType | null
-    _sum: IntegranteSumAggregateOutputType | null
-    _min: IntegranteMinAggregateOutputType | null
-    _max: IntegranteMaxAggregateOutputType | null
-  }
-
-  type GetIntegranteGroupByPayload<T extends IntegranteGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<IntegranteGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof IntegranteGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], IntegranteGroupByOutputType[P]>
-            : GetScalarType<T[P], IntegranteGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type IntegranteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    tipoIntegranteId?: boolean
-    nome?: boolean
-    sobrenome?: boolean
-    ativo?: boolean
-    criadoEm?: boolean
-    atualizadoEm?: boolean
-    tipoIntegrante?: boolean | TipoIntegranteDefaultArgs<ExtArgs>
-    filmes?: boolean | Integrante$filmesArgs<ExtArgs>
-    _count?: boolean | IntegranteCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["integrante"]>
-
-  export type IntegranteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    tipoIntegranteId?: boolean
-    nome?: boolean
-    sobrenome?: boolean
-    ativo?: boolean
-    criadoEm?: boolean
-    atualizadoEm?: boolean
-    tipoIntegrante?: boolean | TipoIntegranteDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["integrante"]>
-
-  export type IntegranteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    tipoIntegranteId?: boolean
-    nome?: boolean
-    sobrenome?: boolean
-    ativo?: boolean
-    criadoEm?: boolean
-    atualizadoEm?: boolean
-    tipoIntegrante?: boolean | TipoIntegranteDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["integrante"]>
-
-  export type IntegranteSelectScalar = {
-    id?: boolean
-    tipoIntegranteId?: boolean
-    nome?: boolean
-    sobrenome?: boolean
-    ativo?: boolean
-    criadoEm?: boolean
-    atualizadoEm?: boolean
-  }
-
-  export type IntegranteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "tipoIntegranteId" | "nome" | "sobrenome" | "ativo" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["integrante"]>
-  export type IntegranteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tipoIntegrante?: boolean | TipoIntegranteDefaultArgs<ExtArgs>
-    filmes?: boolean | Integrante$filmesArgs<ExtArgs>
-    _count?: boolean | IntegranteCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type IntegranteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tipoIntegrante?: boolean | TipoIntegranteDefaultArgs<ExtArgs>
-  }
-  export type IntegranteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tipoIntegrante?: boolean | TipoIntegranteDefaultArgs<ExtArgs>
-  }
-
-  export type $IntegrantePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Integrante"
-    objects: {
-      tipoIntegrante: Prisma.$TipoIntegrantePayload<ExtArgs>
-      filmes: Prisma.$FilmeIntegrantePayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      tipoIntegranteId: number
-      nome: string
-      sobrenome: string
-      ativo: boolean
-      criadoEm: Date
-      atualizadoEm: Date
-    }, ExtArgs["result"]["integrante"]>
-    composites: {}
-  }
-
-  type IntegranteGetPayload<S extends boolean | null | undefined | IntegranteDefaultArgs> = $Result.GetResult<Prisma.$IntegrantePayload, S>
-
-  type IntegranteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<IntegranteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: IntegranteCountAggregateInputType | true
-    }
-
-  export interface IntegranteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Integrante'], meta: { name: 'Integrante' } }
-    /**
-     * Find zero or one Integrante that matches the filter.
-     * @param {IntegranteFindUniqueArgs} args - Arguments to find a Integrante
-     * @example
-     * // Get one Integrante
-     * const integrante = await prisma.integrante.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends IntegranteFindUniqueArgs>(args: SelectSubset<T, IntegranteFindUniqueArgs<ExtArgs>>): Prisma__IntegranteClient<$Result.GetResult<Prisma.$IntegrantePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Integrante that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {IntegranteFindUniqueOrThrowArgs} args - Arguments to find a Integrante
-     * @example
-     * // Get one Integrante
-     * const integrante = await prisma.integrante.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends IntegranteFindUniqueOrThrowArgs>(args: SelectSubset<T, IntegranteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__IntegranteClient<$Result.GetResult<Prisma.$IntegrantePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Integrante that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {IntegranteFindFirstArgs} args - Arguments to find a Integrante
-     * @example
-     * // Get one Integrante
-     * const integrante = await prisma.integrante.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends IntegranteFindFirstArgs>(args?: SelectSubset<T, IntegranteFindFirstArgs<ExtArgs>>): Prisma__IntegranteClient<$Result.GetResult<Prisma.$IntegrantePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Integrante that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {IntegranteFindFirstOrThrowArgs} args - Arguments to find a Integrante
-     * @example
-     * // Get one Integrante
-     * const integrante = await prisma.integrante.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends IntegranteFindFirstOrThrowArgs>(args?: SelectSubset<T, IntegranteFindFirstOrThrowArgs<ExtArgs>>): Prisma__IntegranteClient<$Result.GetResult<Prisma.$IntegrantePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Integrantes that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {IntegranteFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Integrantes
-     * const integrantes = await prisma.integrante.findMany()
-     * 
-     * // Get first 10 Integrantes
-     * const integrantes = await prisma.integrante.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const integranteWithIdOnly = await prisma.integrante.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends IntegranteFindManyArgs>(args?: SelectSubset<T, IntegranteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IntegrantePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Integrante.
-     * @param {IntegranteCreateArgs} args - Arguments to create a Integrante.
-     * @example
-     * // Create one Integrante
-     * const Integrante = await prisma.integrante.create({
-     *   data: {
-     *     // ... data to create a Integrante
-     *   }
-     * })
-     * 
-     */
-    create<T extends IntegranteCreateArgs>(args: SelectSubset<T, IntegranteCreateArgs<ExtArgs>>): Prisma__IntegranteClient<$Result.GetResult<Prisma.$IntegrantePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Integrantes.
-     * @param {IntegranteCreateManyArgs} args - Arguments to create many Integrantes.
-     * @example
-     * // Create many Integrantes
-     * const integrante = await prisma.integrante.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends IntegranteCreateManyArgs>(args?: SelectSubset<T, IntegranteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Integrantes and returns the data saved in the database.
-     * @param {IntegranteCreateManyAndReturnArgs} args - Arguments to create many Integrantes.
-     * @example
-     * // Create many Integrantes
-     * const integrante = await prisma.integrante.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Integrantes and only return the `id`
-     * const integranteWithIdOnly = await prisma.integrante.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends IntegranteCreateManyAndReturnArgs>(args?: SelectSubset<T, IntegranteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IntegrantePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a Integrante.
-     * @param {IntegranteDeleteArgs} args - Arguments to delete one Integrante.
-     * @example
-     * // Delete one Integrante
-     * const Integrante = await prisma.integrante.delete({
-     *   where: {
-     *     // ... filter to delete one Integrante
-     *   }
-     * })
-     * 
-     */
-    delete<T extends IntegranteDeleteArgs>(args: SelectSubset<T, IntegranteDeleteArgs<ExtArgs>>): Prisma__IntegranteClient<$Result.GetResult<Prisma.$IntegrantePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Integrante.
-     * @param {IntegranteUpdateArgs} args - Arguments to update one Integrante.
-     * @example
-     * // Update one Integrante
-     * const integrante = await prisma.integrante.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends IntegranteUpdateArgs>(args: SelectSubset<T, IntegranteUpdateArgs<ExtArgs>>): Prisma__IntegranteClient<$Result.GetResult<Prisma.$IntegrantePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Integrantes.
-     * @param {IntegranteDeleteManyArgs} args - Arguments to filter Integrantes to delete.
-     * @example
-     * // Delete a few Integrantes
-     * const { count } = await prisma.integrante.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends IntegranteDeleteManyArgs>(args?: SelectSubset<T, IntegranteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Integrantes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {IntegranteUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Integrantes
-     * const integrante = await prisma.integrante.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends IntegranteUpdateManyArgs>(args: SelectSubset<T, IntegranteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Integrantes and returns the data updated in the database.
-     * @param {IntegranteUpdateManyAndReturnArgs} args - Arguments to update many Integrantes.
-     * @example
-     * // Update many Integrantes
-     * const integrante = await prisma.integrante.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Integrantes and only return the `id`
-     * const integranteWithIdOnly = await prisma.integrante.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends IntegranteUpdateManyAndReturnArgs>(args: SelectSubset<T, IntegranteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IntegrantePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one Integrante.
-     * @param {IntegranteUpsertArgs} args - Arguments to update or create a Integrante.
-     * @example
-     * // Update or create a Integrante
-     * const integrante = await prisma.integrante.upsert({
-     *   create: {
-     *     // ... data to create a Integrante
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Integrante we want to update
-     *   }
-     * })
-     */
-    upsert<T extends IntegranteUpsertArgs>(args: SelectSubset<T, IntegranteUpsertArgs<ExtArgs>>): Prisma__IntegranteClient<$Result.GetResult<Prisma.$IntegrantePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Integrantes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {IntegranteCountArgs} args - Arguments to filter Integrantes to count.
-     * @example
-     * // Count the number of Integrantes
-     * const count = await prisma.integrante.count({
-     *   where: {
-     *     // ... the filter for the Integrantes we want to count
-     *   }
-     * })
-    **/
-    count<T extends IntegranteCountArgs>(
-      args?: Subset<T, IntegranteCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], IntegranteCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Integrante.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {IntegranteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends IntegranteAggregateArgs>(args: Subset<T, IntegranteAggregateArgs>): Prisma.PrismaPromise<GetIntegranteAggregateType<T>>
-
-    /**
-     * Group by Integrante.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {IntegranteGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends IntegranteGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: IntegranteGroupByArgs['orderBy'] }
-        : { orderBy?: IntegranteGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, IntegranteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetIntegranteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Integrante model
-   */
-  readonly fields: IntegranteFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Integrante.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__IntegranteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    tipoIntegrante<T extends TipoIntegranteDefaultArgs<ExtArgs> = {}>(args?: Subset<T, TipoIntegranteDefaultArgs<ExtArgs>>): Prisma__TipoIntegranteClient<$Result.GetResult<Prisma.$TipoIntegrantePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    filmes<T extends Integrante$filmesArgs<ExtArgs> = {}>(args?: Subset<T, Integrante$filmesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$FilmeIntegrantePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Integrante model
-   */
-  interface IntegranteFieldRefs {
-    readonly id: FieldRef<"Integrante", 'Int'>
-    readonly tipoIntegranteId: FieldRef<"Integrante", 'Int'>
-    readonly nome: FieldRef<"Integrante", 'String'>
-    readonly sobrenome: FieldRef<"Integrante", 'String'>
-    readonly ativo: FieldRef<"Integrante", 'Boolean'>
-    readonly criadoEm: FieldRef<"Integrante", 'DateTime'>
-    readonly atualizadoEm: FieldRef<"Integrante", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Integrante findUnique
-   */
-  export type IntegranteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Integrante
-     */
-    select?: IntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Integrante
-     */
-    omit?: IntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: IntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which Integrante to fetch.
-     */
-    where: IntegranteWhereUniqueInput
-  }
-
-  /**
-   * Integrante findUniqueOrThrow
-   */
-  export type IntegranteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Integrante
-     */
-    select?: IntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Integrante
-     */
-    omit?: IntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: IntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which Integrante to fetch.
-     */
-    where: IntegranteWhereUniqueInput
-  }
-
-  /**
-   * Integrante findFirst
-   */
-  export type IntegranteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Integrante
-     */
-    select?: IntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Integrante
-     */
-    omit?: IntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: IntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which Integrante to fetch.
-     */
-    where?: IntegranteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Integrantes to fetch.
-     */
-    orderBy?: IntegranteOrderByWithRelationInput | IntegranteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Integrantes.
-     */
-    cursor?: IntegranteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Integrantes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Integrantes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Integrantes.
-     */
-    distinct?: IntegranteScalarFieldEnum | IntegranteScalarFieldEnum[]
-  }
-
-  /**
-   * Integrante findFirstOrThrow
-   */
-  export type IntegranteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Integrante
-     */
-    select?: IntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Integrante
-     */
-    omit?: IntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: IntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which Integrante to fetch.
-     */
-    where?: IntegranteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Integrantes to fetch.
-     */
-    orderBy?: IntegranteOrderByWithRelationInput | IntegranteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Integrantes.
-     */
-    cursor?: IntegranteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Integrantes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Integrantes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Integrantes.
-     */
-    distinct?: IntegranteScalarFieldEnum | IntegranteScalarFieldEnum[]
-  }
-
-  /**
-   * Integrante findMany
-   */
-  export type IntegranteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Integrante
-     */
-    select?: IntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Integrante
-     */
-    omit?: IntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: IntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which Integrantes to fetch.
-     */
-    where?: IntegranteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Integrantes to fetch.
-     */
-    orderBy?: IntegranteOrderByWithRelationInput | IntegranteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Integrantes.
-     */
-    cursor?: IntegranteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Integrantes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Integrantes.
-     */
-    skip?: number
-    distinct?: IntegranteScalarFieldEnum | IntegranteScalarFieldEnum[]
-  }
-
-  /**
-   * Integrante create
-   */
-  export type IntegranteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Integrante
-     */
-    select?: IntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Integrante
-     */
-    omit?: IntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: IntegranteInclude<ExtArgs> | null
-    /**
-     * The data needed to create a Integrante.
-     */
-    data: XOR<IntegranteCreateInput, IntegranteUncheckedCreateInput>
-  }
-
-  /**
-   * Integrante createMany
-   */
-  export type IntegranteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Integrantes.
-     */
-    data: IntegranteCreateManyInput | IntegranteCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Integrante createManyAndReturn
-   */
-  export type IntegranteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Integrante
-     */
-    select?: IntegranteSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Integrante
-     */
-    omit?: IntegranteOmit<ExtArgs> | null
-    /**
-     * The data used to create many Integrantes.
-     */
-    data: IntegranteCreateManyInput | IntegranteCreateManyInput[]
-    skipDuplicates?: boolean
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: IntegranteIncludeCreateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Integrante update
-   */
-  export type IntegranteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Integrante
-     */
-    select?: IntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Integrante
-     */
-    omit?: IntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: IntegranteInclude<ExtArgs> | null
-    /**
-     * The data needed to update a Integrante.
-     */
-    data: XOR<IntegranteUpdateInput, IntegranteUncheckedUpdateInput>
-    /**
-     * Choose, which Integrante to update.
-     */
-    where: IntegranteWhereUniqueInput
-  }
-
-  /**
-   * Integrante updateMany
-   */
-  export type IntegranteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Integrantes.
-     */
-    data: XOR<IntegranteUpdateManyMutationInput, IntegranteUncheckedUpdateManyInput>
-    /**
-     * Filter which Integrantes to update
-     */
-    where?: IntegranteWhereInput
-    /**
-     * Limit how many Integrantes to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * Integrante updateManyAndReturn
-   */
-  export type IntegranteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Integrante
-     */
-    select?: IntegranteSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the Integrante
-     */
-    omit?: IntegranteOmit<ExtArgs> | null
-    /**
-     * The data used to update Integrantes.
-     */
-    data: XOR<IntegranteUpdateManyMutationInput, IntegranteUncheckedUpdateManyInput>
-    /**
-     * Filter which Integrantes to update
-     */
-    where?: IntegranteWhereInput
-    /**
-     * Limit how many Integrantes to update.
-     */
-    limit?: number
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: IntegranteIncludeUpdateManyAndReturn<ExtArgs> | null
-  }
-
-  /**
-   * Integrante upsert
-   */
-  export type IntegranteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Integrante
-     */
-    select?: IntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Integrante
-     */
-    omit?: IntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: IntegranteInclude<ExtArgs> | null
-    /**
-     * The filter to search for the Integrante to update in case it exists.
-     */
-    where: IntegranteWhereUniqueInput
-    /**
-     * In case the Integrante found by the `where` argument doesn't exist, create a new Integrante with this data.
-     */
-    create: XOR<IntegranteCreateInput, IntegranteUncheckedCreateInput>
-    /**
-     * In case the Integrante was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<IntegranteUpdateInput, IntegranteUncheckedUpdateInput>
-  }
-
-  /**
-   * Integrante delete
-   */
-  export type IntegranteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Integrante
-     */
-    select?: IntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Integrante
-     */
-    omit?: IntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: IntegranteInclude<ExtArgs> | null
-    /**
-     * Filter which Integrante to delete.
-     */
-    where: IntegranteWhereUniqueInput
-  }
-
-  /**
-   * Integrante deleteMany
-   */
-  export type IntegranteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Integrantes to delete
-     */
-    where?: IntegranteWhereInput
-    /**
-     * Limit how many Integrantes to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * Integrante.filmes
-   */
-  export type Integrante$filmesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the FilmeIntegrante
-     */
-    select?: FilmeIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the FilmeIntegrante
-     */
-    omit?: FilmeIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: FilmeIntegranteInclude<ExtArgs> | null
-    where?: FilmeIntegranteWhereInput
-    orderBy?: FilmeIntegranteOrderByWithRelationInput | FilmeIntegranteOrderByWithRelationInput[]
-    cursor?: FilmeIntegranteWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: FilmeIntegranteScalarFieldEnum | FilmeIntegranteScalarFieldEnum[]
-  }
-
-  /**
-   * Integrante without action
-   */
-  export type IntegranteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Integrante
-     */
-    select?: IntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Integrante
-     */
-    omit?: IntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: IntegranteInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model TipoIntegrante
-   */
-
-  export type AggregateTipoIntegrante = {
-    _count: TipoIntegranteCountAggregateOutputType | null
-    _avg: TipoIntegranteAvgAggregateOutputType | null
-    _sum: TipoIntegranteSumAggregateOutputType | null
-    _min: TipoIntegranteMinAggregateOutputType | null
-    _max: TipoIntegranteMaxAggregateOutputType | null
-  }
-
-  export type TipoIntegranteAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type TipoIntegranteSumAggregateOutputType = {
-    id: number | null
-  }
-
-  export type TipoIntegranteMinAggregateOutputType = {
-    id: number | null
-    nome: string | null
-    ativo: boolean | null
-    criadoEm: Date | null
-    atualizadoEm: Date | null
-  }
-
-  export type TipoIntegranteMaxAggregateOutputType = {
-    id: number | null
-    nome: string | null
-    ativo: boolean | null
-    criadoEm: Date | null
-    atualizadoEm: Date | null
-  }
-
-  export type TipoIntegranteCountAggregateOutputType = {
-    id: number
-    nome: number
-    ativo: number
-    criadoEm: number
-    atualizadoEm: number
-    _all: number
-  }
-
-
-  export type TipoIntegranteAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type TipoIntegranteSumAggregateInputType = {
-    id?: true
-  }
-
-  export type TipoIntegranteMinAggregateInputType = {
-    id?: true
-    nome?: true
-    ativo?: true
-    criadoEm?: true
-    atualizadoEm?: true
-  }
-
-  export type TipoIntegranteMaxAggregateInputType = {
-    id?: true
-    nome?: true
-    ativo?: true
-    criadoEm?: true
-    atualizadoEm?: true
-  }
-
-  export type TipoIntegranteCountAggregateInputType = {
-    id?: true
-    nome?: true
-    ativo?: true
-    criadoEm?: true
-    atualizadoEm?: true
-    _all?: true
-  }
-
-  export type TipoIntegranteAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which TipoIntegrante to aggregate.
-     */
-    where?: TipoIntegranteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of TipoIntegrantes to fetch.
-     */
-    orderBy?: TipoIntegranteOrderByWithRelationInput | TipoIntegranteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: TipoIntegranteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` TipoIntegrantes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` TipoIntegrantes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned TipoIntegrantes
-    **/
-    _count?: true | TipoIntegranteCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: TipoIntegranteAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: TipoIntegranteSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: TipoIntegranteMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: TipoIntegranteMaxAggregateInputType
-  }
-
-  export type GetTipoIntegranteAggregateType<T extends TipoIntegranteAggregateArgs> = {
-        [P in keyof T & keyof AggregateTipoIntegrante]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateTipoIntegrante[P]>
-      : GetScalarType<T[P], AggregateTipoIntegrante[P]>
-  }
-
-
-
-
-  export type TipoIntegranteGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TipoIntegranteWhereInput
-    orderBy?: TipoIntegranteOrderByWithAggregationInput | TipoIntegranteOrderByWithAggregationInput[]
-    by: TipoIntegranteScalarFieldEnum[] | TipoIntegranteScalarFieldEnum
-    having?: TipoIntegranteScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: TipoIntegranteCountAggregateInputType | true
-    _avg?: TipoIntegranteAvgAggregateInputType
-    _sum?: TipoIntegranteSumAggregateInputType
-    _min?: TipoIntegranteMinAggregateInputType
-    _max?: TipoIntegranteMaxAggregateInputType
-  }
-
-  export type TipoIntegranteGroupByOutputType = {
-    id: number
-    nome: string
-    ativo: boolean
-    criadoEm: Date
-    atualizadoEm: Date
-    _count: TipoIntegranteCountAggregateOutputType | null
-    _avg: TipoIntegranteAvgAggregateOutputType | null
-    _sum: TipoIntegranteSumAggregateOutputType | null
-    _min: TipoIntegranteMinAggregateOutputType | null
-    _max: TipoIntegranteMaxAggregateOutputType | null
-  }
-
-  type GetTipoIntegranteGroupByPayload<T extends TipoIntegranteGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<TipoIntegranteGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof TipoIntegranteGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], TipoIntegranteGroupByOutputType[P]>
-            : GetScalarType<T[P], TipoIntegranteGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type TipoIntegranteSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    nome?: boolean
-    ativo?: boolean
-    criadoEm?: boolean
-    atualizadoEm?: boolean
-    integrantes?: boolean | TipoIntegrante$integrantesArgs<ExtArgs>
-    _count?: boolean | TipoIntegranteCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["tipoIntegrante"]>
-
-  export type TipoIntegranteSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    nome?: boolean
-    ativo?: boolean
-    criadoEm?: boolean
-    atualizadoEm?: boolean
-  }, ExtArgs["result"]["tipoIntegrante"]>
-
-  export type TipoIntegranteSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    nome?: boolean
-    ativo?: boolean
-    criadoEm?: boolean
-    atualizadoEm?: boolean
-  }, ExtArgs["result"]["tipoIntegrante"]>
-
-  export type TipoIntegranteSelectScalar = {
-    id?: boolean
-    nome?: boolean
-    ativo?: boolean
-    criadoEm?: boolean
-    atualizadoEm?: boolean
-  }
-
-  export type TipoIntegranteOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "nome" | "ativo" | "criadoEm" | "atualizadoEm", ExtArgs["result"]["tipoIntegrante"]>
-  export type TipoIntegranteInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    integrantes?: boolean | TipoIntegrante$integrantesArgs<ExtArgs>
-    _count?: boolean | TipoIntegranteCountOutputTypeDefaultArgs<ExtArgs>
-  }
-  export type TipoIntegranteIncludeCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-  export type TipoIntegranteIncludeUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {}
-
-  export type $TipoIntegrantePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "TipoIntegrante"
-    objects: {
-      integrantes: Prisma.$IntegrantePayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      nome: string
-      ativo: boolean
-      criadoEm: Date
-      atualizadoEm: Date
-    }, ExtArgs["result"]["tipoIntegrante"]>
-    composites: {}
-  }
-
-  type TipoIntegranteGetPayload<S extends boolean | null | undefined | TipoIntegranteDefaultArgs> = $Result.GetResult<Prisma.$TipoIntegrantePayload, S>
-
-  type TipoIntegranteCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<TipoIntegranteFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: TipoIntegranteCountAggregateInputType | true
-    }
-
-  export interface TipoIntegranteDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['TipoIntegrante'], meta: { name: 'TipoIntegrante' } }
-    /**
-     * Find zero or one TipoIntegrante that matches the filter.
-     * @param {TipoIntegranteFindUniqueArgs} args - Arguments to find a TipoIntegrante
-     * @example
-     * // Get one TipoIntegrante
-     * const tipoIntegrante = await prisma.tipoIntegrante.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends TipoIntegranteFindUniqueArgs>(args: SelectSubset<T, TipoIntegranteFindUniqueArgs<ExtArgs>>): Prisma__TipoIntegranteClient<$Result.GetResult<Prisma.$TipoIntegrantePayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one TipoIntegrante that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {TipoIntegranteFindUniqueOrThrowArgs} args - Arguments to find a TipoIntegrante
-     * @example
-     * // Get one TipoIntegrante
-     * const tipoIntegrante = await prisma.tipoIntegrante.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends TipoIntegranteFindUniqueOrThrowArgs>(args: SelectSubset<T, TipoIntegranteFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TipoIntegranteClient<$Result.GetResult<Prisma.$TipoIntegrantePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first TipoIntegrante that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TipoIntegranteFindFirstArgs} args - Arguments to find a TipoIntegrante
-     * @example
-     * // Get one TipoIntegrante
-     * const tipoIntegrante = await prisma.tipoIntegrante.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends TipoIntegranteFindFirstArgs>(args?: SelectSubset<T, TipoIntegranteFindFirstArgs<ExtArgs>>): Prisma__TipoIntegranteClient<$Result.GetResult<Prisma.$TipoIntegrantePayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first TipoIntegrante that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TipoIntegranteFindFirstOrThrowArgs} args - Arguments to find a TipoIntegrante
-     * @example
-     * // Get one TipoIntegrante
-     * const tipoIntegrante = await prisma.tipoIntegrante.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends TipoIntegranteFindFirstOrThrowArgs>(args?: SelectSubset<T, TipoIntegranteFindFirstOrThrowArgs<ExtArgs>>): Prisma__TipoIntegranteClient<$Result.GetResult<Prisma.$TipoIntegrantePayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more TipoIntegrantes that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TipoIntegranteFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all TipoIntegrantes
-     * const tipoIntegrantes = await prisma.tipoIntegrante.findMany()
-     * 
-     * // Get first 10 TipoIntegrantes
-     * const tipoIntegrantes = await prisma.tipoIntegrante.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const tipoIntegranteWithIdOnly = await prisma.tipoIntegrante.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends TipoIntegranteFindManyArgs>(args?: SelectSubset<T, TipoIntegranteFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TipoIntegrantePayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a TipoIntegrante.
-     * @param {TipoIntegranteCreateArgs} args - Arguments to create a TipoIntegrante.
-     * @example
-     * // Create one TipoIntegrante
-     * const TipoIntegrante = await prisma.tipoIntegrante.create({
-     *   data: {
-     *     // ... data to create a TipoIntegrante
-     *   }
-     * })
-     * 
-     */
-    create<T extends TipoIntegranteCreateArgs>(args: SelectSubset<T, TipoIntegranteCreateArgs<ExtArgs>>): Prisma__TipoIntegranteClient<$Result.GetResult<Prisma.$TipoIntegrantePayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many TipoIntegrantes.
-     * @param {TipoIntegranteCreateManyArgs} args - Arguments to create many TipoIntegrantes.
-     * @example
-     * // Create many TipoIntegrantes
-     * const tipoIntegrante = await prisma.tipoIntegrante.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends TipoIntegranteCreateManyArgs>(args?: SelectSubset<T, TipoIntegranteCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many TipoIntegrantes and returns the data saved in the database.
-     * @param {TipoIntegranteCreateManyAndReturnArgs} args - Arguments to create many TipoIntegrantes.
-     * @example
-     * // Create many TipoIntegrantes
-     * const tipoIntegrante = await prisma.tipoIntegrante.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many TipoIntegrantes and only return the `id`
-     * const tipoIntegranteWithIdOnly = await prisma.tipoIntegrante.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends TipoIntegranteCreateManyAndReturnArgs>(args?: SelectSubset<T, TipoIntegranteCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TipoIntegrantePayload<ExtArgs>, T, "createManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Delete a TipoIntegrante.
-     * @param {TipoIntegranteDeleteArgs} args - Arguments to delete one TipoIntegrante.
-     * @example
-     * // Delete one TipoIntegrante
-     * const TipoIntegrante = await prisma.tipoIntegrante.delete({
-     *   where: {
-     *     // ... filter to delete one TipoIntegrante
-     *   }
-     * })
-     * 
-     */
-    delete<T extends TipoIntegranteDeleteArgs>(args: SelectSubset<T, TipoIntegranteDeleteArgs<ExtArgs>>): Prisma__TipoIntegranteClient<$Result.GetResult<Prisma.$TipoIntegrantePayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one TipoIntegrante.
-     * @param {TipoIntegranteUpdateArgs} args - Arguments to update one TipoIntegrante.
-     * @example
-     * // Update one TipoIntegrante
-     * const tipoIntegrante = await prisma.tipoIntegrante.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends TipoIntegranteUpdateArgs>(args: SelectSubset<T, TipoIntegranteUpdateArgs<ExtArgs>>): Prisma__TipoIntegranteClient<$Result.GetResult<Prisma.$TipoIntegrantePayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more TipoIntegrantes.
-     * @param {TipoIntegranteDeleteManyArgs} args - Arguments to filter TipoIntegrantes to delete.
-     * @example
-     * // Delete a few TipoIntegrantes
-     * const { count } = await prisma.tipoIntegrante.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends TipoIntegranteDeleteManyArgs>(args?: SelectSubset<T, TipoIntegranteDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more TipoIntegrantes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TipoIntegranteUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many TipoIntegrantes
-     * const tipoIntegrante = await prisma.tipoIntegrante.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends TipoIntegranteUpdateManyArgs>(args: SelectSubset<T, TipoIntegranteUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more TipoIntegrantes and returns the data updated in the database.
-     * @param {TipoIntegranteUpdateManyAndReturnArgs} args - Arguments to update many TipoIntegrantes.
-     * @example
-     * // Update many TipoIntegrantes
-     * const tipoIntegrante = await prisma.tipoIntegrante.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more TipoIntegrantes and only return the `id`
-     * const tipoIntegranteWithIdOnly = await prisma.tipoIntegrante.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends TipoIntegranteUpdateManyAndReturnArgs>(args: SelectSubset<T, TipoIntegranteUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TipoIntegrantePayload<ExtArgs>, T, "updateManyAndReturn", GlobalOmitOptions>>
-
-    /**
-     * Create or update one TipoIntegrante.
-     * @param {TipoIntegranteUpsertArgs} args - Arguments to update or create a TipoIntegrante.
-     * @example
-     * // Update or create a TipoIntegrante
-     * const tipoIntegrante = await prisma.tipoIntegrante.upsert({
-     *   create: {
-     *     // ... data to create a TipoIntegrante
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the TipoIntegrante we want to update
-     *   }
-     * })
-     */
-    upsert<T extends TipoIntegranteUpsertArgs>(args: SelectSubset<T, TipoIntegranteUpsertArgs<ExtArgs>>): Prisma__TipoIntegranteClient<$Result.GetResult<Prisma.$TipoIntegrantePayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of TipoIntegrantes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TipoIntegranteCountArgs} args - Arguments to filter TipoIntegrantes to count.
-     * @example
-     * // Count the number of TipoIntegrantes
-     * const count = await prisma.tipoIntegrante.count({
-     *   where: {
-     *     // ... the filter for the TipoIntegrantes we want to count
-     *   }
-     * })
-    **/
-    count<T extends TipoIntegranteCountArgs>(
-      args?: Subset<T, TipoIntegranteCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], TipoIntegranteCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a TipoIntegrante.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TipoIntegranteAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends TipoIntegranteAggregateArgs>(args: Subset<T, TipoIntegranteAggregateArgs>): Prisma.PrismaPromise<GetTipoIntegranteAggregateType<T>>
-
-    /**
-     * Group by TipoIntegrante.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TipoIntegranteGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends TipoIntegranteGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TipoIntegranteGroupByArgs['orderBy'] }
-        : { orderBy?: TipoIntegranteGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, TipoIntegranteGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTipoIntegranteGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the TipoIntegrante model
-   */
-  readonly fields: TipoIntegranteFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for TipoIntegrante.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__TipoIntegranteClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    integrantes<T extends TipoIntegrante$integrantesArgs<ExtArgs> = {}>(args?: Subset<T, TipoIntegrante$integrantesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$IntegrantePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the TipoIntegrante model
-   */
-  interface TipoIntegranteFieldRefs {
-    readonly id: FieldRef<"TipoIntegrante", 'Int'>
-    readonly nome: FieldRef<"TipoIntegrante", 'String'>
-    readonly ativo: FieldRef<"TipoIntegrante", 'Boolean'>
-    readonly criadoEm: FieldRef<"TipoIntegrante", 'DateTime'>
-    readonly atualizadoEm: FieldRef<"TipoIntegrante", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * TipoIntegrante findUnique
-   */
-  export type TipoIntegranteFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TipoIntegrante
-     */
-    select?: TipoIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TipoIntegrante
-     */
-    omit?: TipoIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TipoIntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which TipoIntegrante to fetch.
-     */
-    where: TipoIntegranteWhereUniqueInput
-  }
-
-  /**
-   * TipoIntegrante findUniqueOrThrow
-   */
-  export type TipoIntegranteFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TipoIntegrante
-     */
-    select?: TipoIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TipoIntegrante
-     */
-    omit?: TipoIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TipoIntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which TipoIntegrante to fetch.
-     */
-    where: TipoIntegranteWhereUniqueInput
-  }
-
-  /**
-   * TipoIntegrante findFirst
-   */
-  export type TipoIntegranteFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TipoIntegrante
-     */
-    select?: TipoIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TipoIntegrante
-     */
-    omit?: TipoIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TipoIntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which TipoIntegrante to fetch.
-     */
-    where?: TipoIntegranteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of TipoIntegrantes to fetch.
-     */
-    orderBy?: TipoIntegranteOrderByWithRelationInput | TipoIntegranteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for TipoIntegrantes.
-     */
-    cursor?: TipoIntegranteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` TipoIntegrantes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` TipoIntegrantes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of TipoIntegrantes.
-     */
-    distinct?: TipoIntegranteScalarFieldEnum | TipoIntegranteScalarFieldEnum[]
-  }
-
-  /**
-   * TipoIntegrante findFirstOrThrow
-   */
-  export type TipoIntegranteFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TipoIntegrante
-     */
-    select?: TipoIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TipoIntegrante
-     */
-    omit?: TipoIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TipoIntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which TipoIntegrante to fetch.
-     */
-    where?: TipoIntegranteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of TipoIntegrantes to fetch.
-     */
-    orderBy?: TipoIntegranteOrderByWithRelationInput | TipoIntegranteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for TipoIntegrantes.
-     */
-    cursor?: TipoIntegranteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` TipoIntegrantes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` TipoIntegrantes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of TipoIntegrantes.
-     */
-    distinct?: TipoIntegranteScalarFieldEnum | TipoIntegranteScalarFieldEnum[]
-  }
-
-  /**
-   * TipoIntegrante findMany
-   */
-  export type TipoIntegranteFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TipoIntegrante
-     */
-    select?: TipoIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TipoIntegrante
-     */
-    omit?: TipoIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TipoIntegranteInclude<ExtArgs> | null
-    /**
-     * Filter, which TipoIntegrantes to fetch.
-     */
-    where?: TipoIntegranteWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of TipoIntegrantes to fetch.
-     */
-    orderBy?: TipoIntegranteOrderByWithRelationInput | TipoIntegranteOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing TipoIntegrantes.
-     */
-    cursor?: TipoIntegranteWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` TipoIntegrantes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` TipoIntegrantes.
-     */
-    skip?: number
-    distinct?: TipoIntegranteScalarFieldEnum | TipoIntegranteScalarFieldEnum[]
-  }
-
-  /**
-   * TipoIntegrante create
-   */
-  export type TipoIntegranteCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TipoIntegrante
-     */
-    select?: TipoIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TipoIntegrante
-     */
-    omit?: TipoIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TipoIntegranteInclude<ExtArgs> | null
-    /**
-     * The data needed to create a TipoIntegrante.
-     */
-    data: XOR<TipoIntegranteCreateInput, TipoIntegranteUncheckedCreateInput>
-  }
-
-  /**
-   * TipoIntegrante createMany
-   */
-  export type TipoIntegranteCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many TipoIntegrantes.
-     */
-    data: TipoIntegranteCreateManyInput | TipoIntegranteCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * TipoIntegrante createManyAndReturn
-   */
-  export type TipoIntegranteCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TipoIntegrante
-     */
-    select?: TipoIntegranteSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the TipoIntegrante
-     */
-    omit?: TipoIntegranteOmit<ExtArgs> | null
-    /**
-     * The data used to create many TipoIntegrantes.
-     */
-    data: TipoIntegranteCreateManyInput | TipoIntegranteCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * TipoIntegrante update
-   */
-  export type TipoIntegranteUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TipoIntegrante
-     */
-    select?: TipoIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TipoIntegrante
-     */
-    omit?: TipoIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TipoIntegranteInclude<ExtArgs> | null
-    /**
-     * The data needed to update a TipoIntegrante.
-     */
-    data: XOR<TipoIntegranteUpdateInput, TipoIntegranteUncheckedUpdateInput>
-    /**
-     * Choose, which TipoIntegrante to update.
-     */
-    where: TipoIntegranteWhereUniqueInput
-  }
-
-  /**
-   * TipoIntegrante updateMany
-   */
-  export type TipoIntegranteUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update TipoIntegrantes.
-     */
-    data: XOR<TipoIntegranteUpdateManyMutationInput, TipoIntegranteUncheckedUpdateManyInput>
-    /**
-     * Filter which TipoIntegrantes to update
-     */
-    where?: TipoIntegranteWhereInput
-    /**
-     * Limit how many TipoIntegrantes to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * TipoIntegrante updateManyAndReturn
-   */
-  export type TipoIntegranteUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TipoIntegrante
-     */
-    select?: TipoIntegranteSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * Omit specific fields from the TipoIntegrante
-     */
-    omit?: TipoIntegranteOmit<ExtArgs> | null
-    /**
-     * The data used to update TipoIntegrantes.
-     */
-    data: XOR<TipoIntegranteUpdateManyMutationInput, TipoIntegranteUncheckedUpdateManyInput>
-    /**
-     * Filter which TipoIntegrantes to update
-     */
-    where?: TipoIntegranteWhereInput
-    /**
-     * Limit how many TipoIntegrantes to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * TipoIntegrante upsert
-   */
-  export type TipoIntegranteUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TipoIntegrante
-     */
-    select?: TipoIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TipoIntegrante
-     */
-    omit?: TipoIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TipoIntegranteInclude<ExtArgs> | null
-    /**
-     * The filter to search for the TipoIntegrante to update in case it exists.
-     */
-    where: TipoIntegranteWhereUniqueInput
-    /**
-     * In case the TipoIntegrante found by the `where` argument doesn't exist, create a new TipoIntegrante with this data.
-     */
-    create: XOR<TipoIntegranteCreateInput, TipoIntegranteUncheckedCreateInput>
-    /**
-     * In case the TipoIntegrante was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<TipoIntegranteUpdateInput, TipoIntegranteUncheckedUpdateInput>
-  }
-
-  /**
-   * TipoIntegrante delete
-   */
-  export type TipoIntegranteDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TipoIntegrante
-     */
-    select?: TipoIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TipoIntegrante
-     */
-    omit?: TipoIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TipoIntegranteInclude<ExtArgs> | null
-    /**
-     * Filter which TipoIntegrante to delete.
-     */
-    where: TipoIntegranteWhereUniqueInput
-  }
-
-  /**
-   * TipoIntegrante deleteMany
-   */
-  export type TipoIntegranteDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which TipoIntegrantes to delete
-     */
-    where?: TipoIntegranteWhereInput
-    /**
-     * Limit how many TipoIntegrantes to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * TipoIntegrante.integrantes
-   */
-  export type TipoIntegrante$integrantesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Integrante
-     */
-    select?: IntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the Integrante
-     */
-    omit?: IntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: IntegranteInclude<ExtArgs> | null
-    where?: IntegranteWhereInput
-    orderBy?: IntegranteOrderByWithRelationInput | IntegranteOrderByWithRelationInput[]
-    cursor?: IntegranteWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: IntegranteScalarFieldEnum | IntegranteScalarFieldEnum[]
-  }
-
-  /**
-   * TipoIntegrante without action
-   */
-  export type TipoIntegranteDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the TipoIntegrante
-     */
-    select?: TipoIntegranteSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the TipoIntegrante
-     */
-    omit?: TipoIntegranteOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: TipoIntegranteInclude<ExtArgs> | null
   }
 
 
@@ -26098,6 +22363,8 @@ export namespace Prisma {
     trailerUrl: 'trailerUrl',
     capaUrl: 'capaUrl',
     bannerUrl: 'bannerUrl',
+    direcao: 'direcao',
+    elenco: 'elenco',
     dataLancamento: 'dataLancamento',
     dataInicioCartaz: 'dataInicioCartaz',
     dataFimCartaz: 'dataFimCartaz',
@@ -26107,42 +22374,6 @@ export namespace Prisma {
   };
 
   export type FilmeScalarFieldEnum = (typeof FilmeScalarFieldEnum)[keyof typeof FilmeScalarFieldEnum]
-
-
-  export const FilmeIntegranteScalarFieldEnum: {
-    id: 'id',
-    filmeId: 'filmeId',
-    integranteId: 'integranteId',
-    ativo: 'ativo',
-    criadoEm: 'criadoEm',
-    atualizadoEm: 'atualizadoEm'
-  };
-
-  export type FilmeIntegranteScalarFieldEnum = (typeof FilmeIntegranteScalarFieldEnum)[keyof typeof FilmeIntegranteScalarFieldEnum]
-
-
-  export const IntegranteScalarFieldEnum: {
-    id: 'id',
-    tipoIntegranteId: 'tipoIntegranteId',
-    nome: 'nome',
-    sobrenome: 'sobrenome',
-    ativo: 'ativo',
-    criadoEm: 'criadoEm',
-    atualizadoEm: 'atualizadoEm'
-  };
-
-  export type IntegranteScalarFieldEnum = (typeof IntegranteScalarFieldEnum)[keyof typeof IntegranteScalarFieldEnum]
-
-
-  export const TipoIntegranteScalarFieldEnum: {
-    id: 'id',
-    nome: 'nome',
-    ativo: 'ativo',
-    criadoEm: 'criadoEm',
-    atualizadoEm: 'atualizadoEm'
-  };
-
-  export type TipoIntegranteScalarFieldEnum = (typeof TipoIntegranteScalarFieldEnum)[keyof typeof TipoIntegranteScalarFieldEnum]
 
 
   export const ClassificacaoIndicativaScalarFieldEnum: {
@@ -26538,6 +22769,8 @@ export namespace Prisma {
     trailerUrl?: StringFilter<"Filme"> | string
     capaUrl?: StringFilter<"Filme"> | string
     bannerUrl?: StringFilter<"Filme"> | string
+    direcao?: StringFilter<"Filme"> | string
+    elenco?: StringFilter<"Filme"> | string
     dataLancamento?: DateTimeFilter<"Filme"> | Date | string
     dataInicioCartaz?: DateTimeFilter<"Filme"> | Date | string
     dataFimCartaz?: DateTimeFilter<"Filme"> | Date | string
@@ -26546,7 +22779,6 @@ export namespace Prisma {
     atualizadoEm?: DateTimeFilter<"Filme"> | Date | string
     classificacaoIndicativa?: XOR<ClassificacaoIndicativaScalarRelationFilter, ClassificacaoIndicativaWhereInput>
     generos?: FilmeGeneroListRelationFilter
-    integrantes?: FilmeIntegranteListRelationFilter
     sessoes?: SessaoListRelationFilter
   }
 
@@ -26559,6 +22791,8 @@ export namespace Prisma {
     trailerUrl?: SortOrder
     capaUrl?: SortOrder
     bannerUrl?: SortOrder
+    direcao?: SortOrder
+    elenco?: SortOrder
     dataLancamento?: SortOrder
     dataInicioCartaz?: SortOrder
     dataFimCartaz?: SortOrder
@@ -26567,7 +22801,6 @@ export namespace Prisma {
     atualizadoEm?: SortOrder
     classificacaoIndicativa?: ClassificacaoIndicativaOrderByWithRelationInput
     generos?: FilmeGeneroOrderByRelationAggregateInput
-    integrantes?: FilmeIntegranteOrderByRelationAggregateInput
     sessoes?: SessaoOrderByRelationAggregateInput
   }
 
@@ -26583,6 +22816,8 @@ export namespace Prisma {
     trailerUrl?: StringFilter<"Filme"> | string
     capaUrl?: StringFilter<"Filme"> | string
     bannerUrl?: StringFilter<"Filme"> | string
+    direcao?: StringFilter<"Filme"> | string
+    elenco?: StringFilter<"Filme"> | string
     dataLancamento?: DateTimeFilter<"Filme"> | Date | string
     dataInicioCartaz?: DateTimeFilter<"Filme"> | Date | string
     dataFimCartaz?: DateTimeFilter<"Filme"> | Date | string
@@ -26591,7 +22826,6 @@ export namespace Prisma {
     atualizadoEm?: DateTimeFilter<"Filme"> | Date | string
     classificacaoIndicativa?: XOR<ClassificacaoIndicativaScalarRelationFilter, ClassificacaoIndicativaWhereInput>
     generos?: FilmeGeneroListRelationFilter
-    integrantes?: FilmeIntegranteListRelationFilter
     sessoes?: SessaoListRelationFilter
   }, "id" | "titulo">
 
@@ -26604,6 +22838,8 @@ export namespace Prisma {
     trailerUrl?: SortOrder
     capaUrl?: SortOrder
     bannerUrl?: SortOrder
+    direcao?: SortOrder
+    elenco?: SortOrder
     dataLancamento?: SortOrder
     dataInicioCartaz?: SortOrder
     dataFimCartaz?: SortOrder
@@ -26629,205 +22865,14 @@ export namespace Prisma {
     trailerUrl?: StringWithAggregatesFilter<"Filme"> | string
     capaUrl?: StringWithAggregatesFilter<"Filme"> | string
     bannerUrl?: StringWithAggregatesFilter<"Filme"> | string
+    direcao?: StringWithAggregatesFilter<"Filme"> | string
+    elenco?: StringWithAggregatesFilter<"Filme"> | string
     dataLancamento?: DateTimeWithAggregatesFilter<"Filme"> | Date | string
     dataInicioCartaz?: DateTimeWithAggregatesFilter<"Filme"> | Date | string
     dataFimCartaz?: DateTimeWithAggregatesFilter<"Filme"> | Date | string
     ativo?: BoolWithAggregatesFilter<"Filme"> | boolean
     criadoEm?: DateTimeWithAggregatesFilter<"Filme"> | Date | string
     atualizadoEm?: DateTimeWithAggregatesFilter<"Filme"> | Date | string
-  }
-
-  export type FilmeIntegranteWhereInput = {
-    AND?: FilmeIntegranteWhereInput | FilmeIntegranteWhereInput[]
-    OR?: FilmeIntegranteWhereInput[]
-    NOT?: FilmeIntegranteWhereInput | FilmeIntegranteWhereInput[]
-    id?: IntFilter<"FilmeIntegrante"> | number
-    filmeId?: IntFilter<"FilmeIntegrante"> | number
-    integranteId?: IntFilter<"FilmeIntegrante"> | number
-    ativo?: BoolFilter<"FilmeIntegrante"> | boolean
-    criadoEm?: DateTimeFilter<"FilmeIntegrante"> | Date | string
-    atualizadoEm?: DateTimeFilter<"FilmeIntegrante"> | Date | string
-    filme?: XOR<FilmeScalarRelationFilter, FilmeWhereInput>
-    integrante?: XOR<IntegranteScalarRelationFilter, IntegranteWhereInput>
-  }
-
-  export type FilmeIntegranteOrderByWithRelationInput = {
-    id?: SortOrder
-    filmeId?: SortOrder
-    integranteId?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-    filme?: FilmeOrderByWithRelationInput
-    integrante?: IntegranteOrderByWithRelationInput
-  }
-
-  export type FilmeIntegranteWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    integranteId_filmeId?: FilmeIntegranteIntegranteIdFilmeIdCompoundUniqueInput
-    AND?: FilmeIntegranteWhereInput | FilmeIntegranteWhereInput[]
-    OR?: FilmeIntegranteWhereInput[]
-    NOT?: FilmeIntegranteWhereInput | FilmeIntegranteWhereInput[]
-    filmeId?: IntFilter<"FilmeIntegrante"> | number
-    integranteId?: IntFilter<"FilmeIntegrante"> | number
-    ativo?: BoolFilter<"FilmeIntegrante"> | boolean
-    criadoEm?: DateTimeFilter<"FilmeIntegrante"> | Date | string
-    atualizadoEm?: DateTimeFilter<"FilmeIntegrante"> | Date | string
-    filme?: XOR<FilmeScalarRelationFilter, FilmeWhereInput>
-    integrante?: XOR<IntegranteScalarRelationFilter, IntegranteWhereInput>
-  }, "id" | "integranteId_filmeId">
-
-  export type FilmeIntegranteOrderByWithAggregationInput = {
-    id?: SortOrder
-    filmeId?: SortOrder
-    integranteId?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-    _count?: FilmeIntegranteCountOrderByAggregateInput
-    _avg?: FilmeIntegranteAvgOrderByAggregateInput
-    _max?: FilmeIntegranteMaxOrderByAggregateInput
-    _min?: FilmeIntegranteMinOrderByAggregateInput
-    _sum?: FilmeIntegranteSumOrderByAggregateInput
-  }
-
-  export type FilmeIntegranteScalarWhereWithAggregatesInput = {
-    AND?: FilmeIntegranteScalarWhereWithAggregatesInput | FilmeIntegranteScalarWhereWithAggregatesInput[]
-    OR?: FilmeIntegranteScalarWhereWithAggregatesInput[]
-    NOT?: FilmeIntegranteScalarWhereWithAggregatesInput | FilmeIntegranteScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"FilmeIntegrante"> | number
-    filmeId?: IntWithAggregatesFilter<"FilmeIntegrante"> | number
-    integranteId?: IntWithAggregatesFilter<"FilmeIntegrante"> | number
-    ativo?: BoolWithAggregatesFilter<"FilmeIntegrante"> | boolean
-    criadoEm?: DateTimeWithAggregatesFilter<"FilmeIntegrante"> | Date | string
-    atualizadoEm?: DateTimeWithAggregatesFilter<"FilmeIntegrante"> | Date | string
-  }
-
-  export type IntegranteWhereInput = {
-    AND?: IntegranteWhereInput | IntegranteWhereInput[]
-    OR?: IntegranteWhereInput[]
-    NOT?: IntegranteWhereInput | IntegranteWhereInput[]
-    id?: IntFilter<"Integrante"> | number
-    tipoIntegranteId?: IntFilter<"Integrante"> | number
-    nome?: StringFilter<"Integrante"> | string
-    sobrenome?: StringFilter<"Integrante"> | string
-    ativo?: BoolFilter<"Integrante"> | boolean
-    criadoEm?: DateTimeFilter<"Integrante"> | Date | string
-    atualizadoEm?: DateTimeFilter<"Integrante"> | Date | string
-    tipoIntegrante?: XOR<TipoIntegranteScalarRelationFilter, TipoIntegranteWhereInput>
-    filmes?: FilmeIntegranteListRelationFilter
-  }
-
-  export type IntegranteOrderByWithRelationInput = {
-    id?: SortOrder
-    tipoIntegranteId?: SortOrder
-    nome?: SortOrder
-    sobrenome?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-    tipoIntegrante?: TipoIntegranteOrderByWithRelationInput
-    filmes?: FilmeIntegranteOrderByRelationAggregateInput
-  }
-
-  export type IntegranteWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: IntegranteWhereInput | IntegranteWhereInput[]
-    OR?: IntegranteWhereInput[]
-    NOT?: IntegranteWhereInput | IntegranteWhereInput[]
-    tipoIntegranteId?: IntFilter<"Integrante"> | number
-    nome?: StringFilter<"Integrante"> | string
-    sobrenome?: StringFilter<"Integrante"> | string
-    ativo?: BoolFilter<"Integrante"> | boolean
-    criadoEm?: DateTimeFilter<"Integrante"> | Date | string
-    atualizadoEm?: DateTimeFilter<"Integrante"> | Date | string
-    tipoIntegrante?: XOR<TipoIntegranteScalarRelationFilter, TipoIntegranteWhereInput>
-    filmes?: FilmeIntegranteListRelationFilter
-  }, "id">
-
-  export type IntegranteOrderByWithAggregationInput = {
-    id?: SortOrder
-    tipoIntegranteId?: SortOrder
-    nome?: SortOrder
-    sobrenome?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-    _count?: IntegranteCountOrderByAggregateInput
-    _avg?: IntegranteAvgOrderByAggregateInput
-    _max?: IntegranteMaxOrderByAggregateInput
-    _min?: IntegranteMinOrderByAggregateInput
-    _sum?: IntegranteSumOrderByAggregateInput
-  }
-
-  export type IntegranteScalarWhereWithAggregatesInput = {
-    AND?: IntegranteScalarWhereWithAggregatesInput | IntegranteScalarWhereWithAggregatesInput[]
-    OR?: IntegranteScalarWhereWithAggregatesInput[]
-    NOT?: IntegranteScalarWhereWithAggregatesInput | IntegranteScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"Integrante"> | number
-    tipoIntegranteId?: IntWithAggregatesFilter<"Integrante"> | number
-    nome?: StringWithAggregatesFilter<"Integrante"> | string
-    sobrenome?: StringWithAggregatesFilter<"Integrante"> | string
-    ativo?: BoolWithAggregatesFilter<"Integrante"> | boolean
-    criadoEm?: DateTimeWithAggregatesFilter<"Integrante"> | Date | string
-    atualizadoEm?: DateTimeWithAggregatesFilter<"Integrante"> | Date | string
-  }
-
-  export type TipoIntegranteWhereInput = {
-    AND?: TipoIntegranteWhereInput | TipoIntegranteWhereInput[]
-    OR?: TipoIntegranteWhereInput[]
-    NOT?: TipoIntegranteWhereInput | TipoIntegranteWhereInput[]
-    id?: IntFilter<"TipoIntegrante"> | number
-    nome?: StringFilter<"TipoIntegrante"> | string
-    ativo?: BoolFilter<"TipoIntegrante"> | boolean
-    criadoEm?: DateTimeFilter<"TipoIntegrante"> | Date | string
-    atualizadoEm?: DateTimeFilter<"TipoIntegrante"> | Date | string
-    integrantes?: IntegranteListRelationFilter
-  }
-
-  export type TipoIntegranteOrderByWithRelationInput = {
-    id?: SortOrder
-    nome?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-    integrantes?: IntegranteOrderByRelationAggregateInput
-  }
-
-  export type TipoIntegranteWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    nome?: string
-    AND?: TipoIntegranteWhereInput | TipoIntegranteWhereInput[]
-    OR?: TipoIntegranteWhereInput[]
-    NOT?: TipoIntegranteWhereInput | TipoIntegranteWhereInput[]
-    ativo?: BoolFilter<"TipoIntegrante"> | boolean
-    criadoEm?: DateTimeFilter<"TipoIntegrante"> | Date | string
-    atualizadoEm?: DateTimeFilter<"TipoIntegrante"> | Date | string
-    integrantes?: IntegranteListRelationFilter
-  }, "id" | "nome">
-
-  export type TipoIntegranteOrderByWithAggregationInput = {
-    id?: SortOrder
-    nome?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-    _count?: TipoIntegranteCountOrderByAggregateInput
-    _avg?: TipoIntegranteAvgOrderByAggregateInput
-    _max?: TipoIntegranteMaxOrderByAggregateInput
-    _min?: TipoIntegranteMinOrderByAggregateInput
-    _sum?: TipoIntegranteSumOrderByAggregateInput
-  }
-
-  export type TipoIntegranteScalarWhereWithAggregatesInput = {
-    AND?: TipoIntegranteScalarWhereWithAggregatesInput | TipoIntegranteScalarWhereWithAggregatesInput[]
-    OR?: TipoIntegranteScalarWhereWithAggregatesInput[]
-    NOT?: TipoIntegranteScalarWhereWithAggregatesInput | TipoIntegranteScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"TipoIntegrante"> | number
-    nome?: StringWithAggregatesFilter<"TipoIntegrante"> | string
-    ativo?: BoolWithAggregatesFilter<"TipoIntegrante"> | boolean
-    criadoEm?: DateTimeWithAggregatesFilter<"TipoIntegrante"> | Date | string
-    atualizadoEm?: DateTimeWithAggregatesFilter<"TipoIntegrante"> | Date | string
   }
 
   export type ClassificacaoIndicativaWhereInput = {
@@ -27878,6 +23923,8 @@ export namespace Prisma {
     trailerUrl: string
     capaUrl: string
     bannerUrl?: string
+    direcao: string
+    elenco: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -27886,7 +23933,6 @@ export namespace Prisma {
     atualizadoEm?: Date | string
     classificacaoIndicativa: ClassificacaoIndicativaCreateNestedOneWithoutFilmesInput
     generos?: FilmeGeneroCreateNestedManyWithoutFilmeInput
-    integrantes?: FilmeIntegranteCreateNestedManyWithoutFilmeInput
     sessoes?: SessaoCreateNestedManyWithoutFilmeInput
   }
 
@@ -27899,6 +23945,8 @@ export namespace Prisma {
     trailerUrl: string
     capaUrl: string
     bannerUrl?: string
+    direcao: string
+    elenco: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -27906,7 +23954,6 @@ export namespace Prisma {
     criadoEm?: Date | string
     atualizadoEm?: Date | string
     generos?: FilmeGeneroUncheckedCreateNestedManyWithoutFilmeInput
-    integrantes?: FilmeIntegranteUncheckedCreateNestedManyWithoutFilmeInput
     sessoes?: SessaoUncheckedCreateNestedManyWithoutFilmeInput
   }
 
@@ -27917,6 +23964,8 @@ export namespace Prisma {
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
     bannerUrl?: StringFieldUpdateOperationsInput | string
+    direcao?: StringFieldUpdateOperationsInput | string
+    elenco?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27925,7 +23974,6 @@ export namespace Prisma {
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     classificacaoIndicativa?: ClassificacaoIndicativaUpdateOneRequiredWithoutFilmesNestedInput
     generos?: FilmeGeneroUpdateManyWithoutFilmeNestedInput
-    integrantes?: FilmeIntegranteUpdateManyWithoutFilmeNestedInput
     sessoes?: SessaoUpdateManyWithoutFilmeNestedInput
   }
 
@@ -27938,6 +23986,8 @@ export namespace Prisma {
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
     bannerUrl?: StringFieldUpdateOperationsInput | string
+    direcao?: StringFieldUpdateOperationsInput | string
+    elenco?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27945,7 +23995,6 @@ export namespace Prisma {
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     generos?: FilmeGeneroUncheckedUpdateManyWithoutFilmeNestedInput
-    integrantes?: FilmeIntegranteUncheckedUpdateManyWithoutFilmeNestedInput
     sessoes?: SessaoUncheckedUpdateManyWithoutFilmeNestedInput
   }
 
@@ -27958,6 +24007,8 @@ export namespace Prisma {
     trailerUrl: string
     capaUrl: string
     bannerUrl?: string
+    direcao: string
+    elenco: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -27973,6 +24024,8 @@ export namespace Prisma {
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
     bannerUrl?: StringFieldUpdateOperationsInput | string
+    direcao?: StringFieldUpdateOperationsInput | string
+    elenco?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -27990,194 +24043,11 @@ export namespace Prisma {
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
     bannerUrl?: StringFieldUpdateOperationsInput | string
+    direcao?: StringFieldUpdateOperationsInput | string
+    elenco?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FilmeIntegranteCreateInput = {
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-    filme: FilmeCreateNestedOneWithoutIntegrantesInput
-    integrante: IntegranteCreateNestedOneWithoutFilmesInput
-  }
-
-  export type FilmeIntegranteUncheckedCreateInput = {
-    id?: number
-    filmeId: number
-    integranteId: number
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-  }
-
-  export type FilmeIntegranteUpdateInput = {
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    filme?: FilmeUpdateOneRequiredWithoutIntegrantesNestedInput
-    integrante?: IntegranteUpdateOneRequiredWithoutFilmesNestedInput
-  }
-
-  export type FilmeIntegranteUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    filmeId?: IntFieldUpdateOperationsInput | number
-    integranteId?: IntFieldUpdateOperationsInput | number
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FilmeIntegranteCreateManyInput = {
-    id?: number
-    filmeId: number
-    integranteId: number
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-  }
-
-  export type FilmeIntegranteUpdateManyMutationInput = {
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FilmeIntegranteUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    filmeId?: IntFieldUpdateOperationsInput | number
-    integranteId?: IntFieldUpdateOperationsInput | number
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type IntegranteCreateInput = {
-    nome: string
-    sobrenome: string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-    tipoIntegrante: TipoIntegranteCreateNestedOneWithoutIntegrantesInput
-    filmes?: FilmeIntegranteCreateNestedManyWithoutIntegranteInput
-  }
-
-  export type IntegranteUncheckedCreateInput = {
-    id?: number
-    tipoIntegranteId: number
-    nome: string
-    sobrenome: string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-    filmes?: FilmeIntegranteUncheckedCreateNestedManyWithoutIntegranteInput
-  }
-
-  export type IntegranteUpdateInput = {
-    nome?: StringFieldUpdateOperationsInput | string
-    sobrenome?: StringFieldUpdateOperationsInput | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    tipoIntegrante?: TipoIntegranteUpdateOneRequiredWithoutIntegrantesNestedInput
-    filmes?: FilmeIntegranteUpdateManyWithoutIntegranteNestedInput
-  }
-
-  export type IntegranteUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    tipoIntegranteId?: IntFieldUpdateOperationsInput | number
-    nome?: StringFieldUpdateOperationsInput | string
-    sobrenome?: StringFieldUpdateOperationsInput | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    filmes?: FilmeIntegranteUncheckedUpdateManyWithoutIntegranteNestedInput
-  }
-
-  export type IntegranteCreateManyInput = {
-    id?: number
-    tipoIntegranteId: number
-    nome: string
-    sobrenome: string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-  }
-
-  export type IntegranteUpdateManyMutationInput = {
-    nome?: StringFieldUpdateOperationsInput | string
-    sobrenome?: StringFieldUpdateOperationsInput | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type IntegranteUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    tipoIntegranteId?: IntFieldUpdateOperationsInput | number
-    nome?: StringFieldUpdateOperationsInput | string
-    sobrenome?: StringFieldUpdateOperationsInput | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TipoIntegranteCreateInput = {
-    nome: string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-    integrantes?: IntegranteCreateNestedManyWithoutTipoIntegranteInput
-  }
-
-  export type TipoIntegranteUncheckedCreateInput = {
-    id?: number
-    nome: string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-    integrantes?: IntegranteUncheckedCreateNestedManyWithoutTipoIntegranteInput
-  }
-
-  export type TipoIntegranteUpdateInput = {
-    nome?: StringFieldUpdateOperationsInput | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    integrantes?: IntegranteUpdateManyWithoutTipoIntegranteNestedInput
-  }
-
-  export type TipoIntegranteUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    nome?: StringFieldUpdateOperationsInput | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    integrantes?: IntegranteUncheckedUpdateManyWithoutTipoIntegranteNestedInput
-  }
-
-  export type TipoIntegranteCreateManyInput = {
-    id?: number
-    nome: string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-  }
-
-  export type TipoIntegranteUpdateManyMutationInput = {
-    nome?: StringFieldUpdateOperationsInput | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TipoIntegranteUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    nome?: StringFieldUpdateOperationsInput | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -29285,20 +25155,10 @@ export namespace Prisma {
     isNot?: ClassificacaoIndicativaWhereInput
   }
 
-  export type FilmeIntegranteListRelationFilter = {
-    every?: FilmeIntegranteWhereInput
-    some?: FilmeIntegranteWhereInput
-    none?: FilmeIntegranteWhereInput
-  }
-
   export type SessaoListRelationFilter = {
     every?: SessaoWhereInput
     some?: SessaoWhereInput
     none?: SessaoWhereInput
-  }
-
-  export type FilmeIntegranteOrderByRelationAggregateInput = {
-    _count?: SortOrder
   }
 
   export type SessaoOrderByRelationAggregateInput = {
@@ -29314,6 +25174,8 @@ export namespace Prisma {
     trailerUrl?: SortOrder
     capaUrl?: SortOrder
     bannerUrl?: SortOrder
+    direcao?: SortOrder
+    elenco?: SortOrder
     dataLancamento?: SortOrder
     dataInicioCartaz?: SortOrder
     dataFimCartaz?: SortOrder
@@ -29337,6 +25199,8 @@ export namespace Prisma {
     trailerUrl?: SortOrder
     capaUrl?: SortOrder
     bannerUrl?: SortOrder
+    direcao?: SortOrder
+    elenco?: SortOrder
     dataLancamento?: SortOrder
     dataInicioCartaz?: SortOrder
     dataFimCartaz?: SortOrder
@@ -29354,6 +25218,8 @@ export namespace Prisma {
     trailerUrl?: SortOrder
     capaUrl?: SortOrder
     bannerUrl?: SortOrder
+    direcao?: SortOrder
+    elenco?: SortOrder
     dataLancamento?: SortOrder
     dataInicioCartaz?: SortOrder
     dataFimCartaz?: SortOrder
@@ -29366,142 +25232,6 @@ export namespace Prisma {
     id?: SortOrder
     classificacaoIndicativaId?: SortOrder
     duracaoEmMinutos?: SortOrder
-  }
-
-  export type IntegranteScalarRelationFilter = {
-    is?: IntegranteWhereInput
-    isNot?: IntegranteWhereInput
-  }
-
-  export type FilmeIntegranteIntegranteIdFilmeIdCompoundUniqueInput = {
-    integranteId: number
-    filmeId: number
-  }
-
-  export type FilmeIntegranteCountOrderByAggregateInput = {
-    id?: SortOrder
-    filmeId?: SortOrder
-    integranteId?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-  }
-
-  export type FilmeIntegranteAvgOrderByAggregateInput = {
-    id?: SortOrder
-    filmeId?: SortOrder
-    integranteId?: SortOrder
-  }
-
-  export type FilmeIntegranteMaxOrderByAggregateInput = {
-    id?: SortOrder
-    filmeId?: SortOrder
-    integranteId?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-  }
-
-  export type FilmeIntegranteMinOrderByAggregateInput = {
-    id?: SortOrder
-    filmeId?: SortOrder
-    integranteId?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-  }
-
-  export type FilmeIntegranteSumOrderByAggregateInput = {
-    id?: SortOrder
-    filmeId?: SortOrder
-    integranteId?: SortOrder
-  }
-
-  export type TipoIntegranteScalarRelationFilter = {
-    is?: TipoIntegranteWhereInput
-    isNot?: TipoIntegranteWhereInput
-  }
-
-  export type IntegranteCountOrderByAggregateInput = {
-    id?: SortOrder
-    tipoIntegranteId?: SortOrder
-    nome?: SortOrder
-    sobrenome?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-  }
-
-  export type IntegranteAvgOrderByAggregateInput = {
-    id?: SortOrder
-    tipoIntegranteId?: SortOrder
-  }
-
-  export type IntegranteMaxOrderByAggregateInput = {
-    id?: SortOrder
-    tipoIntegranteId?: SortOrder
-    nome?: SortOrder
-    sobrenome?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-  }
-
-  export type IntegranteMinOrderByAggregateInput = {
-    id?: SortOrder
-    tipoIntegranteId?: SortOrder
-    nome?: SortOrder
-    sobrenome?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-  }
-
-  export type IntegranteSumOrderByAggregateInput = {
-    id?: SortOrder
-    tipoIntegranteId?: SortOrder
-  }
-
-  export type IntegranteListRelationFilter = {
-    every?: IntegranteWhereInput
-    some?: IntegranteWhereInput
-    none?: IntegranteWhereInput
-  }
-
-  export type IntegranteOrderByRelationAggregateInput = {
-    _count?: SortOrder
-  }
-
-  export type TipoIntegranteCountOrderByAggregateInput = {
-    id?: SortOrder
-    nome?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-  }
-
-  export type TipoIntegranteAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type TipoIntegranteMaxOrderByAggregateInput = {
-    id?: SortOrder
-    nome?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-  }
-
-  export type TipoIntegranteMinOrderByAggregateInput = {
-    id?: SortOrder
-    nome?: SortOrder
-    ativo?: SortOrder
-    criadoEm?: SortOrder
-    atualizadoEm?: SortOrder
-  }
-
-  export type TipoIntegranteSumOrderByAggregateInput = {
-    id?: SortOrder
   }
 
   export type FilmeListRelationFilter = {
@@ -30284,13 +26014,6 @@ export namespace Prisma {
     connect?: FilmeGeneroWhereUniqueInput | FilmeGeneroWhereUniqueInput[]
   }
 
-  export type FilmeIntegranteCreateNestedManyWithoutFilmeInput = {
-    create?: XOR<FilmeIntegranteCreateWithoutFilmeInput, FilmeIntegranteUncheckedCreateWithoutFilmeInput> | FilmeIntegranteCreateWithoutFilmeInput[] | FilmeIntegranteUncheckedCreateWithoutFilmeInput[]
-    connectOrCreate?: FilmeIntegranteCreateOrConnectWithoutFilmeInput | FilmeIntegranteCreateOrConnectWithoutFilmeInput[]
-    createMany?: FilmeIntegranteCreateManyFilmeInputEnvelope
-    connect?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-  }
-
   export type SessaoCreateNestedManyWithoutFilmeInput = {
     create?: XOR<SessaoCreateWithoutFilmeInput, SessaoUncheckedCreateWithoutFilmeInput> | SessaoCreateWithoutFilmeInput[] | SessaoUncheckedCreateWithoutFilmeInput[]
     connectOrCreate?: SessaoCreateOrConnectWithoutFilmeInput | SessaoCreateOrConnectWithoutFilmeInput[]
@@ -30303,13 +26026,6 @@ export namespace Prisma {
     connectOrCreate?: FilmeGeneroCreateOrConnectWithoutFilmeInput | FilmeGeneroCreateOrConnectWithoutFilmeInput[]
     createMany?: FilmeGeneroCreateManyFilmeInputEnvelope
     connect?: FilmeGeneroWhereUniqueInput | FilmeGeneroWhereUniqueInput[]
-  }
-
-  export type FilmeIntegranteUncheckedCreateNestedManyWithoutFilmeInput = {
-    create?: XOR<FilmeIntegranteCreateWithoutFilmeInput, FilmeIntegranteUncheckedCreateWithoutFilmeInput> | FilmeIntegranteCreateWithoutFilmeInput[] | FilmeIntegranteUncheckedCreateWithoutFilmeInput[]
-    connectOrCreate?: FilmeIntegranteCreateOrConnectWithoutFilmeInput | FilmeIntegranteCreateOrConnectWithoutFilmeInput[]
-    createMany?: FilmeIntegranteCreateManyFilmeInputEnvelope
-    connect?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
   }
 
   export type SessaoUncheckedCreateNestedManyWithoutFilmeInput = {
@@ -30341,20 +26057,6 @@ export namespace Prisma {
     deleteMany?: FilmeGeneroScalarWhereInput | FilmeGeneroScalarWhereInput[]
   }
 
-  export type FilmeIntegranteUpdateManyWithoutFilmeNestedInput = {
-    create?: XOR<FilmeIntegranteCreateWithoutFilmeInput, FilmeIntegranteUncheckedCreateWithoutFilmeInput> | FilmeIntegranteCreateWithoutFilmeInput[] | FilmeIntegranteUncheckedCreateWithoutFilmeInput[]
-    connectOrCreate?: FilmeIntegranteCreateOrConnectWithoutFilmeInput | FilmeIntegranteCreateOrConnectWithoutFilmeInput[]
-    upsert?: FilmeIntegranteUpsertWithWhereUniqueWithoutFilmeInput | FilmeIntegranteUpsertWithWhereUniqueWithoutFilmeInput[]
-    createMany?: FilmeIntegranteCreateManyFilmeInputEnvelope
-    set?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    disconnect?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    delete?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    connect?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    update?: FilmeIntegranteUpdateWithWhereUniqueWithoutFilmeInput | FilmeIntegranteUpdateWithWhereUniqueWithoutFilmeInput[]
-    updateMany?: FilmeIntegranteUpdateManyWithWhereWithoutFilmeInput | FilmeIntegranteUpdateManyWithWhereWithoutFilmeInput[]
-    deleteMany?: FilmeIntegranteScalarWhereInput | FilmeIntegranteScalarWhereInput[]
-  }
-
   export type SessaoUpdateManyWithoutFilmeNestedInput = {
     create?: XOR<SessaoCreateWithoutFilmeInput, SessaoUncheckedCreateWithoutFilmeInput> | SessaoCreateWithoutFilmeInput[] | SessaoUncheckedCreateWithoutFilmeInput[]
     connectOrCreate?: SessaoCreateOrConnectWithoutFilmeInput | SessaoCreateOrConnectWithoutFilmeInput[]
@@ -30383,20 +26085,6 @@ export namespace Prisma {
     deleteMany?: FilmeGeneroScalarWhereInput | FilmeGeneroScalarWhereInput[]
   }
 
-  export type FilmeIntegranteUncheckedUpdateManyWithoutFilmeNestedInput = {
-    create?: XOR<FilmeIntegranteCreateWithoutFilmeInput, FilmeIntegranteUncheckedCreateWithoutFilmeInput> | FilmeIntegranteCreateWithoutFilmeInput[] | FilmeIntegranteUncheckedCreateWithoutFilmeInput[]
-    connectOrCreate?: FilmeIntegranteCreateOrConnectWithoutFilmeInput | FilmeIntegranteCreateOrConnectWithoutFilmeInput[]
-    upsert?: FilmeIntegranteUpsertWithWhereUniqueWithoutFilmeInput | FilmeIntegranteUpsertWithWhereUniqueWithoutFilmeInput[]
-    createMany?: FilmeIntegranteCreateManyFilmeInputEnvelope
-    set?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    disconnect?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    delete?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    connect?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    update?: FilmeIntegranteUpdateWithWhereUniqueWithoutFilmeInput | FilmeIntegranteUpdateWithWhereUniqueWithoutFilmeInput[]
-    updateMany?: FilmeIntegranteUpdateManyWithWhereWithoutFilmeInput | FilmeIntegranteUpdateManyWithWhereWithoutFilmeInput[]
-    deleteMany?: FilmeIntegranteScalarWhereInput | FilmeIntegranteScalarWhereInput[]
-  }
-
   export type SessaoUncheckedUpdateManyWithoutFilmeNestedInput = {
     create?: XOR<SessaoCreateWithoutFilmeInput, SessaoUncheckedCreateWithoutFilmeInput> | SessaoCreateWithoutFilmeInput[] | SessaoUncheckedCreateWithoutFilmeInput[]
     connectOrCreate?: SessaoCreateOrConnectWithoutFilmeInput | SessaoCreateOrConnectWithoutFilmeInput[]
@@ -30409,132 +26097,6 @@ export namespace Prisma {
     update?: SessaoUpdateWithWhereUniqueWithoutFilmeInput | SessaoUpdateWithWhereUniqueWithoutFilmeInput[]
     updateMany?: SessaoUpdateManyWithWhereWithoutFilmeInput | SessaoUpdateManyWithWhereWithoutFilmeInput[]
     deleteMany?: SessaoScalarWhereInput | SessaoScalarWhereInput[]
-  }
-
-  export type FilmeCreateNestedOneWithoutIntegrantesInput = {
-    create?: XOR<FilmeCreateWithoutIntegrantesInput, FilmeUncheckedCreateWithoutIntegrantesInput>
-    connectOrCreate?: FilmeCreateOrConnectWithoutIntegrantesInput
-    connect?: FilmeWhereUniqueInput
-  }
-
-  export type IntegranteCreateNestedOneWithoutFilmesInput = {
-    create?: XOR<IntegranteCreateWithoutFilmesInput, IntegranteUncheckedCreateWithoutFilmesInput>
-    connectOrCreate?: IntegranteCreateOrConnectWithoutFilmesInput
-    connect?: IntegranteWhereUniqueInput
-  }
-
-  export type FilmeUpdateOneRequiredWithoutIntegrantesNestedInput = {
-    create?: XOR<FilmeCreateWithoutIntegrantesInput, FilmeUncheckedCreateWithoutIntegrantesInput>
-    connectOrCreate?: FilmeCreateOrConnectWithoutIntegrantesInput
-    upsert?: FilmeUpsertWithoutIntegrantesInput
-    connect?: FilmeWhereUniqueInput
-    update?: XOR<XOR<FilmeUpdateToOneWithWhereWithoutIntegrantesInput, FilmeUpdateWithoutIntegrantesInput>, FilmeUncheckedUpdateWithoutIntegrantesInput>
-  }
-
-  export type IntegranteUpdateOneRequiredWithoutFilmesNestedInput = {
-    create?: XOR<IntegranteCreateWithoutFilmesInput, IntegranteUncheckedCreateWithoutFilmesInput>
-    connectOrCreate?: IntegranteCreateOrConnectWithoutFilmesInput
-    upsert?: IntegranteUpsertWithoutFilmesInput
-    connect?: IntegranteWhereUniqueInput
-    update?: XOR<XOR<IntegranteUpdateToOneWithWhereWithoutFilmesInput, IntegranteUpdateWithoutFilmesInput>, IntegranteUncheckedUpdateWithoutFilmesInput>
-  }
-
-  export type TipoIntegranteCreateNestedOneWithoutIntegrantesInput = {
-    create?: XOR<TipoIntegranteCreateWithoutIntegrantesInput, TipoIntegranteUncheckedCreateWithoutIntegrantesInput>
-    connectOrCreate?: TipoIntegranteCreateOrConnectWithoutIntegrantesInput
-    connect?: TipoIntegranteWhereUniqueInput
-  }
-
-  export type FilmeIntegranteCreateNestedManyWithoutIntegranteInput = {
-    create?: XOR<FilmeIntegranteCreateWithoutIntegranteInput, FilmeIntegranteUncheckedCreateWithoutIntegranteInput> | FilmeIntegranteCreateWithoutIntegranteInput[] | FilmeIntegranteUncheckedCreateWithoutIntegranteInput[]
-    connectOrCreate?: FilmeIntegranteCreateOrConnectWithoutIntegranteInput | FilmeIntegranteCreateOrConnectWithoutIntegranteInput[]
-    createMany?: FilmeIntegranteCreateManyIntegranteInputEnvelope
-    connect?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-  }
-
-  export type FilmeIntegranteUncheckedCreateNestedManyWithoutIntegranteInput = {
-    create?: XOR<FilmeIntegranteCreateWithoutIntegranteInput, FilmeIntegranteUncheckedCreateWithoutIntegranteInput> | FilmeIntegranteCreateWithoutIntegranteInput[] | FilmeIntegranteUncheckedCreateWithoutIntegranteInput[]
-    connectOrCreate?: FilmeIntegranteCreateOrConnectWithoutIntegranteInput | FilmeIntegranteCreateOrConnectWithoutIntegranteInput[]
-    createMany?: FilmeIntegranteCreateManyIntegranteInputEnvelope
-    connect?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-  }
-
-  export type TipoIntegranteUpdateOneRequiredWithoutIntegrantesNestedInput = {
-    create?: XOR<TipoIntegranteCreateWithoutIntegrantesInput, TipoIntegranteUncheckedCreateWithoutIntegrantesInput>
-    connectOrCreate?: TipoIntegranteCreateOrConnectWithoutIntegrantesInput
-    upsert?: TipoIntegranteUpsertWithoutIntegrantesInput
-    connect?: TipoIntegranteWhereUniqueInput
-    update?: XOR<XOR<TipoIntegranteUpdateToOneWithWhereWithoutIntegrantesInput, TipoIntegranteUpdateWithoutIntegrantesInput>, TipoIntegranteUncheckedUpdateWithoutIntegrantesInput>
-  }
-
-  export type FilmeIntegranteUpdateManyWithoutIntegranteNestedInput = {
-    create?: XOR<FilmeIntegranteCreateWithoutIntegranteInput, FilmeIntegranteUncheckedCreateWithoutIntegranteInput> | FilmeIntegranteCreateWithoutIntegranteInput[] | FilmeIntegranteUncheckedCreateWithoutIntegranteInput[]
-    connectOrCreate?: FilmeIntegranteCreateOrConnectWithoutIntegranteInput | FilmeIntegranteCreateOrConnectWithoutIntegranteInput[]
-    upsert?: FilmeIntegranteUpsertWithWhereUniqueWithoutIntegranteInput | FilmeIntegranteUpsertWithWhereUniqueWithoutIntegranteInput[]
-    createMany?: FilmeIntegranteCreateManyIntegranteInputEnvelope
-    set?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    disconnect?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    delete?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    connect?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    update?: FilmeIntegranteUpdateWithWhereUniqueWithoutIntegranteInput | FilmeIntegranteUpdateWithWhereUniqueWithoutIntegranteInput[]
-    updateMany?: FilmeIntegranteUpdateManyWithWhereWithoutIntegranteInput | FilmeIntegranteUpdateManyWithWhereWithoutIntegranteInput[]
-    deleteMany?: FilmeIntegranteScalarWhereInput | FilmeIntegranteScalarWhereInput[]
-  }
-
-  export type FilmeIntegranteUncheckedUpdateManyWithoutIntegranteNestedInput = {
-    create?: XOR<FilmeIntegranteCreateWithoutIntegranteInput, FilmeIntegranteUncheckedCreateWithoutIntegranteInput> | FilmeIntegranteCreateWithoutIntegranteInput[] | FilmeIntegranteUncheckedCreateWithoutIntegranteInput[]
-    connectOrCreate?: FilmeIntegranteCreateOrConnectWithoutIntegranteInput | FilmeIntegranteCreateOrConnectWithoutIntegranteInput[]
-    upsert?: FilmeIntegranteUpsertWithWhereUniqueWithoutIntegranteInput | FilmeIntegranteUpsertWithWhereUniqueWithoutIntegranteInput[]
-    createMany?: FilmeIntegranteCreateManyIntegranteInputEnvelope
-    set?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    disconnect?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    delete?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    connect?: FilmeIntegranteWhereUniqueInput | FilmeIntegranteWhereUniqueInput[]
-    update?: FilmeIntegranteUpdateWithWhereUniqueWithoutIntegranteInput | FilmeIntegranteUpdateWithWhereUniqueWithoutIntegranteInput[]
-    updateMany?: FilmeIntegranteUpdateManyWithWhereWithoutIntegranteInput | FilmeIntegranteUpdateManyWithWhereWithoutIntegranteInput[]
-    deleteMany?: FilmeIntegranteScalarWhereInput | FilmeIntegranteScalarWhereInput[]
-  }
-
-  export type IntegranteCreateNestedManyWithoutTipoIntegranteInput = {
-    create?: XOR<IntegranteCreateWithoutTipoIntegranteInput, IntegranteUncheckedCreateWithoutTipoIntegranteInput> | IntegranteCreateWithoutTipoIntegranteInput[] | IntegranteUncheckedCreateWithoutTipoIntegranteInput[]
-    connectOrCreate?: IntegranteCreateOrConnectWithoutTipoIntegranteInput | IntegranteCreateOrConnectWithoutTipoIntegranteInput[]
-    createMany?: IntegranteCreateManyTipoIntegranteInputEnvelope
-    connect?: IntegranteWhereUniqueInput | IntegranteWhereUniqueInput[]
-  }
-
-  export type IntegranteUncheckedCreateNestedManyWithoutTipoIntegranteInput = {
-    create?: XOR<IntegranteCreateWithoutTipoIntegranteInput, IntegranteUncheckedCreateWithoutTipoIntegranteInput> | IntegranteCreateWithoutTipoIntegranteInput[] | IntegranteUncheckedCreateWithoutTipoIntegranteInput[]
-    connectOrCreate?: IntegranteCreateOrConnectWithoutTipoIntegranteInput | IntegranteCreateOrConnectWithoutTipoIntegranteInput[]
-    createMany?: IntegranteCreateManyTipoIntegranteInputEnvelope
-    connect?: IntegranteWhereUniqueInput | IntegranteWhereUniqueInput[]
-  }
-
-  export type IntegranteUpdateManyWithoutTipoIntegranteNestedInput = {
-    create?: XOR<IntegranteCreateWithoutTipoIntegranteInput, IntegranteUncheckedCreateWithoutTipoIntegranteInput> | IntegranteCreateWithoutTipoIntegranteInput[] | IntegranteUncheckedCreateWithoutTipoIntegranteInput[]
-    connectOrCreate?: IntegranteCreateOrConnectWithoutTipoIntegranteInput | IntegranteCreateOrConnectWithoutTipoIntegranteInput[]
-    upsert?: IntegranteUpsertWithWhereUniqueWithoutTipoIntegranteInput | IntegranteUpsertWithWhereUniqueWithoutTipoIntegranteInput[]
-    createMany?: IntegranteCreateManyTipoIntegranteInputEnvelope
-    set?: IntegranteWhereUniqueInput | IntegranteWhereUniqueInput[]
-    disconnect?: IntegranteWhereUniqueInput | IntegranteWhereUniqueInput[]
-    delete?: IntegranteWhereUniqueInput | IntegranteWhereUniqueInput[]
-    connect?: IntegranteWhereUniqueInput | IntegranteWhereUniqueInput[]
-    update?: IntegranteUpdateWithWhereUniqueWithoutTipoIntegranteInput | IntegranteUpdateWithWhereUniqueWithoutTipoIntegranteInput[]
-    updateMany?: IntegranteUpdateManyWithWhereWithoutTipoIntegranteInput | IntegranteUpdateManyWithWhereWithoutTipoIntegranteInput[]
-    deleteMany?: IntegranteScalarWhereInput | IntegranteScalarWhereInput[]
-  }
-
-  export type IntegranteUncheckedUpdateManyWithoutTipoIntegranteNestedInput = {
-    create?: XOR<IntegranteCreateWithoutTipoIntegranteInput, IntegranteUncheckedCreateWithoutTipoIntegranteInput> | IntegranteCreateWithoutTipoIntegranteInput[] | IntegranteUncheckedCreateWithoutTipoIntegranteInput[]
-    connectOrCreate?: IntegranteCreateOrConnectWithoutTipoIntegranteInput | IntegranteCreateOrConnectWithoutTipoIntegranteInput[]
-    upsert?: IntegranteUpsertWithWhereUniqueWithoutTipoIntegranteInput | IntegranteUpsertWithWhereUniqueWithoutTipoIntegranteInput[]
-    createMany?: IntegranteCreateManyTipoIntegranteInputEnvelope
-    set?: IntegranteWhereUniqueInput | IntegranteWhereUniqueInput[]
-    disconnect?: IntegranteWhereUniqueInput | IntegranteWhereUniqueInput[]
-    delete?: IntegranteWhereUniqueInput | IntegranteWhereUniqueInput[]
-    connect?: IntegranteWhereUniqueInput | IntegranteWhereUniqueInput[]
-    update?: IntegranteUpdateWithWhereUniqueWithoutTipoIntegranteInput | IntegranteUpdateWithWhereUniqueWithoutTipoIntegranteInput[]
-    updateMany?: IntegranteUpdateManyWithWhereWithoutTipoIntegranteInput | IntegranteUpdateManyWithWhereWithoutTipoIntegranteInput[]
-    deleteMany?: IntegranteScalarWhereInput | IntegranteScalarWhereInput[]
   }
 
   export type FilmeCreateNestedManyWithoutClassificacaoIndicativaInput = {
@@ -31502,6 +27064,8 @@ export namespace Prisma {
     trailerUrl: string
     capaUrl: string
     bannerUrl?: string
+    direcao: string
+    elenco: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -31509,7 +27073,6 @@ export namespace Prisma {
     criadoEm?: Date | string
     atualizadoEm?: Date | string
     classificacaoIndicativa: ClassificacaoIndicativaCreateNestedOneWithoutFilmesInput
-    integrantes?: FilmeIntegranteCreateNestedManyWithoutFilmeInput
     sessoes?: SessaoCreateNestedManyWithoutFilmeInput
   }
 
@@ -31522,13 +27085,14 @@ export namespace Prisma {
     trailerUrl: string
     capaUrl: string
     bannerUrl?: string
+    direcao: string
+    elenco: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
     ativo?: boolean
     criadoEm?: Date | string
     atualizadoEm?: Date | string
-    integrantes?: FilmeIntegranteUncheckedCreateNestedManyWithoutFilmeInput
     sessoes?: SessaoUncheckedCreateNestedManyWithoutFilmeInput
   }
 
@@ -31575,6 +27139,8 @@ export namespace Prisma {
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
     bannerUrl?: StringFieldUpdateOperationsInput | string
+    direcao?: StringFieldUpdateOperationsInput | string
+    elenco?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -31582,7 +27148,6 @@ export namespace Prisma {
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     classificacaoIndicativa?: ClassificacaoIndicativaUpdateOneRequiredWithoutFilmesNestedInput
-    integrantes?: FilmeIntegranteUpdateManyWithoutFilmeNestedInput
     sessoes?: SessaoUpdateManyWithoutFilmeNestedInput
   }
 
@@ -31595,13 +27160,14 @@ export namespace Prisma {
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
     bannerUrl?: StringFieldUpdateOperationsInput | string
+    direcao?: StringFieldUpdateOperationsInput | string
+    elenco?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    integrantes?: FilmeIntegranteUncheckedUpdateManyWithoutFilmeNestedInput
     sessoes?: SessaoUncheckedUpdateManyWithoutFilmeNestedInput
   }
 
@@ -31673,31 +27239,6 @@ export namespace Prisma {
 
   export type FilmeGeneroCreateManyFilmeInputEnvelope = {
     data: FilmeGeneroCreateManyFilmeInput | FilmeGeneroCreateManyFilmeInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type FilmeIntegranteCreateWithoutFilmeInput = {
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-    integrante: IntegranteCreateNestedOneWithoutFilmesInput
-  }
-
-  export type FilmeIntegranteUncheckedCreateWithoutFilmeInput = {
-    id?: number
-    integranteId: number
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-  }
-
-  export type FilmeIntegranteCreateOrConnectWithoutFilmeInput = {
-    where: FilmeIntegranteWhereUniqueInput
-    create: XOR<FilmeIntegranteCreateWithoutFilmeInput, FilmeIntegranteUncheckedCreateWithoutFilmeInput>
-  }
-
-  export type FilmeIntegranteCreateManyFilmeInputEnvelope = {
-    data: FilmeIntegranteCreateManyFilmeInput | FilmeIntegranteCreateManyFilmeInput[]
     skipDuplicates?: boolean
   }
 
@@ -31778,34 +27319,6 @@ export namespace Prisma {
     data: XOR<FilmeGeneroUpdateManyMutationInput, FilmeGeneroUncheckedUpdateManyWithoutFilmeInput>
   }
 
-  export type FilmeIntegranteUpsertWithWhereUniqueWithoutFilmeInput = {
-    where: FilmeIntegranteWhereUniqueInput
-    update: XOR<FilmeIntegranteUpdateWithoutFilmeInput, FilmeIntegranteUncheckedUpdateWithoutFilmeInput>
-    create: XOR<FilmeIntegranteCreateWithoutFilmeInput, FilmeIntegranteUncheckedCreateWithoutFilmeInput>
-  }
-
-  export type FilmeIntegranteUpdateWithWhereUniqueWithoutFilmeInput = {
-    where: FilmeIntegranteWhereUniqueInput
-    data: XOR<FilmeIntegranteUpdateWithoutFilmeInput, FilmeIntegranteUncheckedUpdateWithoutFilmeInput>
-  }
-
-  export type FilmeIntegranteUpdateManyWithWhereWithoutFilmeInput = {
-    where: FilmeIntegranteScalarWhereInput
-    data: XOR<FilmeIntegranteUpdateManyMutationInput, FilmeIntegranteUncheckedUpdateManyWithoutFilmeInput>
-  }
-
-  export type FilmeIntegranteScalarWhereInput = {
-    AND?: FilmeIntegranteScalarWhereInput | FilmeIntegranteScalarWhereInput[]
-    OR?: FilmeIntegranteScalarWhereInput[]
-    NOT?: FilmeIntegranteScalarWhereInput | FilmeIntegranteScalarWhereInput[]
-    id?: IntFilter<"FilmeIntegrante"> | number
-    filmeId?: IntFilter<"FilmeIntegrante"> | number
-    integranteId?: IntFilter<"FilmeIntegrante"> | number
-    ativo?: BoolFilter<"FilmeIntegrante"> | boolean
-    criadoEm?: DateTimeFilter<"FilmeIntegrante"> | Date | string
-    atualizadoEm?: DateTimeFilter<"FilmeIntegrante"> | Date | string
-  }
-
   export type SessaoUpsertWithWhereUniqueWithoutFilmeInput = {
     where: SessaoWhereUniqueInput
     update: XOR<SessaoUpdateWithoutFilmeInput, SessaoUncheckedUpdateWithoutFilmeInput>
@@ -31838,295 +27351,6 @@ export namespace Prisma {
     atualizadoEm?: DateTimeFilter<"Sessao"> | Date | string
   }
 
-  export type FilmeCreateWithoutIntegrantesInput = {
-    titulo: string
-    descricao: string
-    duracaoEmMinutos: number
-    trailerUrl: string
-    capaUrl: string
-    bannerUrl?: string
-    dataLancamento: Date | string
-    dataInicioCartaz: Date | string
-    dataFimCartaz: Date | string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-    classificacaoIndicativa: ClassificacaoIndicativaCreateNestedOneWithoutFilmesInput
-    generos?: FilmeGeneroCreateNestedManyWithoutFilmeInput
-    sessoes?: SessaoCreateNestedManyWithoutFilmeInput
-  }
-
-  export type FilmeUncheckedCreateWithoutIntegrantesInput = {
-    id?: number
-    classificacaoIndicativaId: number
-    titulo: string
-    descricao: string
-    duracaoEmMinutos: number
-    trailerUrl: string
-    capaUrl: string
-    bannerUrl?: string
-    dataLancamento: Date | string
-    dataInicioCartaz: Date | string
-    dataFimCartaz: Date | string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-    generos?: FilmeGeneroUncheckedCreateNestedManyWithoutFilmeInput
-    sessoes?: SessaoUncheckedCreateNestedManyWithoutFilmeInput
-  }
-
-  export type FilmeCreateOrConnectWithoutIntegrantesInput = {
-    where: FilmeWhereUniqueInput
-    create: XOR<FilmeCreateWithoutIntegrantesInput, FilmeUncheckedCreateWithoutIntegrantesInput>
-  }
-
-  export type IntegranteCreateWithoutFilmesInput = {
-    nome: string
-    sobrenome: string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-    tipoIntegrante: TipoIntegranteCreateNestedOneWithoutIntegrantesInput
-  }
-
-  export type IntegranteUncheckedCreateWithoutFilmesInput = {
-    id?: number
-    tipoIntegranteId: number
-    nome: string
-    sobrenome: string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-  }
-
-  export type IntegranteCreateOrConnectWithoutFilmesInput = {
-    where: IntegranteWhereUniqueInput
-    create: XOR<IntegranteCreateWithoutFilmesInput, IntegranteUncheckedCreateWithoutFilmesInput>
-  }
-
-  export type FilmeUpsertWithoutIntegrantesInput = {
-    update: XOR<FilmeUpdateWithoutIntegrantesInput, FilmeUncheckedUpdateWithoutIntegrantesInput>
-    create: XOR<FilmeCreateWithoutIntegrantesInput, FilmeUncheckedCreateWithoutIntegrantesInput>
-    where?: FilmeWhereInput
-  }
-
-  export type FilmeUpdateToOneWithWhereWithoutIntegrantesInput = {
-    where?: FilmeWhereInput
-    data: XOR<FilmeUpdateWithoutIntegrantesInput, FilmeUncheckedUpdateWithoutIntegrantesInput>
-  }
-
-  export type FilmeUpdateWithoutIntegrantesInput = {
-    titulo?: StringFieldUpdateOperationsInput | string
-    descricao?: StringFieldUpdateOperationsInput | string
-    duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
-    trailerUrl?: StringFieldUpdateOperationsInput | string
-    capaUrl?: StringFieldUpdateOperationsInput | string
-    bannerUrl?: StringFieldUpdateOperationsInput | string
-    dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
-    dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
-    dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    classificacaoIndicativa?: ClassificacaoIndicativaUpdateOneRequiredWithoutFilmesNestedInput
-    generos?: FilmeGeneroUpdateManyWithoutFilmeNestedInput
-    sessoes?: SessaoUpdateManyWithoutFilmeNestedInput
-  }
-
-  export type FilmeUncheckedUpdateWithoutIntegrantesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    classificacaoIndicativaId?: IntFieldUpdateOperationsInput | number
-    titulo?: StringFieldUpdateOperationsInput | string
-    descricao?: StringFieldUpdateOperationsInput | string
-    duracaoEmMinutos?: IntFieldUpdateOperationsInput | number
-    trailerUrl?: StringFieldUpdateOperationsInput | string
-    capaUrl?: StringFieldUpdateOperationsInput | string
-    bannerUrl?: StringFieldUpdateOperationsInput | string
-    dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
-    dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
-    dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    generos?: FilmeGeneroUncheckedUpdateManyWithoutFilmeNestedInput
-    sessoes?: SessaoUncheckedUpdateManyWithoutFilmeNestedInput
-  }
-
-  export type IntegranteUpsertWithoutFilmesInput = {
-    update: XOR<IntegranteUpdateWithoutFilmesInput, IntegranteUncheckedUpdateWithoutFilmesInput>
-    create: XOR<IntegranteCreateWithoutFilmesInput, IntegranteUncheckedCreateWithoutFilmesInput>
-    where?: IntegranteWhereInput
-  }
-
-  export type IntegranteUpdateToOneWithWhereWithoutFilmesInput = {
-    where?: IntegranteWhereInput
-    data: XOR<IntegranteUpdateWithoutFilmesInput, IntegranteUncheckedUpdateWithoutFilmesInput>
-  }
-
-  export type IntegranteUpdateWithoutFilmesInput = {
-    nome?: StringFieldUpdateOperationsInput | string
-    sobrenome?: StringFieldUpdateOperationsInput | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    tipoIntegrante?: TipoIntegranteUpdateOneRequiredWithoutIntegrantesNestedInput
-  }
-
-  export type IntegranteUncheckedUpdateWithoutFilmesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    tipoIntegranteId?: IntFieldUpdateOperationsInput | number
-    nome?: StringFieldUpdateOperationsInput | string
-    sobrenome?: StringFieldUpdateOperationsInput | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TipoIntegranteCreateWithoutIntegrantesInput = {
-    nome: string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-  }
-
-  export type TipoIntegranteUncheckedCreateWithoutIntegrantesInput = {
-    id?: number
-    nome: string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-  }
-
-  export type TipoIntegranteCreateOrConnectWithoutIntegrantesInput = {
-    where: TipoIntegranteWhereUniqueInput
-    create: XOR<TipoIntegranteCreateWithoutIntegrantesInput, TipoIntegranteUncheckedCreateWithoutIntegrantesInput>
-  }
-
-  export type FilmeIntegranteCreateWithoutIntegranteInput = {
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-    filme: FilmeCreateNestedOneWithoutIntegrantesInput
-  }
-
-  export type FilmeIntegranteUncheckedCreateWithoutIntegranteInput = {
-    id?: number
-    filmeId: number
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-  }
-
-  export type FilmeIntegranteCreateOrConnectWithoutIntegranteInput = {
-    where: FilmeIntegranteWhereUniqueInput
-    create: XOR<FilmeIntegranteCreateWithoutIntegranteInput, FilmeIntegranteUncheckedCreateWithoutIntegranteInput>
-  }
-
-  export type FilmeIntegranteCreateManyIntegranteInputEnvelope = {
-    data: FilmeIntegranteCreateManyIntegranteInput | FilmeIntegranteCreateManyIntegranteInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type TipoIntegranteUpsertWithoutIntegrantesInput = {
-    update: XOR<TipoIntegranteUpdateWithoutIntegrantesInput, TipoIntegranteUncheckedUpdateWithoutIntegrantesInput>
-    create: XOR<TipoIntegranteCreateWithoutIntegrantesInput, TipoIntegranteUncheckedCreateWithoutIntegrantesInput>
-    where?: TipoIntegranteWhereInput
-  }
-
-  export type TipoIntegranteUpdateToOneWithWhereWithoutIntegrantesInput = {
-    where?: TipoIntegranteWhereInput
-    data: XOR<TipoIntegranteUpdateWithoutIntegrantesInput, TipoIntegranteUncheckedUpdateWithoutIntegrantesInput>
-  }
-
-  export type TipoIntegranteUpdateWithoutIntegrantesInput = {
-    nome?: StringFieldUpdateOperationsInput | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TipoIntegranteUncheckedUpdateWithoutIntegrantesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    nome?: StringFieldUpdateOperationsInput | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FilmeIntegranteUpsertWithWhereUniqueWithoutIntegranteInput = {
-    where: FilmeIntegranteWhereUniqueInput
-    update: XOR<FilmeIntegranteUpdateWithoutIntegranteInput, FilmeIntegranteUncheckedUpdateWithoutIntegranteInput>
-    create: XOR<FilmeIntegranteCreateWithoutIntegranteInput, FilmeIntegranteUncheckedCreateWithoutIntegranteInput>
-  }
-
-  export type FilmeIntegranteUpdateWithWhereUniqueWithoutIntegranteInput = {
-    where: FilmeIntegranteWhereUniqueInput
-    data: XOR<FilmeIntegranteUpdateWithoutIntegranteInput, FilmeIntegranteUncheckedUpdateWithoutIntegranteInput>
-  }
-
-  export type FilmeIntegranteUpdateManyWithWhereWithoutIntegranteInput = {
-    where: FilmeIntegranteScalarWhereInput
-    data: XOR<FilmeIntegranteUpdateManyMutationInput, FilmeIntegranteUncheckedUpdateManyWithoutIntegranteInput>
-  }
-
-  export type IntegranteCreateWithoutTipoIntegranteInput = {
-    nome: string
-    sobrenome: string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-    filmes?: FilmeIntegranteCreateNestedManyWithoutIntegranteInput
-  }
-
-  export type IntegranteUncheckedCreateWithoutTipoIntegranteInput = {
-    id?: number
-    nome: string
-    sobrenome: string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-    filmes?: FilmeIntegranteUncheckedCreateNestedManyWithoutIntegranteInput
-  }
-
-  export type IntegranteCreateOrConnectWithoutTipoIntegranteInput = {
-    where: IntegranteWhereUniqueInput
-    create: XOR<IntegranteCreateWithoutTipoIntegranteInput, IntegranteUncheckedCreateWithoutTipoIntegranteInput>
-  }
-
-  export type IntegranteCreateManyTipoIntegranteInputEnvelope = {
-    data: IntegranteCreateManyTipoIntegranteInput | IntegranteCreateManyTipoIntegranteInput[]
-    skipDuplicates?: boolean
-  }
-
-  export type IntegranteUpsertWithWhereUniqueWithoutTipoIntegranteInput = {
-    where: IntegranteWhereUniqueInput
-    update: XOR<IntegranteUpdateWithoutTipoIntegranteInput, IntegranteUncheckedUpdateWithoutTipoIntegranteInput>
-    create: XOR<IntegranteCreateWithoutTipoIntegranteInput, IntegranteUncheckedCreateWithoutTipoIntegranteInput>
-  }
-
-  export type IntegranteUpdateWithWhereUniqueWithoutTipoIntegranteInput = {
-    where: IntegranteWhereUniqueInput
-    data: XOR<IntegranteUpdateWithoutTipoIntegranteInput, IntegranteUncheckedUpdateWithoutTipoIntegranteInput>
-  }
-
-  export type IntegranteUpdateManyWithWhereWithoutTipoIntegranteInput = {
-    where: IntegranteScalarWhereInput
-    data: XOR<IntegranteUpdateManyMutationInput, IntegranteUncheckedUpdateManyWithoutTipoIntegranteInput>
-  }
-
-  export type IntegranteScalarWhereInput = {
-    AND?: IntegranteScalarWhereInput | IntegranteScalarWhereInput[]
-    OR?: IntegranteScalarWhereInput[]
-    NOT?: IntegranteScalarWhereInput | IntegranteScalarWhereInput[]
-    id?: IntFilter<"Integrante"> | number
-    tipoIntegranteId?: IntFilter<"Integrante"> | number
-    nome?: StringFilter<"Integrante"> | string
-    sobrenome?: StringFilter<"Integrante"> | string
-    ativo?: BoolFilter<"Integrante"> | boolean
-    criadoEm?: DateTimeFilter<"Integrante"> | Date | string
-    atualizadoEm?: DateTimeFilter<"Integrante"> | Date | string
-  }
-
   export type FilmeCreateWithoutClassificacaoIndicativaInput = {
     titulo: string
     descricao: string
@@ -32134,6 +27358,8 @@ export namespace Prisma {
     trailerUrl: string
     capaUrl: string
     bannerUrl?: string
+    direcao: string
+    elenco: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -32141,7 +27367,6 @@ export namespace Prisma {
     criadoEm?: Date | string
     atualizadoEm?: Date | string
     generos?: FilmeGeneroCreateNestedManyWithoutFilmeInput
-    integrantes?: FilmeIntegranteCreateNestedManyWithoutFilmeInput
     sessoes?: SessaoCreateNestedManyWithoutFilmeInput
   }
 
@@ -32153,6 +27378,8 @@ export namespace Prisma {
     trailerUrl: string
     capaUrl: string
     bannerUrl?: string
+    direcao: string
+    elenco: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -32160,7 +27387,6 @@ export namespace Prisma {
     criadoEm?: Date | string
     atualizadoEm?: Date | string
     generos?: FilmeGeneroUncheckedCreateNestedManyWithoutFilmeInput
-    integrantes?: FilmeIntegranteUncheckedCreateNestedManyWithoutFilmeInput
     sessoes?: SessaoUncheckedCreateNestedManyWithoutFilmeInput
   }
 
@@ -32202,6 +27428,8 @@ export namespace Prisma {
     trailerUrl?: StringFilter<"Filme"> | string
     capaUrl?: StringFilter<"Filme"> | string
     bannerUrl?: StringFilter<"Filme"> | string
+    direcao?: StringFilter<"Filme"> | string
+    elenco?: StringFilter<"Filme"> | string
     dataLancamento?: DateTimeFilter<"Filme"> | Date | string
     dataInicioCartaz?: DateTimeFilter<"Filme"> | Date | string
     dataFimCartaz?: DateTimeFilter<"Filme"> | Date | string
@@ -32319,6 +27547,8 @@ export namespace Prisma {
     trailerUrl: string
     capaUrl: string
     bannerUrl?: string
+    direcao: string
+    elenco: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -32327,7 +27557,6 @@ export namespace Prisma {
     atualizadoEm?: Date | string
     classificacaoIndicativa: ClassificacaoIndicativaCreateNestedOneWithoutFilmesInput
     generos?: FilmeGeneroCreateNestedManyWithoutFilmeInput
-    integrantes?: FilmeIntegranteCreateNestedManyWithoutFilmeInput
   }
 
   export type FilmeUncheckedCreateWithoutSessoesInput = {
@@ -32339,6 +27568,8 @@ export namespace Prisma {
     trailerUrl: string
     capaUrl: string
     bannerUrl?: string
+    direcao: string
+    elenco: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -32346,7 +27577,6 @@ export namespace Prisma {
     criadoEm?: Date | string
     atualizadoEm?: Date | string
     generos?: FilmeGeneroUncheckedCreateNestedManyWithoutFilmeInput
-    integrantes?: FilmeIntegranteUncheckedCreateNestedManyWithoutFilmeInput
   }
 
   export type FilmeCreateOrConnectWithoutSessoesInput = {
@@ -32471,6 +27701,8 @@ export namespace Prisma {
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
     bannerUrl?: StringFieldUpdateOperationsInput | string
+    direcao?: StringFieldUpdateOperationsInput | string
+    elenco?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32479,7 +27711,6 @@ export namespace Prisma {
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     classificacaoIndicativa?: ClassificacaoIndicativaUpdateOneRequiredWithoutFilmesNestedInput
     generos?: FilmeGeneroUpdateManyWithoutFilmeNestedInput
-    integrantes?: FilmeIntegranteUpdateManyWithoutFilmeNestedInput
   }
 
   export type FilmeUncheckedUpdateWithoutSessoesInput = {
@@ -32491,6 +27722,8 @@ export namespace Prisma {
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
     bannerUrl?: StringFieldUpdateOperationsInput | string
+    direcao?: StringFieldUpdateOperationsInput | string
+    elenco?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -32498,7 +27731,6 @@ export namespace Prisma {
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     generos?: FilmeGeneroUncheckedUpdateManyWithoutFilmeNestedInput
-    integrantes?: FilmeIntegranteUncheckedUpdateManyWithoutFilmeNestedInput
   }
 
   export type SalaUpsertWithoutSessoesInput = {
@@ -33689,14 +28921,6 @@ export namespace Prisma {
     atualizadoEm?: Date | string
   }
 
-  export type FilmeIntegranteCreateManyFilmeInput = {
-    id?: number
-    integranteId: number
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-  }
-
   export type SessaoCreateManyFilmeInput = {
     id?: number
     salaId: number
@@ -33727,29 +28951,6 @@ export namespace Prisma {
   export type FilmeGeneroUncheckedUpdateManyWithoutFilmeInput = {
     id?: IntFieldUpdateOperationsInput | number
     generoId?: IntFieldUpdateOperationsInput | number
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FilmeIntegranteUpdateWithoutFilmeInput = {
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    integrante?: IntegranteUpdateOneRequiredWithoutFilmesNestedInput
-  }
-
-  export type FilmeIntegranteUncheckedUpdateWithoutFilmeInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    integranteId?: IntFieldUpdateOperationsInput | number
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FilmeIntegranteUncheckedUpdateManyWithoutFilmeInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    integranteId?: IntFieldUpdateOperationsInput | number
     ativo?: BoolFieldUpdateOperationsInput | boolean
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33792,74 +28993,6 @@ export namespace Prisma {
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type FilmeIntegranteCreateManyIntegranteInput = {
-    id?: number
-    filmeId: number
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-  }
-
-  export type FilmeIntegranteUpdateWithoutIntegranteInput = {
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    filme?: FilmeUpdateOneRequiredWithoutIntegrantesNestedInput
-  }
-
-  export type FilmeIntegranteUncheckedUpdateWithoutIntegranteInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    filmeId?: IntFieldUpdateOperationsInput | number
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type FilmeIntegranteUncheckedUpdateManyWithoutIntegranteInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    filmeId?: IntFieldUpdateOperationsInput | number
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type IntegranteCreateManyTipoIntegranteInput = {
-    id?: number
-    nome: string
-    sobrenome: string
-    ativo?: boolean
-    criadoEm?: Date | string
-    atualizadoEm?: Date | string
-  }
-
-  export type IntegranteUpdateWithoutTipoIntegranteInput = {
-    nome?: StringFieldUpdateOperationsInput | string
-    sobrenome?: StringFieldUpdateOperationsInput | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    filmes?: FilmeIntegranteUpdateManyWithoutIntegranteNestedInput
-  }
-
-  export type IntegranteUncheckedUpdateWithoutTipoIntegranteInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    nome?: StringFieldUpdateOperationsInput | string
-    sobrenome?: StringFieldUpdateOperationsInput | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    filmes?: FilmeIntegranteUncheckedUpdateManyWithoutIntegranteNestedInput
-  }
-
-  export type IntegranteUncheckedUpdateManyWithoutTipoIntegranteInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    nome?: StringFieldUpdateOperationsInput | string
-    sobrenome?: StringFieldUpdateOperationsInput | string
-    ativo?: BoolFieldUpdateOperationsInput | boolean
-    criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-    atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
   export type FilmeCreateManyClassificacaoIndicativaInput = {
     id?: number
     titulo: string
@@ -33868,6 +29001,8 @@ export namespace Prisma {
     trailerUrl: string
     capaUrl: string
     bannerUrl?: string
+    direcao: string
+    elenco: string
     dataLancamento: Date | string
     dataInicioCartaz: Date | string
     dataFimCartaz: Date | string
@@ -33883,6 +29018,8 @@ export namespace Prisma {
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
     bannerUrl?: StringFieldUpdateOperationsInput | string
+    direcao?: StringFieldUpdateOperationsInput | string
+    elenco?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33890,7 +29027,6 @@ export namespace Prisma {
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     generos?: FilmeGeneroUpdateManyWithoutFilmeNestedInput
-    integrantes?: FilmeIntegranteUpdateManyWithoutFilmeNestedInput
     sessoes?: SessaoUpdateManyWithoutFilmeNestedInput
   }
 
@@ -33902,6 +29038,8 @@ export namespace Prisma {
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
     bannerUrl?: StringFieldUpdateOperationsInput | string
+    direcao?: StringFieldUpdateOperationsInput | string
+    elenco?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -33909,7 +29047,6 @@ export namespace Prisma {
     criadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     atualizadoEm?: DateTimeFieldUpdateOperationsInput | Date | string
     generos?: FilmeGeneroUncheckedUpdateManyWithoutFilmeNestedInput
-    integrantes?: FilmeIntegranteUncheckedUpdateManyWithoutFilmeNestedInput
     sessoes?: SessaoUncheckedUpdateManyWithoutFilmeNestedInput
   }
 
@@ -33921,6 +29058,8 @@ export namespace Prisma {
     trailerUrl?: StringFieldUpdateOperationsInput | string
     capaUrl?: StringFieldUpdateOperationsInput | string
     bannerUrl?: StringFieldUpdateOperationsInput | string
+    direcao?: StringFieldUpdateOperationsInput | string
+    elenco?: StringFieldUpdateOperationsInput | string
     dataLancamento?: DateTimeFieldUpdateOperationsInput | Date | string
     dataInicioCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
     dataFimCartaz?: DateTimeFieldUpdateOperationsInput | Date | string
