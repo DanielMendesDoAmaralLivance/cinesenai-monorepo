@@ -190,6 +190,9 @@ export const SessaoDetalhesPage = () => {
 
                             if (!esteAssento) return <NaoTemAssento />;
 
+                            if (!esteAssento.ativo)
+                              return <AssentoIndisponivel />;
+
                             const assentoEstaIndisponivel =
                               sessao.sessoesAssentos.some(
                                 (x) => x.assentoId === esteAssento.id
