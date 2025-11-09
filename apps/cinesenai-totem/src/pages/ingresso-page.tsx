@@ -131,7 +131,6 @@ export const IngressoPage = () => {
                           {sessaoAssento.tipoEntradaId === 1
                             ? Number(sessao!.preco).toFixed(2)
                             : (Number(sessao!.preco) / 2).toFixed(2)}
-                          ,00
                         </p>
                         <p className="font-bold">
                           R$
